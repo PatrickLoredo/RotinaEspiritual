@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/DEV ESPIRITUAL/CSS/rotinaEspiritual.css">
+
+    <!--FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!--JAVASCRIPT-->
+    <script src="/DEV ESPIRITUAL/JS/adoracaoFamilia.js" defer></script>
+
+    <title>Adoração em Família</title>
+</head>
+
+<body>
+    <!--INICIO DO NAVBAR-->
+    <div class="row">
+        <div class="col">
+            <!--NAVBAR SUPERIOR-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"  id="navbar-superior">
+                <div class="container-fluid">
+                    <a class="navbar-brand uppercase" href="/DEV ESPIRITUAL/HTML/index.html">Rotina Espiritual</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav m-auto" id="navbar-superior">
+                            <li class="nav-item dropdown">
+                                <a href="/DEV ESPIRITUAL/HTML/datas_Importantes.html" class="nav-link">
+                                    <span class="text-light uppercase tamanho08">
+                                        <i class="fa fa-calendar">&nbsp;&nbsp;</i>
+                                        Datas e Eventos Importantes
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-check">&nbsp;&nbsp;</i>
+                                    Tarefas da Congregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Partes em Reuniões</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Designações Mecânicas</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Direção de Campo</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Testemunho com Carrinhos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-briefcase">&nbsp;&nbsp;</i>
+                                    Trabalho de Pregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/programacao_pregacao.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Programação de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/relatorio_campo.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Relatório de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudos_revisitas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Estudos e Revisitas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/modelo_cartas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Modelos de Cartas
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudo_Sentinela.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Saídas de Campos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-gem">&nbsp;&nbsp;</i>
+                                    Estudos Espirituais
+                                </span>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/leituraBiblia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Leitura da Bíblia</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudosPessoais.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudos Pessoais</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/adoracaoFamilia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Adoração em Família</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudo_Sentinela.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudo A Sentinela</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--INICIO DO CORPO DO BODY-->
+        <div class="row mt-5">
+            <!--RELOGIO DO BODY-->
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger" onclick="window.open('/BIBLIOTECA_DEV/html/index.html', '_blank')" id="relogioPagina"></button>
+                </div>
+            </div>
+
+            <div class="col">
+                <!--CONTAINER GERAL DE ESTUDO PESSOAL-->
+                <div class="container-fluid my-5" id="leituraBibliaContainer">
+
+                    <!--TITULO DO CAMPO ESTUDO PESSOAL-->
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="display-6 text-center">Adoração em Família</h6>
+                        </div>
+                    </div>
+
+                    <div class="row  mt-5">
+                        <div class="mb-2 col-12 col-md-6 col-sm-12 col-lg-4">
+                            <div class="card">
+                                <div class="card-body" id="collapseLivrosBiblicos">
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-lg btn-danger w-100 d-flex align-items-center justify-content-center" 
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#bodyCadastroEventoAdoracaoEmFamilia"
+                                            onclick="mostraDataAtual('dataAtualAdoracaoEmFamilia'), 
+                                            mostraDiaSemana(document.getElementById('dataAtualAdoracaoEmFamilia').value, 'diaSemanaAdoracaoFamilia')">
+                                                <i class="fa fa-circle-plus">&nbsp;&nbsp;</i>
+                                                <span class="uppercase text-center tamanho07">
+                                                    Agendar Adoração em Família
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer collapse" id="bodyCadastroEventoAdoracaoEmFamilia">
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <label for="" class="uppercase tamanho07 d-flex justify-content-center mb-1">Data</label>
+                                            <input type="date" class="form-control text-center uppercase" style="font-size: 0.8rem;"
+                                            onchange="mostraDiaSemana(this.value, 'diaSemanaAdoracaoFamilia')"
+                                            id="dataAtualAdoracaoEmFamilia">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="" class="uppercase tamanho07 d-flex justify-content-center mb-1">Dia da Semana</label>
+                                            <input type="text" class="form-control text-center uppercase" 
+                                            style="font-size: 0.7rem;"
+                                            id="diaSemanaAdoracaoFamilia"
+                                            disabled>
+                                        </div>
+                                        <div class="col mb-3">
+                                            <label for="" class="uppercase tamanho07 d-flex justify-content-center mb-1">
+                                                Assunto da Adoração em Família
+                                            </label>
+                                            <input type="text" class="form-control uppercase text-center" id="assuntoAdoracaoFamilia"
+                                            style="font-size: 0.8rem;">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-center gap-2">
+                                            <button class="btn btn-success"
+                                            onclick="salvarAdoracaoEmFamilia()">
+                                                <i class="fa fa-floppy-disk">&nbsp;&nbsp;</i>
+                                                <span class="uppercase text-center tamanho07">
+                                                    Salvar
+                                                </span>
+                                            </button>
+                                            <button class="btn btn-primary">
+                                                <i class="fa fa-edit">&nbsp;&nbsp;</i>
+                                                <span class="uppercase text-center tamanho07">
+                                                    Editar
+                                                </span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-trash">&nbsp;&nbsp;</i>
+                                                <span class="uppercase text-center tamanho07">
+                                                    Excluir
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-2">
+                            <div class="card">
+                                <div class="card-body" id="exibicaoAgendamentosAdoracaoEmFamilia">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

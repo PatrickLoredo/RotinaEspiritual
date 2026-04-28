@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/DEV ESPIRITUAL/CSS/rotinaEspiritual.css">
+
+    <!--FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!--CALENDARIO-->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
+    <!--JAVASCRIPT-->
+    <script src="/DEV ESPIRITUAL/JS/rotinaEspiritualIndex.js" defer></script>
+
+    <title>Datas Importantes - Rotina Espiritual</title>
+</head>
+
+<body>
+    <!--INICIO DO NAVBAR-->
+    <div class="row">
+        <div class="col">
+            <!--NAVBAR SUPERIOR-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"  id="navbar-superior">
+                <div class="container-fluid">
+                    <a class="navbar-brand uppercase" href="/DEV ESPIRITUAL/HTML/index.html">Rotina Espiritual</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav m-auto" id="navbar-superior">
+                            <li class="nav-item dropdown">
+                                <a href="/DEV ESPIRITUAL/HTML/datas_Importantes.html" class="nav-link">
+                                    <span class="text-light uppercase tamanho08">
+                                        <i class="fa fa-calendar">&nbsp;&nbsp;</i>
+                                        Datas e Eventos Importantes
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-check">&nbsp;&nbsp;</i>
+                                    Tarefas da Congregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Partes em Reuniões</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Designações Mecânicas</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Direção de Campo</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Testemunho com Carrinhos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-briefcase">&nbsp;&nbsp;</i>
+                                    Trabalho de Pregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/programacao_pregacao.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Programação de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/relatorio_campo.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Relatório de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudos_revisitas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Estudos e Revisitas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/modelo_cartas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Modelos de Cartas
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/saidas_campos.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Saídas de Campos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-gem">&nbsp;&nbsp;</i>
+                                    Estudos Espirituais
+                                </span>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/leituraBiblia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Leitura da Bíblia</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudosPessoais.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudos Pessoais</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/adoracaoFamilia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Adoração em Família</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudo_Sentinela.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudo A Sentinela</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--INICIO DO CORPO DO BODY-->
+        <div class="row" id="containerApresentacao">
+            <!--RELOGIO DO BODY-->
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger" onclick="window.open('/BIBLIOTECA_DEV/html/index.html', '_blank')" id="relogioPagina"></button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="container my-5">
+                            <h6 class="display-6 text-center">Datas & Eventos Importantes</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!--CARD DE EXIBICAO DE CALENDARIO E TAREFAS-->
+                <div class="row">
+                    <!--INICIO COLUNA TAREFAS AGENDADAS-->
+                    <div class="col-md-5 col-sm-12">
+                        <div class="card">
+
+                            <!--INICIO LINHA SUPERIOR HEADER TITULO/COLLAPSE-->
+                            <div class="card-header text-center">
+                                <div class="row">
+                                    <div class="col d-flex justify-content-center align-items-center">
+                                        <span class="uppercase fw-bold">Datas Importantes / Tarefas</span>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class="btn btn-dark btn-sm"
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#apresentacaoTarefasAgendadas"
+                                        onclick="verificaTrocaIconeCollapse('iconeCollapseDatasImportantes')">
+                                            <i class="fa fa-chevron-down" id="iconeCollapseDatasImportantes"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--FINAL LINHA SUPERIOR HEADER TITULO/COLLAPSE-->
+
+                            <!--INICIO CAMPO DE APRESENTACAO DE TAREFAS-->
+                            <div class="card-body" id="apresentacaoTarefasAgendadas">
+                                <div class="alert alert-success">
+                                    <div class="row">
+                                        <div class="col my-2" id="colunaDatasImportantes">
+                                            <div class="row text-center d-flex align-items-center">
+                                                <span class="identificadorData uppercase">Próximo Evento</span>
+                                                <div class="col-lg-5 col-md-6 col-sm-12 mb-1">
+                                                    <span class="uppercase alert-text fw-bold text-dark">Preparar Reunião de Meio de Semana</span>
+                                                </div>
+                                                <div class="col col-lg-4 col-md-6  col-sm-12 my-1">
+                                                    <span class="uppercase fw-semibold text-danger">28/02/2026</span>
+                                                    <span class="uppercase fw-semibold text-danger">08:00:00</span>
+                                                </div>
+                                                <div class="col  col-lg-3 col-md-12 col-sm-12 mt-2">
+                                                    <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></button>
+                                                    <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <hr>
+                                                </div>
+                                                <div class="col">
+                                                    <i>Observações</i>
+                                                </div>
+                                                <div class="col-4">
+                                                    <hr>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-secondary btn-sm"
+                                                        data-bs-toggle="collapse" 
+                                                        data-bs-target="#observacaoAlert00"
+                                                        onclick="verificaTrocaIconeCollapse('iconeAlert00')">
+                                                            <i class="fa fa-chevron-down" id="iconeAlert00"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="row collapse" id="observacaoAlert00">
+                                                <div class="col mt-3">
+                                                    <i>
+                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                                        Assumenda accusamus hic obcaecati quia aspernatur modi porro voluptates unde sed nobis labore cum laboriosam quae perspiciatis, 
+                                                        magni excepturi facilis voluptatem ipsa?</p>
+                                                    </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!--FINAL CAMPO DE APRESENTACAO DE TAREFAS-->
+
+                        </div>
+                    </div>
+                    <!--FINAL COLUNA TAREFAS AGENDADAS-->
+
+                    <!--INICIO COLUNA CALENDARIO-->
+                    <div class="col-md-7 col-sm-12">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <div class="row pb-3 d-flex align-items-center">
+                                    <div class="col-6 col-sm-6 col-md-5 col-lg-7 pt-3">
+                                        <span class="uppercase fw-bold">calendário Mensal</span>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-7 col-lg-5 pt-3">
+                                        <button class="btn btn-sm btn-primary">
+                                            <span class="uppercase px-2 fw-bold">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </span>
+                                        </button>
+                                        <button class="btn btn-sm btn-primary">
+                                            <span class="uppercase px-2 fw-bold">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </span>
+                                        </button>
+                                        <button class="btn btn-sm btn-dark">
+                                            <span class="uppercase px-2 fw-bold">
+                                                <i class="fa fa-calendar">&nbsp;&nbsp;</i>Hoje</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row text-center uppercase tamanho08">
+                                            <div class="col">Segunda</div>
+                                            <div class="col">Terça</div>
+                                            <div class="col">Quarta</div>
+                                            <div class="col">Quinta</div>
+                                            <div class="col">Sexta</div>
+                                            <div class="col">Sábado</div>
+                                            <div class="col">Domingo</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col boxDiaSemana">
+                                                <span>1</span>
+                                                <button class="btn btn-sm btn-danger btnPlusDate">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-primary btnTotalDate">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col boxDiaSemana">2</div>
+                                            <div class="col boxDiaSemana">3</div>
+                                            <div class="col boxDiaSemana">4</div>
+                                            <div class="col boxDiaSemana">5</div>
+                                            <div class="col boxDiaSemana">6</div>
+                                            <div class="col boxDiaSemana">7</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col boxDiaSemana">8</div>
+                                            <div class="col boxDiaSemana">9</div>
+                                            <div class="col boxDiaSemana bg-secondary text-white">10</div>
+                                            <div class="col boxDiaSemana">11</div>
+                                            <div class="col boxDiaSemana">12</div>
+                                            <div class="col boxDiaSemana">13</div>
+                                            <div class="col boxDiaSemana">14</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col boxDiaSemana">15</div>
+                                            <div class="col boxDiaSemana">16</div>
+                                            <div class="col boxDiaSemana">17</div>
+                                            <div class="col boxDiaSemana">18</div>
+                                            <div class="col boxDiaSemana">19</div>
+                                            <div class="col boxDiaSemana">20</div>
+                                            <div class="col boxDiaSemana">21</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col boxDiaSemana">22</div>
+                                            <div class="col boxDiaSemana">23</div>
+                                            <div class="col boxDiaSemana">24</div>
+                                            <div class="col boxDiaSemana">25</div>
+                                            <div class="col boxDiaSemana">26</div>
+                                            <div class="col boxDiaSemana">27</div>
+                                            <div class="col boxDiaSemana">28</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col boxDiaSemana"></div>
+                                            <div class="col boxDiaSemana"></div>
+                                            <div class="col boxDiaSemana"></div>
+                                            <div class="col boxDiaSemana"></div>
+                                            <div class="col boxDiaSemana"></div>
+                                            <div class="col boxDiaSemana"></div>
+                                            <div class="col boxDiaSemana"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--FINAL COLUNA CALENDARIO-->
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+
+</html>

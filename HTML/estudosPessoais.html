@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/DEV ESPIRITUAL/CSS/rotinaEspiritual.css">
+
+    <!--FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!--QUILL EDITOR-->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/quill-better-table/dist/quill-better-table.css">
+    <script src="https://unpkg.com/quill-better-table/dist/quill-better-table.js"></script>
+
+    <!--JAVASCRIPT-->
+    <script src="/DEV ESPIRITUAL/JS/estudoPessoal.js" defer></script>
+
+    <title>Estudos Pessoais</title>
+</head>
+
+<body>
+    <!--INICIO DO NAVBAR-->
+    <div class="row container-fluid">
+        <div class="col">
+            <!--NAVBAR SUPERIOR-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar-superior">
+                <div class="container-fluid">
+                    <a class="navbar-brand uppercase" href="/DEV ESPIRITUAL/HTML/index.html">Rotina Espiritual</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav m-auto" id="navbar-superior">
+                            <li class="nav-item dropdown">
+                                <a href="/DEV ESPIRITUAL/HTML/datas_Importantes.html" class="nav-link">
+                                    <span class="text-light uppercase tamanho08">
+                                        <i class="fa fa-calendar">&nbsp;&nbsp;</i>
+                                        Datas e Eventos Importantes
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-check">&nbsp;&nbsp;</i>
+                                    Tarefas da Congregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Partes em Reuniões</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Designações Mecânicas</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Direção de Campo</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Testemunho com Carrinhos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-briefcase">&nbsp;&nbsp;</i>
+                                    Trabalho de Pregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/programacao_pregacao.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Programação de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/relatorio_campo.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Relatório de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudos_revisitas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Estudos e Revisitas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/modelo_cartas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Modelos de Cartas
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/saidas_campos.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Saídas de Campos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-gem">&nbsp;&nbsp;</i>
+                                    Estudos Espirituais
+                                </span>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/leituraBiblia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Leitura da Bíblia</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudosPessoais.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudos Pessoais</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/adoracaoFamilia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Adoração em Família</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudo_Sentinela.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudo A Sentinela</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--INICIO DO CORPO DO BODY-->
+        <div class="row mt-5">
+            <!--RELOGIO DO BODY-->
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger" onclick="window.open('/BIBLIOTECA_DEV/html/index.html', '_blank')" id="relogioPagina"></button>
+                </div>
+            </div>
+
+            <div class="col container">
+                <!--CONTAINER GERAL DE ESTUDO PESSOAL-->
+                <div class="my-5" id="estudosPessoaisContainer">
+
+                    <!--TITULO DO CAMPO ESTUDO PESSOAL-->
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="display-6 text-center">Estudos Pessoais</h6>
+                        </div>
+                    </div>
+
+                    <!-- Modal Exibição de Categorias de Estudo Pessoal-->
+                    <div class="modal fade" id="exibeCategoriasEstudoPessoal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title w-100 text-center fw-bold uppercase tamanho10">
+                                        Categorias Cadastradas
+                                    </h5>
+                                    <button class="btn-close" data-bs-dismiss="modal" 
+                                    id="btn-dismissClose"></button>
+                                </div>
+
+                                <div class="modal-body" id="campoExibeCategoriasEstudoPessoal"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Cadastro de Nova Categorias de Estudo Pessoal-->
+                    <div class="modal fade" id="criarNovaCategoriaCadastro">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title w-100 text-center fw-bold uppercase tamanho10">
+                                        Criar Nova Categoria
+                                    </h5>
+                                    <button class="btn-close" data-bs-dismiss="modal" ></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control tamanho07 text-center uppercase" 
+                                        placeholder="Digite o nome da nova Categoria"
+                                        id="inputNovaCategoriaCadastro">
+
+                                        <button class="btn btn-success input-group-text"
+                                        onclick="salvarNovaCategoria('inputNovaCategoriaCadastro')">
+                                            <i class="fa fa-save"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--CAMPO DE CATEGORIAS DE ESTUDOS PESSOAIS CADASTRADOS-->
+                    <div class="row mt-3">
+                        <!--CAMPO DE CADASTRO DE NOVO ESTULODO PESSOAL-->
+                        <div class="mt-2 col-sm-12 col-md-5 col-lg-4">
+                            <div class="card">
+                                <div class="card-header uppercase text-center fw-bold">
+                                    Novo Estudo Pessoal
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="cadastroNovoEstudoPesjsoal">
+                                        <div class="col-12 col-sm-6 col-md-12 col-lg-6 mb-2 mb-sm-0 mb-md-2 d-flex justify-content-center">
+                                            <button class="btn btn-primary uppercase px-4 w-100" 
+                                                id="btnCadastroNovoEstudo"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#campoInformacoesNovoEstudoPessoal"
+                                                onclick="mostraDataAtual('dataNovoEstudoPessoal');
+                                                mostrarDiaSemana('dataNovoEstudoPessoal', 'diaSemanaEstudoPessoal')">
+                                                <i class="fa fa-circle-plus"></i>&nbsp;
+                                                <span class="tamanho07">Novo Estudo Pessoal</span>
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-12 col-lg-6 mb-sm-0 mb-md-2 d-flex justify-content-center">
+                                                <button class="btn btn-dark w-100"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#criarNovaCategoriaCadastro"
+                                                onclick="criarNovaCategoria()">
+                                                    <i class="fa fa-circle-plus"></i>&nbsp;
+                                                    <span class="uppercase tamanho07">Nova Categoria</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 col-12 col-sm-12 col-md-7 col-lg mb-4">
+                            <div class="card">
+                                <div class="card-header uppercase text-center fw-bold">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <span>categorias de estudos realizados</span>
+                                        </div>
+                                        <div class="col">
+                                            <!--BOTÃO DE VER TODOS CADASTROS-->
+                                            <button class="btn btn-sm btn-dark"
+                                            onclick="todosEstudos()">
+                                                <i class="fa-solid fa-list"></i>
+                                            </button>
+
+                                            <!--BOTÃO DE VER TODAS AS CATEGORIAS-->
+                                            <button class="btn btn-sm btn-dark" data-bs-toggle="modal"
+                                                data-bs-target="#exibeCategoriasEstudoPessoal"
+                                                onclick="mostraModalCategoriasEstudos()">
+                                                <i class="bi bi-journal-bookmark-fill"></i>
+                                            </button>
+
+                                            <!--BOTÃO DE RECARREGAR PÁGINA-->
+                                            <button class="btn btn-sm btn-dark"
+                                            onclick="location.reload()">
+                                                <i class="fa-solid fa-rotate" id="atualizarPaginaEstudoPessoal"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="categoriasEstudosRealizados">
+                                        <!--LOCAL ONDE EXIBE OS BTN DE CATEGORIAS-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--INFORMAÇÕES DE CADASTRO DE NOVO ESTUDO PESSOAL-->
+                    <div class="row collapse mt-2" id="campoInformacoesNovoEstudoPessoal">
+                        <div class="col">
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-3 col-sm-3 col-md-2 col-lg-1 mb-2  text-center">
+                                            <label for="" class="uppercase" >
+                                                cód.
+                                            </label>
+                                            <input type="text" class="form-control text-center uppercase" 
+                                            id="codigoNovoEstudoPessoal"
+                                            style="font-size: 0.8rem;"
+                                                disabled>
+                                        </div>
+                                        <div class="col-5 col-sm-4 col-md-3 col-lg-2 mb-2  text-center">
+                                            <label for="" class="uppercase tamanho08">
+                                                data do Estudo
+                                            </label>
+                                            <input type="date" class="form-control text-center uppercase" style="font-size: 0.8rem;"
+                                            onchange="mostrarDiaSemana('dataNovoEstudoPessoal', 'diaSemanaEstudoPessoal')"
+                                            id="dataNovoEstudoPessoal">
+                                        </div>
+                                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-2  text-center">
+                                            <label for="" class="uppercase tamanho08">
+                                                dia da Semana
+                                            </label>
+                                            <input type="text" class="form-control text-center uppercase" style="font-size: 0.8rem;" 
+                                            id="diaSemanaEstudoPessoal" disabled>
+                                        </div>
+                                        <div class="col-12 col-md-4 col-lg-3 mb-2  text-center">
+                                            <label for="" class="uppercase tamanho08">
+                                                Categoria
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="" class="form-select text-center"
+                                                style="font-size: 0.8rem;" 
+                                                id="categoriaNovoEstudoPessoal"></select>
+                                                <button class="btn input-group-text btn-dark"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#criarNovaCategoriaCadastro"
+                                                onclick="criarNovaCategoria()">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg text-center">
+                                            <label for="" class="uppercase tamanho08">
+                                                título
+                                            </label>
+                                            <input type="text" class="form-control uppercase tamanho08" 
+                                            id="tituloNovoEstudoPessoal"
+                                            style="font-size: 0.8rem;">
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-12 mt-3 mb-5">
+                                            <div id="editorInfoNovoEstudoPessoal"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <button class="btn btn-success uppercase" 
+                                            onclick="criarEstudo()">
+                                                <i class="fa fa-save"></i>&nbsp;
+                                                <span>salvar</span>
+                                            </button>
+                                            <button class="btn btn-primary uppercase">
+                                                <i class="fa fa-edit"></i>&nbsp;
+                                                <span>Editar</span>
+                                            </button>
+                                            <button class="btn btn-danger uppercase">
+                                                <i class="fa fa-trash"></i>&nbsp;
+                                                <span>Excluir</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--CAMPO DE EXIBIÇÃO DE ESTUDOS PESSOAIS CADASTRADOS-->
+                    <div class="row d-flex justify-content-center" id="campoExibicaoEstudosCategoria">
+                        <div class="col container collapse">
+                            <div class="card">
+                                <div class="card-body d-flex justify-content-center" >
+                                    <div class="ROW" id="cardBodyCampoExibicaoEstudosCategoria">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </body>
+</html>

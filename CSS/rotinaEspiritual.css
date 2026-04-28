@@ -1,0 +1,273 @@
+/*----------------------------------Estilos de cores----------------------------------*/
+:root {
+    --primary-color: #0d6efd; /* Cor primária do Bootstrap */
+    --secondary-color: #6c757d; /* Cor secundária do Bootstrap */
+    --danger-color: #dc3545; /* Cor de perigo do Bootstrap */
+    --success-color: #198754; /* Cor de sucesso do Bootstrap */
+    --warning-color: #ffc107; /* Cor de aviso do Bootstrap */
+    --info-color: #0dcaf0; /* Cor de informação do Bootstrap */
+    --light-color: #f8f9fa; /* Cor clara do Bootstrap */
+    --dark-color: #212529; /* Cor escura do Bootstrap */
+    --bs-purple: #6f42c1;
+}
+
+/*----------------------------------Estilos Gerais----------------------------------*/
+html, body {
+    overflow-x: hidden;
+}
+body a{
+    text-decoration: none;
+    color: black;
+}
+#relogioPagina{
+    position: fixed;
+    bottom: 2%;
+    right: 1%;
+    z-index: 9999;
+}
+/*-------------------------------------Tipografia-------------------------------------*/
+.uppercase{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.tamanho10{
+    font-size:1rem;
+}
+.tamanho09{
+    font-size:0.9rem;
+}
+.tamanho08{
+    font-size:0.8rem;
+}
+.tamanho07,
+#estudosPessoaisContainer .btn{
+    font-size:0.7rem;
+}
+.tamanho06{
+    font-size:0.6rem;
+}
+
+.label-format{
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.label-format-start{
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+}
+/*----------------------------------Estilos de cores----------------------------------*/
+#containerApresentacao{
+    margin-top: 3rem;
+}
+
+/*----------------------------------Animations----------------------------------*/
+button:hover .refresh-icon {
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-rotate:hover {
+    animation: fa-spin 1.2s linear;
+}
+
+/*----------------------------------Navbar Superior----------------------------------*/
+#navbar-superior li{
+    margin-right: 2rem;
+    text-align: center;
+    cursor: pointer;
+}
+#navbar-superior li{
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+/*======================================= INDEX HTML ======================================= */
+#btnsAlert button{
+    font-size: 0.8rem;
+}
+.alerta{
+    position: relative;
+    min-height: 70px;
+}
+.tagAlert{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 20px;
+    border-radius: 0px 20px 20px 0px;
+    font-weight: 600;
+    min-width: 15.5rem;
+    text-align: center;
+}
+.tarefaAtrasada,
+.tarefaDentroPrazo,
+.tarefaConcluida,
+.todasTarefas{
+    color: var(--light-color);
+}
+.tarefaDataProxima{
+    color: var(--dark-color);
+}
+.tarefaAtrasada{
+    background-color: var(--danger-color);
+}
+.todasTarefas{
+    background-color: var(--dark-color);
+}
+.tarefaDataProxima{
+    background-color: orange;
+}
+.tarefaDentroPrazo{
+    background-color: var(--primary-color);
+}
+.tarefaConcluida{
+    background-color: var(--success-color);
+}
+.refresh-icon {
+    transition: transform 0.4s ease;
+}
+
+
+/*======================================= TAREFAS HTML ======================================= */
+
+.alert-text{
+    font-size: 0.85rem;
+}
+#colunaDatasImportantes .identificadorData{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25vh;
+    color: var(--light-color);
+    border-radius: 60px 0 0 60px;
+    font-size: 0.7rem;
+    padding: 3px 0;
+    background-color: var(--success-color);
+}
+.diaSemana{
+    font-size: 0.8rem;
+}
+.boxDiaSemana{
+    border: 1px solid lightsteelblue;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.bordaDiaSemanaLS{
+    border-radius: 10px 0 0 0px;
+}
+.bordaDiaSemanaRS{
+    border-radius: 0px 10px 0px 0px;
+}
+.bordaDiaSemanaLI{
+    border-radius: 0px 0px 0px 10px;
+}
+.bordaDiaSemanaRI{
+    border-radius: 0px 0px 10px 0px;
+}
+.btnPlusDate{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.btnTotalDate{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: 70px;
+}
+/*======================================= PROGRAMAÇÃO MINISTERIO DE CAMPO ======================================= */
+.tableItem{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.calendario-dia {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0;
+}
+.diaAmostra{
+    position: relative;
+    top: -5px;
+    right: -45px;
+}
+
+/*======================================= QUILL ESTUDO PESSOAL ======================================= */
+.ql-size-8px { font-size: 8px; }
+.ql-size-10px { font-size: 10px; }
+.ql-size-12px { font-size: 12px; }
+.ql-size-14px { font-size: 14px; }
+.ql-size-18px { font-size: 18px; }
+.ql-size-20px { font-size: 20px; }
+.ql-size-24px { font-size: 24px; }
+.ql-size-32px { font-size: 32px; }
+
+/* LABEL (o que aparece fechado) */
+.ql-snow .ql-picker.ql-size .ql-picker-label::before {
+  content: attr(data-value) !important;
+}
+
+/* ITENS DO DROPDOWN */
+.ql-snow .ql-picker.ql-size .ql-picker-item::before {
+  content: attr(data-value) !important;
+}
+
+/* Centraliza os itens do dropdown */
+.ql-snow .ql-picker.ql-size .ql-picker-item {
+  text-align: center;
+}
+
+/* Centraliza o label (o que fica selecionado) */
+.ql-snow .ql-picker.ql-size .ql-picker-label {
+  text-align: center;
+}
+
+.editor-wrapper {
+    min-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+.editor-wrapper .ql-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+}
+.ql-editor {
+    font-size: 18px;
+}
+
+#editorInfoNovoEstudoPessoal {
+    min-height: 200px;
+}
+.quill-wrapper {
+    max-height: 500px;
+    overflow-y: auto;
+}
+.ql-toolbar.ql-snow {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: white;
+}

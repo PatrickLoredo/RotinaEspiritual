@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/DEV ESPIRITUAL/CSS/rotinaEspiritual.css">
+
+    <!--FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!--JAVASCRIPT-->
+    <script src="/DEV ESPIRITUAL/JS/programacao_pregacao.js" defer></script>
+
+    <title>Rotina Espiritual</title>
+</head>
+
+<body>
+    <!--INICIO DO NAVBAR-->
+    <div class="row">
+        <div class="col">
+            <!--NAVBAR SUPERIOR-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar-superior">
+                <div class="container-fluid">
+                    <a class="navbar-brand uppercase" href="/DEV ESPIRITUAL/HTML/index.html">Rotina Espiritual</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav m-auto" id="navbar-superior">
+                            <li class="nav-item dropdown">
+                                <a href="/DEV ESPIRITUAL/HTML/datas_Importantes.html" class="nav-link">
+                                    <span class="text-light uppercase tamanho08">
+                                        <i class="fa fa-calendar">&nbsp;&nbsp;</i>
+                                        Datas e Eventos Importantes
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-check">&nbsp;&nbsp;</i>
+                                    Tarefas da Congregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Partes em Reuniões</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Designações Mecânicas</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Direção de Campo</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Testemunho com Carrinhos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-briefcase">&nbsp;&nbsp;</i>
+                                    Trabalho de Pregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/programacao_pregacao.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Programação de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/relatorio_campo.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Relatório de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudos_revisitas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Estudos e Revisitas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/modelo_cartas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Modelos de Cartas
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/saidas_campos.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Saídas de Campos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-gem">&nbsp;&nbsp;</i>
+                                    Estudos Espirituais
+                                </span>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/leituraBiblia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Leitura da Bíblia</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudosPessoais.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudos Pessoais</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/adoracaoFamilia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Adoração em Família</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/DEV ESPIRITUAL/HTML/estudo_Sentinela.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span>Estudo A Sentinela</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--INICIO DO CORPO DO BODY-->
+        <div class="row" id="containerApresentacao">
+            <!--RELOGIO DO BODY-->
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger" onclick="window.open('/BIBLIOTECA_DEV/html/index.html', '_blank')"
+                        id="relogioPagina"></button>
+                </div>
+            </div>
+
+
+            <!--CONTAINER PRINCIPAL ABAIXO DO NAVBAR-->
+            <div class="col-12">
+        
+                <div class="row">
+                    <div class="col-2"></div>
+
+                    <!--LINHA DO TITULO INICIAL-->
+                    <div class="col">
+                        <div class="container my-5">
+                            <h6 class="display-6 text-center">Programação de Ministério de Campo</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid mb-5">
+                    <div class="row mx-3">
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+
+                            <!--CARD LEGENDA DE CORES DAS ATIVIDADES
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col text-center d-flex justify-content-center align-items-center">
+                                            <label for="" class="label-format">legenda dos eventos</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <i class="fa fa-square text-primary"></i>
+                                            <span class="uppercase tamanho08">&nbsp;&nbsp;Ministério de Campo</span>
+                                        </li>
+                                        <li class="nav-item">
+                                            <i class="fa fa-square text-danger"></i>
+                                            <span class="uppercase tamanho08">&nbsp;&nbsp;Revisitas</span>
+                                        </li>
+                                        <li class="nav-item">
+                                            <i class="fa fa-square text-success"></i>
+                                            <span class="uppercase tamanho08">&nbsp;&nbsp;Estudos</span>
+                                        </li>
+                                        <li class="nav-item">
+                                            <i class="fa fa-square text-warning"></i>
+                                            <span class="uppercase tamanho08">&nbsp;&nbsp;Cartas</span>
+                                        </li>
+                                        <li class="nav-item">
+                                            <i class="fa fa-square text-info"></i>
+                                            <span class="uppercase tamanho08">&nbsp;&nbsp;Carrinho</span>
+                                        </li>
+                                        <li class="nav-item">
+                                            <i class="fa fa-square text-secondary"></i>
+                                            <span class="uppercase tamanho08">&nbsp;&nbsp;Outros</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>-->
+                            
+                            <div class="card mt-2">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <span class="label-format bg-primary w-75 m-auto p-3 text-light rounded-pill">horas programadas</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer" id="exibeHorasProgramadas">
+                                    <div class="row">
+                                        <div class="col"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <ul class="navbar-nav label-format-start">
+                                                <li class="nav-item">Domingo</li>
+                                                <li class="nav-item">Segunda</li>
+                                                <li class="nav-item">Terça</li>
+                                                <li class="nav-item">Quarta</li>
+                                                <li class="nav-item">Quinta</li>
+                                                <li class="nav-item">Sexta</li>
+                                                <li class="nav-item">Sábado</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col">
+                                            <div class="label-format" id="exibeTotalProgramadoSemanalDomingo"> Hora(s)</div>
+                                            <div class="label-format" id="exibeTotalProgramadoSemanalSegunda-Feira"> Hora(s)</div>
+                                            <div class="label-format" id="exibeTotalProgramadoSemanalTerca-Feira"> Hora(s)</div>
+                                            <div class="label-format" id="exibeTotalProgramadoSemanalQuarta-Feira"> Hora(s)</div>
+                                            <div class="label-format" id="exibeTotalProgramadoSemanalQuinta-Feira"> Hora(s)</div>
+                                            <div class="label-format" id="exibeTotalProgramadoSemanalSexta-Feira"> Hora(s)</div>
+                                            <div class="label-format" id="exibeTotalProgramadoSemanalSabado"> Hora(s)</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <hr>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="label-format-start text-center mb-1">Total Semanal</div>
+                                            <div class="label-format-start bg-danger text-light text-center mb-1">Total Mensal</div>
+                                            <div class="label-format-start bg-danger text-light text-center">diferença</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="label-format mb-1"> horas</div>
+                                            <div class="label-format bg-danger text-light mb-1"> horas</div>
+                                            <div class="label-format bg-danger text-light"> horas</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--CAMPO DE CADASTRO DE ATIVIDADES-->
+                        <div class="col col-md-8 col-lg-9 mt-2 mt-md-0">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row mb-3 bg-secondary text-light rounded-pill">
+                                        <div class="col text-center">
+                                            <span class=" label-format p-3" style="font-size: 1.1rem;">
+                                                ARRANJOS FIXOS
+                                            </span>
+                                        </div>
+                                        <div class="col-1 d-flex align-items-center">
+                                            <button class="btn btn-lg btn-secondary rounded-pill">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!--CADASTRO 1-->
+                                    <div class="row mb-2 alert alert-primary" id="alert_inicial">
+                                        <div class="col-12 col-lg-3">
+                                            <label class="label-format mb-1">dia da Semana</label>
+                                            <select name="" id="" class="form-select uppercase" style="font-size: 0.8rem;">
+                                                <option value="Domingo" class="text-center uppercase">Domingo</option>
+                                                <option value="Segunda-Feira" class="text-center uppercase">Segunda-Feira</option>
+                                                <option value="Terça-Feira" class="text-center uppercase">Terça-Feira</option>
+                                                <option value="Quarta-Feira" class="text-center uppercase">Quarta-Feira</option>
+                                                <option value="Quinta-Feira" class="text-center uppercase">Quinta-Feira</option>
+                                                <option value="Sexta-Feira" class="text-center uppercase">Sexta-Feira</option>
+                                                <option value="Sábado" class="text-center uppercase">Sábado</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-lg-2 mt-3 mt-lg-0">
+                                            <label class="label-format mb-1 text-center">Inicio</label>
+                                            <input type="time" name="" id="inicioAtividade_1" class="form-control text-center"
+                                            onkeydown="calcularTotalHorasAtividade('inicioAtividade_1','finalAtividade_1','totalAtividade_1')">
+                                        </div>
+                                        <div class="col-6 col-lg-2 mt-3 mt-lg-0">
+                                            <label class="label-format mb-1">Final</label>
+                                            <input type="time" name="" 
+                                            id="finalAtividade_1" class="form-control text-center"
+                                            onkeydown="calcularTotalHorasAtividade('inicioAtividade_1','finalAtividade_1','totalAtividade_1')">
+                                        </div>
+                                        <div class="col-6 col-lg-2 mt-3 mt-lg-0">
+                                            <label class="label-format mb-1">Total</label>
+                                            <input type="text" name="" id="totalAtividade_1" class="form-control text-center" disabled>
+                                        </div>
+                                        <div class="col mt-3 mt-lg-0">
+                                            <label class="label-format mb-1">Atividade</label>
+                                            <div class="input-group">
+                                                <select name="" id="" class="form-select text-center uppercase" style="font-size: 0.75rem;"
+                                                onchange="identificaTipoAtividadePregacao(this.value, 'alert_inicial'), 
+                                                calcularTotalHorasAtividade('inicioAtividade_1','finalAtividade_1','totalAtividade_1')">
+                                                    <option value="MinisterioCampo">Ministerio de Campo</option>
+                                                    <option value="Revisitas">Revisitas</option>
+                                                    <option value="Estudos">Estudos Bíblicos</option>
+                                                    <option value="Cartas"> Testemunho por Cartas</option>
+                                                    <option value="Carrinho">Testemunho Público com Carrinho</option>
+                                                    <option value="Outros">Outros</option>
+                                                </select>
+
+                                                <button class="btn btn-success">
+                                                    <i class="fa fa-save"></i>
+                                                </button>
+                                                <button class="btn btn-primary d-none">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-dark d-none" >
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--FINAL CADASTRO 1-->
+                                    
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary rounded-pill"
+                                    onclick="exibeMesAtual('voltar','campoMesEscolhido','campoAnoEscolhido')">
+                                        <i class="fa fa-chevron-left"></i>
+                                    </button>
+
+                                    <button class="btn btn-dark rounded-pill label-format" 
+                                    id="campoMesEscolhido" style="font-size: 0.9rem;"></button>
+
+                                    <button class="btn btn-dark rounded-pill label-format" 
+                                    id="campoAnoEscolhido" style="font-size: 0.9rem;"></button>
+
+                                    <button class="btn btn-secondary rounded-pill"
+                                    onclick="exibeMesAtual('adiantar','campoMesEscolhido','campoAnoEscolhido')">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col"></div>
+                                    </div>
+                                    <div class="row" id="exibeCalendario"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
