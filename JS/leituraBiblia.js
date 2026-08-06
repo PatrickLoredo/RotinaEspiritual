@@ -205,7 +205,7 @@ function verificaQtdCapitulos(tipoIndex, livroIndex) {
         </div>
     `;
 
-    let FadeInicial = 450;
+    let FadeInicial = 250;
 
     for (let i = 1; i <= qtdCapitulos; i++) {
         const classe = livro.lidos.includes(i) ? "btn-success" : "btn-secondary";
