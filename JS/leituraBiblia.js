@@ -205,19 +205,21 @@ function verificaQtdCapitulos(tipoIndex, livroIndex) {
         </div>
     `;
 
+    let FadeInicial = 450;
+
     for (let i = 1; i <= qtdCapitulos; i++) {
         const classe = livro.lidos.includes(i) ? "btn-success" : "btn-secondary";
-        let fadeInicial = 450;
 
         exibicaoQtdCapitulosLivros.innerHTML += `
-            <button class="btn ${classe} mb-1 me-1" data-aos="fade-up" data-aos-delay="${fadeInicial}"
+            <button class="btn ${classe} mb-1 me-1" data-aos="fade-up" data-aos-delay="${FadeInicial}"
                 onclick="toggleCapitulo(this, ${tipoIndex}, ${livroIndex}, ${i}); exibirCapitulo('${tipo}', '${livro.nome}', ${i})"
                 ondblclick="abreCadastroJoias('${livro.nome}', ${i})"
                 style="width:48px;height:48px;font-size:0.9rem;">
                 ${i}
             </button>
         `;
-        fadeInicial +=50;
+
+        FadeInicial +=50;
     }
 }
 
