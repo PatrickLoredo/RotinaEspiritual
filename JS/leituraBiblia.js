@@ -187,10 +187,12 @@ function verificaQtdCapitulos(tipoIndex, livroIndex) {
     const exibicaoQtdCapitulosLivros = document.getElementById("exibicaoQtdCapitulosLivros");
     const qtdCapitulos = livro.capitulos;
 
+    let inicial = 200;
+
     exibicaoQtdCapitulosLivros.innerHTML = ""; // limpa antes
     exibicaoQtdCapitulosLivros.innerHTML = `
-        <div class="alert alert-info mb-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="row d-flex justify-content-center ">
+        <div class="alert alert-info mb-3">
+            <div class="row d-flex justify-content-center">
                 <div class="col text-center">
                     <span class="uppercase tamanho08">Capítulos do Livro de &nbsp;<b>${livro.nome}</b>  &nbsp;(${tipo})</span>
                 </div>
