@@ -26,9 +26,33 @@ body a{
     z-index: 9999;
 }
 /*-------------------------------------Tipografia-------------------------------------*/
-.uppercase{
+.uppercase,
+#navbar-superior ul li span,
+#statusReuniaoSentinela,
+#modalCadastroPeronagemBiblico input,
+#modalCadastroPeronagemBiblico select,
+#modalCadastroCidadesBiblicas .modal-body input,
+#modalCadastroCidadesBiblicas .modal-body select,
+#modalCadastroProfissoesBiblicas input,
+#modalCadastroProfissoesBiblicas select,
+#modalCadastroAnotacaoSentinela .textAreaSentinela{
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+.tamanho16{
+    font-size:1.6rem;
+}
+.tamanho15{
+    font-size:1.5rem;
+}
+.tamanho14{
+    font-size:1.4rem;
+}
+.tamanho13{
+    font-size:1.3rem;
+}
+.tamanho12{
+    font-size:1.2rem;
 }
 .tamanho10{
     font-size:1rem;
@@ -36,24 +60,45 @@ body a{
 .tamanho09{
     font-size:0.9rem;
 }
-.tamanho08{
+.tamanho08,
+#navbar-superior ul li span,
+#statusReuniaoSentinela,
+#modalCadastroAnotacaoSentinela .textAreaSentinela{
     font-size:0.8rem;
 }
 .tamanho07,
-#estudosPessoaisContainer .btn{
+#estudosPessoaisContainer .btn,
+#headerCardPrincipalPersonagensBiblicos .btn-comando-personagem,
+#modalCadastroPeronagemBiblico .modal-body input,
+#modalCadastroPeronagemBiblico .modal-body select,
+#modalCadastroCidadesBiblicas input,
+#modalCadastroCidadesBiblicas select,
+#modalCadastroProfissoesBiblicas input,
+#modalCadastroProfissoesBiblicas select{
     font-size:0.7rem;
 }
 .tamanho06{
     font-size:0.6rem;
 }
 
+.label-format,
+.boxDiaSemana{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center,
+#navbar-superior li,
+.tagAlert{
+    text-align: center;
+}
+
 .label-format{
     text-transform: uppercase;
     font-size: 0.82rem;
     letter-spacing: 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 8px;
 }
 .label-format-start{
     text-transform: uppercase;
@@ -85,12 +130,11 @@ button:hover .refresh-icon {
 /*----------------------------------Navbar Superior----------------------------------*/
 #navbar-superior li{
     margin-right: 2rem;
-    text-align: center;
     cursor: pointer;
 }
 #navbar-superior li{
-    text-align: left;
     display: flex;
+    text-align: left;
     align-items: center;
 }
 
@@ -110,7 +154,6 @@ button:hover .refresh-icon {
     border-radius: 0px 20px 20px 0px;
     font-weight: 600;
     min-width: 15.5rem;
-    text-align: center;
 }
 .tarefaAtrasada,
 .tarefaDentroPrazo,
@@ -142,7 +185,6 @@ button:hover .refresh-icon {
 
 
 /*======================================= TAREFAS HTML ======================================= */
-
 .alert-text{
     font-size: 0.85rem;
 }
@@ -163,9 +205,6 @@ button:hover .refresh-icon {
 .boxDiaSemana{
     border: 1px solid lightsteelblue;
     min-height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
 }
 .bordaDiaSemanaLS{
@@ -191,6 +230,25 @@ button:hover .refresh-icon {
     left: 0;
     min-width: 70px;
 }
+/*======================================= ADORAÇÃO EM FAMÍLIA ======================================= */
+.absoluto{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.7rem;
+    text-align: center;
+    color: white;
+    border-radius: 0 30px 30px 0;
+}
+.absoluto-agendado{
+    background-color: var(--secondary-color);
+}
+.absoluto-concluído{
+    background-color: var(--success-color);
+}
+
 /*======================================= PROGRAMAÇÃO MINISTERIO DE CAMPO ======================================= */
 .tableItem{
     text-transform: uppercase;
@@ -210,6 +268,12 @@ button:hover .refresh-icon {
     position: relative;
     top: -5px;
     right: -45px;
+}
+
+/*======================================= ESTUDO SENTINELA ======================================= */
+#statusReuniaoSentinela{
+    background-color: green;
+    width: 40%;
 }
 
 /*======================================= QUILL ESTUDO PESSOAL ======================================= */
@@ -271,3 +335,17 @@ button:hover .refresh-icon {
     z-index: 999;
     background: white;
 }
+
+
+#modalCadastroPeronagemBiblico input,
+#modalCadastroPeronagemBiblico select,
+#modalCadastroCidadesBiblicas input,
+#modalCadastroCidadesBiblicas select,
+#modalCadastroProfissoesBiblicas input,
+#modalCadastroProfissoesBiblicas select{
+    height: 30px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+

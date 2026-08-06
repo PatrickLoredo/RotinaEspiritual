@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/RotinaEspiritual/CSS/rotinaEspiritual.css">
+
+    <!--FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!--JAVASCRIPT-->
+    <script src="/RotinaEspiritual/JS/rotinaEspiritualIndex.js" defer></script>
+
+    <title>Rotina Espiritual</title>
+</head>
+
+<body>
+    <!--INICIO DO NAVBAR-->
+    <div class="row">
+        <div class="col">
+            <!--NAVBAR SUPERIOR-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar-superior">
+                <div class="container-fluid">
+                    <a class="navbar-brand uppercase" href="/RotinaEspiritual/HTML/index.html">Rotina Espiritual</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav m-auto" id="navbar-superior">
+                            <!--DATAS E EVENTOS IMPORTANTES-->
+                            <li class="nav-item dropdown">
+                                <a href="/RotinaEspiritual/HTML/datas_Importantes.html" class="nav-link">
+                                    <span class="text-light uppercase tamanho08">
+                                        <i class="fa fa-calendar">&nbsp;&nbsp;</i>
+                                        Datas e Eventos Importantes
+                                    </span>
+                                </a>
+                            </li>
+
+                            <!--TAREFAS DA CONGREGAÇÃO-->
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-check">&nbsp;&nbsp;</i>
+                                    Tarefas da Congregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Partes em Reuniões</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Designações Mecânicas</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Direção de Campo</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Testemunho com Carrinhos</a></li>
+                                </ul>
+                            </li>
+
+                            <!--TRABALHO DE PREGAÇÃO-->
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-briefcase">&nbsp;&nbsp;</i>
+                                    Trabalho de Pregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/programacao_pregacao.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Programação de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/relatorio_campo.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Relatório de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/estudos_revisitas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Estudos e Revisitas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/modelo_cartas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Modelos de Cartas
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/saidas_campos.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Saídas de Campos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!--ESTUDOS ESPIRITUAIS-->
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-gem">&nbsp;&nbsp;</i>
+                                    Estudos Espirituais
+                                </span>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/textoDiario.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Texto Diário</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/leituraBiblia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <spa class="label-format-start">Leitura da Bíblia</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/estudosPessoais.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <sp class="label-format-start">Estudos Pessoais</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/genealogiaBiblica.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <sp class="label-format-start">Genealogia Bíblica</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/adoracaoFamilia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Adoração em Família</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/estudo_Sentinela.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Estudo A Sentinela</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/reuniaoVidaMinisterio.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Reunião Vida & Ministério</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--INICIO DO CORPO DO BODY-->
+        <div class="row" id="containerApresentacao">
+            <!--RELOGIO DO BODY-->
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger" onclick="window.open('https://biblioteca-dev-gules.vercel.app/', '_blank')"
+                        id="relogioPagina"></button>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="container my-5">
+                        <h6 class="display-6 text-center">Bem-vindo ao seu Assistente JW</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="container">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row my-3">
+                                        <!--BUTTONS DE VISUALIZAÇÃO DE ALERTS DE NOTIFICAÇÃO-->
+                                        <div class="col-12 gap-1" id="btnsAlert">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                                                    <button class="btn btn-sm btn-dark uppercase w-100 mb-2 mb-md-0"
+                                                        data-bs-toggle="collapse" data-bs-target="#alertasTodasTarefas"
+                                                        onclick="verificaAlertAberto('todasTarefas')">
+                                                        Todas Tarefas
+                                                    </button>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                                                    <button class="btn btn-sm btn-danger uppercase w-100 mb-2 mb-md-0"
+                                                        data-bs-toggle="collapse" data-bs-target="#alertasAtrasadas"
+                                                        onclick="verificaAlertAberto('tarefasAtrasadas')">
+                                                        Atrasadas
+                                                    </button>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                                                    <button class="btn btn-sm btn-warning uppercase w-100 mb-2 mb-md-0"
+                                                        data-bs-toggle="collapse" data-bs-target="#alertasProximas"
+                                                        onclick="verificaAlertAberto('tarefasProximas')">
+                                                        Próximas
+                                                    </button>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                                                    <button class="btn btn-sm btn-primary uppercase w-100 mb-2 mb-md-0"
+                                                        data-bs-toggle="collapse" data-bs-target="#alertasNoPrazo"
+                                                        onclick="verificaAlertAberto('tarefasNoPrazo')">
+                                                        No Prazo
+                                                    </button>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-2">
+                                                    <button class="btn btn-sm btn-success uppercase w-100 mb-2 mb-md-0"
+                                                        data-bs-toggle="collapse" data-bs-target="#alertasConcluidas"
+                                                        onclick="verificaAlertAberto('tarefasConcluidas')">
+                                                        Concluídas
+                                                    </button>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-2">
+                                                    <button class="btn btn-secondary" onclick="location.reload()">
+                                                        <i class="fa fa-refresh refresh-icon"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <h6 class="display-6 fs-4 text-center">Notificações de Lembretes de Tarefas
+                                                Espirituais</h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!---CAMPO DE MOSTRA DE TODAS TAREFAS-->
+                                <div class="card-footer collapse" id="alertasTodasTarefas">
+                                    <div class="alert mt-1 alert-dark alerta">
+                                        <span class="tagAlert uppercase tamanho07 todasTarefas">todas as tarefas</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert mt-1 alert-dark alerta">
+                                        <span class="tagAlert uppercase tamanho07 todasTarefas">todas as tarefas</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert mt-1 alert-dark alerta">
+                                        <span class="tagAlert uppercase tamanho07 todasTarefas">todas as tarefas</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert mt-1 alert-dark alerta">
+                                        <span class="tagAlert uppercase tamanho07 todasTarefas">todas as tarefas</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert mt-1 alert-dark alerta">
+                                        <span class="tagAlert uppercase tamanho07 todasTarefas">todas as tarefas</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert mt-1 alert-dark alerta">
+                                        <span class="tagAlert uppercase tamanho07 todasTarefas">todas as tarefas</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert mt-1 alert-dark alerta">
+                                        <span class="tagAlert uppercase tamanho07 todasTarefas">todas as tarefas</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!---CAMPO DE MOSTRA DE TAREFAS ATRASADAS-->
+                                <div class="card-footer collapse" id="alertasAtrasadas">
+                                    <div class="alert mt-1 alert-danger alerta">
+                                        <span class="tagAlert uppercase tamanho07 tarefaAtrasada">data de realização
+                                            Atrasada</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!---CAMPO DE MOSTRA DE TAREFAS PROXIMAS DA DATA DE REALIZAÇÂO-->
+                                <div class="card-footer collapse" id="alertasProximas">
+                                    <div class="alert mt-1 alert-warning alerta">
+                                        <span class="tagAlert uppercase tamanho07 tarefaDataProxima">Data de realização
+                                            Próxima</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!---CAMPO DE MOSTRA DE TAREFAS NO PRAZO DE REALIZAÇÃO-->
+                                <div class="card-footer collapse" id="alertasNoPrazo">
+                                    <div class="alert mt-1 alert-primary alerta">
+                                        <span class="tagAlert uppercase tamanho07 tarefaDentroPrazo">dentro do prazo de
+                                            realização</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!---CAMPO DE MOSTRA DE TAREFAS CONCLUIDAS-->
+                                <div class="card-footer collapse" id="alertasConcluidas">
+                                    <div class="alert mt-1 alert-success alerta">
+                                        <span class="tagAlert uppercase tamanho07 tarefaConcluida">Tarefa
+                                            Concluída</span>
+                                        <div class="row  d-flex align-items-center">
+                                            <div class="col-12 col-lg-6 mt-4 uppercase text-center">
+                                                <span>mandar relatório de pregação - Jan/26</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4 text-center">
+                                                <span>01/02/2026</span>
+                                            </div>
+                                            <div class="col-6 col-lg-3 mt-4">
+                                                <button class="btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></button>
+                                                <button class="btn btn-sm btn-primary"><i
+                                                        class="fa fa-clock"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

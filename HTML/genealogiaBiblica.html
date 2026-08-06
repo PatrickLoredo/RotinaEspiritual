@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/RotinaEspiritual/CSS/rotinaEspiritual.css">
+
+    <!--FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!--JAVASCRIPT-->
+    <script src="/RotinaEspiritual/JS/genealogiaBiblica.js" defer></script>
+
+    <title>Genealogia Bíblica</title>
+</head>
+
+<body>
+    <!--INICIO DO TEMPLATE-->
+    <div class="row">
+        <div class="col">
+            <!--NAVBAR SUPERIOR-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar-superior">
+                <div class="container-fluid">
+                    <a class="navbar-brand uppercase" href="/RotinaEspiritual/HTML/index.html">Rotina Espiritual</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav m-auto" id="navbar-superior">
+
+                            <!--DATAS E EVENTOS IMPORTANTES-->
+                            <li class="nav-item dropdown">
+                                <a href="/RotinaEspiritual/HTML/datas_Importantes.html" class="nav-link">
+                                    <span class="text-light uppercase tamanho08">
+                                        <i class="fa fa-calendar">&nbsp;&nbsp;</i>
+                                        Datas e Eventos Importantes
+                                    </span>
+                                </a>
+                            </li>
+
+                            <!--TAREFAS DA CONGREGAÇÃO-->
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-check">&nbsp;&nbsp;</i>
+                                    Tarefas da Congregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Partes em Reuniões</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Designações Mecânicas</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Direção de Campo</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="fa fa-asterisk">&nbsp;&nbsp;</i>Testemunho com Carrinhos</a></li>
+                                </ul>
+                            </li>
+
+                            <!--TRABALHO DE PREGAÇÃO-->
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-briefcase">&nbsp;&nbsp;</i>
+                                    Trabalho de Pregação
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/programacao_pregacao.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Programação de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/relatorio_campo.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Relatório de Campo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/estudos_revisitas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Estudos e Revisitas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/modelo_cartas.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Modelos de Cartas
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/datas_Importantes.html/HTML/saidas_campos.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>Saídas de Campos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!--ESTUDOS ESPIRITUAIS-->
+                            <li class="nav-item dropdown">
+                                <span class="dropdown-toggle text-light uppercase tamanho08" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa fa-gem">&nbsp;&nbsp;</i>
+                                    Estudos Espirituais
+                                </span>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/textoDiario.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Texto Diário</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/leituraBiblia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <spa class="label-format-start">Leitura da Bíblia</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/estudosPessoais.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <sp class="label-format-start">Estudos Pessoais</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/genealogiaBiblica.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <sp class="label-format-start">Genealogia Bíblica</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/adoracaoFamilia.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Adoração em Família</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/RotinaEspiritual/HTML/estudo_Sentinela.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Estudo A Sentinela</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="/RotinaEspiritual/HTML/reuniaoVidaMinisterio.html">
+                                            <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
+                                            <span class="label-format-start">Reunião Vida & Ministério</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--INICIO DO CORPO DO BODY-->
+        <div class="row" id="containerApresentacao">
+            <!--RELOGIO DO BODY-->
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger" onclick="window.open('/RotinaEspiritual/html/index.html', '_blank')"
+                        id="relogioPagina"></button>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="container my-5">
+                    <h6 class="display-6 text-center">Genealogia Bíblica</h6>
+                </div>
+            </div>
+        </div>
+
+        <!--CAMPO PRINCIPAL DO BODY-->
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header" id="headerCardPrincipalPersonagensBiblicos">
+                        <div class="row d-flex justify-content-center">
+
+                            <!--BUTTON CADASTRAR NOVO PERSONAGEM BIBLICO-->
+                            <div class="col-12 col-sm-auto col-md-3">
+                                <button class="btn btn-sm btn-comando-personagem mb-2 w-100 uppercase btn-dark px-3"
+                                    id="btnCadastrarNovoPersonagemBiblico" 
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalCadastroPeronagemBiblico"
+                                    onclick="verificaId(idsPersonagensCadastrados,'inputIdNovoPersonagemBiblico'),
+                                    popularSelect('selectProfissoesNovoCadastroPersonagemBiblico','profissoesBiblicas','profissao'),
+                                    popularSelect('selectCidadeNascimentoNovoCadastroPersonagemBiblico','cidadesBiblicas','cidade')
+                                    popularSelect('selectTerritorioNascimentoNovoCadastroPersonagemBiblico','cidadesBiblicas','territorio')">
+                                    <i class="fa fa-user"></i>&nbsp;
+                                    <span>Personagem</span>
+                                </button>
+                            </div>
+
+                            <!--BUTTON CADASTRO NOVA TRIBO/FAMILIA-->
+                            <div class="col-12 col-sm-auto col-md-3">
+                                <button class="btn btn-sm btn-comando-personagem w-100 mb-2 uppercase btn-danger px-3"
+                                    id="btnCadastrarNovaFamiliaTriboBiblica" 
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalCadastroTribosFamiliasBiblicas">
+                                    <i class="fa-solid fa-people-group"></i>&nbsp;
+                                    <span>Tribo / Família</span>
+                                </button>
+                            </div>
+
+                            <!--BUTTON CADASTRO NOVA CIDADE BIBLICA-->
+                            <div class="col-12 col-sm-auto col-md-3">
+                                <button class="btn btn-sm btn-comando-personagem w-100 mb-2 uppercase btn-primary px-3"
+                                    id="btnCadastrarNovaCidadeBiblica" 
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalCadastroCidadesBiblicas"
+                                    onclick="verificaId(idsCidadesCadastrados,'inputIdNovaCidadeBiblica'), exibeListaCidades()">
+                                    <i class="fa fa-city"></i>&nbsp;
+                                    <span>Cidade Bíblica</span>
+                                </button>
+                            </div>
+
+                            <!--BUTTON CADASTRAR NOVA PROFISSÃO-->
+                            <div class="col-12 col-sm-auto col-md-3">
+                                <button class="btn btn-sm btn-comando-personagem w-100 mb-2 uppercase btn-warning px-3"
+                                    id="btnCadastrarNovaProfissaoBiblica" data-bs-toggle="modal"
+                                    data-bs-target="#modalCadastroProfissoesBiblicas"
+                                    onclick="verificaId(idsProfissoesCadastrados,'idProfissaoBiblicaCadastro'), exibeListaProfissoes()">
+                                    <i class="fa fa-hammer"></i>&nbsp;
+                                    <span>profissão</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CAMPO DE EXIBIÇÃO DA ARVORE GENEALÓGICA-->
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--MODAL DE CADASTRO DE INFORMAÇÕES DE PERSONAGEM BIBLICO-->
+        <div class="modal fade" tabindex="-1" id="modalCadastroPeronagemBiblico">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header m-auto mb-4">
+                        <div class="row">
+                            <div class="col-auto">
+                                <h5 class="modal-title uppercase text-center">cadastro de novo personagem bíblico</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!--ID PERSONAGEM-->
+                            <div class="col-3 col-md-3 col-lg-1 mb-2">
+                                <label for="" class="label-format ">id</label>
+                                <input type="text" class="form-control" id="inputIdNovoPersonagemBiblico" disabled>
+                            </div>
+
+                            <!--NOME PERSONAGEM-->
+                            <div class="col-8 col-lg-4 mb-2">
+                                <label for="" class="label-format">nome</label>
+                                <div class="input-group">
+                                    <span class="bg-primary text-white input-group-text">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <!--NOME DO PAI-->
+                            <div class="col-6 col-lg-3 mb-2">
+                                <label for="" class="label-format">pai</label>
+                                <div class="input-group">
+                                    <span class="bg-primary text-white input-group-text">
+                                        <i class="fa-solid fa-mars"></i>
+                                    </span>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <!--NOME DA MÃE-->
+                            <div class="col-6 col-lg-3 mb-2">
+                                <label for="" class="label-format">Mãe</label>
+                                <div class="input-group">
+                                    <span class="bg-primary text-white input-group-text">
+                                        <i class="fa-solid fa-venus"></i>
+                                    </span>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <!--ANO NASCIMENTO-->
+                            <div class="col-6 col-lg-3 mt-3">
+                                <label for="" class="label-format">ano nascimento</label>
+                                <div class="input-group">
+                                    <span class="bg-danger text-white input-group-text">
+                                        <i class="fa-solid fa-baby"></i>
+                                    </span>
+                                    <input type="number" class="form-control" id="anoNascimentoPersonagemBiblico"
+                                        value="1">
+                                    <select name="" id="periodoNascimentoPersonagemBiblico"
+                                        class="form-select input-group-text">
+                                        <option value="naoInformado">-</option>
+                                        <option value="aec" selected>AEC</option>
+                                        <option value="ec">EC</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--ANO MORTE-->
+                            <div class="col-6 col-lg-3 mt-3 mb-2">
+                                <label for="" class="label-format">ano morte</label>
+                                <div class="input-group">
+                                    <span class="bg-danger text-white input-group-text">
+                                        <i class="fa-solid fa-skull"></i>
+                                    </span>
+                                    <input type="number" class="form-control" id="anoMortePersonagemBiblico" value="1">
+                                    <select name="" id="periodoMortePersonagemBiblico"
+                                        class="form-select input-group-text">
+                                        <option value="naoInformado">-</option>
+                                        <option value="aec" selected>AEC</option>
+                                        <option value="ec">EC</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--IDADE TOTAL DE VIDA-->
+                            <div class="col-4 col-lg-2 mt-3 mb-2">
+                                <label for="" class="label-format">anos totais</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="totalAnosVividosPersonagemBiblico">
+                                    <button class="btn btn-sm btn-dark" onclick="calculaIdadePersonagem()"><i
+                                            class="fa fa-calculator"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="col- d-none d-lg-block"></div>
+
+                            <!--LOCAL NASCIMENTO-->
+                            <div class="col-8 col-lg-3 mt-3">
+                                <label for="" class="label-format">local nascimento</label>
+                                <div class="input-group">
+                                    <span class="bg-success text-white input-group-text">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </span>
+                                    <select name="" id="selectCidadeNascimentoNovoCadastroPersonagemBiblico" class="form-select">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--TERRITÓRIO NASCIMENTO-->
+                            <div class="col-6 col-lg-3 mt-3">
+                                <label for="" class="label-format">Território nascimento</label>
+                                <div class="input-group">
+                                    <span class="bg-success text-white input-group-text">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                    </span>
+                                    <select name="" id="selectTerritorioNascimentoNovoCadastroPersonagemBiblico" class="form-select">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--TRIBO / FAMÍLIA-->
+                            <div class="col-6 col-lg-3 mt-3">
+                                <label for="" class="label-format">Tribo / Família</label>
+                                <div class="input-group">
+                                    <select name="" id="" class="form-select">
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!--PROFISSÃO-->
+                            <div class="col-6 col-lg-3 mb-2 mt-3 mt-lg-3">
+                                <label for="" class="label-format">Profissão</label>
+                                <div class="input-group">
+                                    <select name="" id="selectProfissoesNovoCadastroPersonagemBiblico"
+                                        class="form-select">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--IRMÃOS-->
+                            <div class="col-12 col-md-6 col-lg-3 mt-3">
+                                <label for="" class="label-format">
+                                    Irmãos &nbsp;&nbsp;
+                                    <i class="fa fa-circle-info text-primary" data-toggle="tooltip" data-placement="top"
+                                        title="teste"></i>
+                                </label>
+                                <button class="btn btn btn-sm btn-secondary w-100">
+                                    <i class="fa fa-plus-circle"></i>&nbsp;
+                                    <i class="fa fa-users"></i>&nbsp;
+                                    <span class="uppercase tamanho07"> adicionar irmãos(ãs)</span>
+                                </button>
+                            </div>
+
+                            <!--FILHOS-->
+                            <div class="col-12 col-md-6 col-lg-3 mt-3">
+                                <label for="" class="label-format">Filhos &nbsp;&nbsp;
+                                    <i class="fa fa-circle-info text-primary" data-toggle="tooltip" data-placement="top"
+                                        title="teste 2"></i></label>
+                                <button class="btn btn btn-sm btn-secondary w-100">
+                                    <i class="fa fa-plus-circle"></i>&nbsp;
+                                    <i class="fa fa-users"></i>&nbsp;
+                                    <span class="uppercase tamanho07"> adicionar filhos (as)</span>
+                                </button>
+                            </div>
+
+                            <!--CÔNJUGE-->
+                            <div class="col-5 col-lg-2 mt-3">
+                                <label for="" class="label-format">Cônjuge</label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <!--CONCUMBINAS-->
+                            <div class="col-auto col-lg-3 mt-3">
+                                <label for="" class="label-format">Concumbinas &nbsp;&nbsp;
+                                    <i class="fa fa-circle-info text-primary" data-toggle="tooltip" data-placement="top"
+                                        title="teste 2"></i></label>
+                                <button class="btn btn btn-sm btn-danger">
+                                    <i class="fa fa-plus-circle"></i>&nbsp;
+                                    <i class="fa fa-users"></i>&nbsp;
+                                    <span class="uppercase tamanho07"> adicionar cuncumbinas</span>
+                                </button>
+                            </div>
+
+                            <!--CONDUTA-->
+                            <div class="col-6 col-lg-3 mb-2 mt-3">
+                                <label for="" class="label-format">Conduta / Exemplo</label>
+                                <div class="input-group">
+                                    <select name="" id="" class="form-select">
+                                        <option value="">TESTE</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-auto">
+                                <button class="btn btn-sm btn-primary px-3"
+                                    onclick="document.getElementById('btnCadastrarNovaCidadeBiblica').click()"><i
+                                        class="fa fa-city"></i></button>
+                                <button class="btn btn-sm btn-warning px-3"
+                                    onclick="document.getElementById('btnCadastrarNovaProfissaoBiblica').click()"><i
+                                        class="fa fa-hammer"></i></button>
+                            </div>
+                            <div class="col"></div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-sm btn-success" data-bs-dismiss="modal">
+                                    <i class="fa fa-save">&nbsp;</i>
+                                    <span class="uppercase tamanho07">salvar</span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal">
+                                    <i class="fa fa-broom">&nbsp;</i>
+                                    <span class="uppercase tamanho07">limpar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--MODAL DE CADASTRO DE CIDADES BÍBLICAS-->
+        <div class="modal fade" tabindex="-1" id="modalCadastroCidadesBiblicas">
+            <div class="modal-dialog modal-dialog-scrollable modal-md">
+                <div class="modal-content">
+                    <div class="modal-header m-auto mb-4">
+                        <div class="row">
+                            <div class="col-auto">
+                                <h5 class="modal-title uppercase text-center">cadastro de Cidades bíblicas</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <!--ID CADASTRO-->
+                            <div class="col-2 mb-2">
+                                <label for="" class="label-format ">id</label>
+                                <input type="text" class="form-control" id="inputIdNovaCidadeBiblica" disabled>
+                            </div>
+
+                            <!--NOME DA CIDADE-->
+                            <div class="col-5 mb-2">
+                                <label for="" class="label-format ">Nome da Cidade</label>
+                                <input type="text" class="form-control" id="nomeCidadeCadastro" value="-">
+                            </div>
+
+                            <!--TERRITÓRIO BÍBLICO-->
+                            <div class="col-5 mb-2">
+                                <label for="" class="label-format">Território</label>
+                                <input type="text" class="form-control" id="nomeTerritorioCadastro">
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <hr>
+                            <span class="uppercase tamanho12 text-center fw-bold text-primary">lista de cidades e
+                                territórios</span>
+                        </div>
+
+                        <div class="row">
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <div class="row d-flex align-items-center mb-2" id="campoApresentacaoCidades"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-auto">
+                                <button class="btn btn-sm btn-dark px-3"
+                                    onclick="document.getElementById('btnCadastrarNovoPersonagemBiblico').click()"><i
+                                        class="fa fa-user"></i></button>
+                                <button class="btn btn-sm btn-warning px-3"
+                                    onclick="document.getElementById('btnCadastrarNovaProfissaoBiblica').click()"><i
+                                        class="fa fa-hammer"></i>
+                                </button>
+                            </div>
+                            <div class="col"></div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-sm btn-success"
+                                onclick="salvarCidadeTerritorio()">
+                                    <i class="fa fa-save">&nbsp;</i>
+                                    <span class="uppercase tamanho07">salvar</span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-primary"
+                                onclick="limparCidade()">
+                                    <i class="fa fa-broom">&nbsp;</i>
+                                    <span class="uppercase tamanho07">limpar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--MODAL DE CADASTRO DE PROFISSÕES [ok]-->
+        <div class="modal fade" tabindex="-1" id="modalCadastroProfissoesBiblicas">
+            <div class="modal-dialog modal-dialog-scrollable modal-md">
+                <div class="modal-content">
+                    <div class="modal-header m-auto mb-4">
+                        <div class="row">
+                            <div class="col-auto">
+                                <h5 class="modal-title uppercase text-center">cadastro de Profissões bíblicas</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <!--ID DA PROFISSÃO-->
+                            <div class="col-2 mb-2">
+                                <label for="" class="label-format ">id</label>
+                                <input type="text" class="form-control" disabled id="idProfissaoBiblicaCadastro">
+                            </div>
+
+                            <!--NOME DA PROFISSÃO-->
+                            <div class="col mb-2">
+                                <label for="" class="label-format ">Nome da Profissão</label>
+                                <input type="text" class="form-control" id="nomeProfissaoBiblicaCadastro">
+                            </div>
+                        </div>
+
+                        <!--TITULO SEPARADOR - LISTA DE PROFISSÃO-->
+                        <div class="row mt-4">
+                            <hr>
+                            <span class="uppercase tamanho12 text-center fw-bold text-primary">lista de
+                                Profissões</span>
+                        </div>
+
+                        <!--APRESENTACAO DE TODAS AS PROFISSÕES-->
+                        <div class="row">
+                            <div class="card mt-3">
+                                <div class="card-body" id="campoApresentacaoProfissoes"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--BUTTONS DE AÇÃO DO MODAL DE CADASTRO DE PROFISSÕES-->
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-auto">
+                                <button class="btn btn-sm btn-dark px-3"
+                                    onclick="document.getElementById('btnCadastrarNovoPersonagemBiblico').click()">
+                                    <i class="fa fa-user"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary px-3"
+                                    onclick="document.getElementById('btnCadastrarNovaCidadeBiblica').click()">
+                                    <i class="fa fa-city"></i>
+                                </button>
+                            </div>
+                            <div class="col"></div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-sm btn-success" onclick="salvarProfissao()">
+                                    <i class="fa fa-save">&nbsp;</i>
+                                    <span class="uppercase tamanho07">salvar</span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-primary" onclick="limparProfissao()">
+                                    <i class="fa fa-broom">&nbsp;</i>
+                                    <span class="uppercase tamanho07">limpar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

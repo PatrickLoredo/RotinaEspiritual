@@ -59,7 +59,7 @@ let escriturasHebraicas = [
     { nome: "Eclesiastes", alias: "Ecl", capitulos: 12, lidos: [] },
     { nome: "Cânticos", alias: "Cân", capitulos: 12, lidos: [] },
     { nome: "Isaías", alias: "Isa", capitulos: 66, lidos: [] },
-    { nome: "Jeremias", alias: "Jer", capitulos: 52, lidos: [] },
+    { nome: "Jeremias", alias: "Jer", capitulos: 52, lidos: [], versiculos: ['',19,37,25,31,31,30,34,22,26,25,23,17,27,22,21,21,27,23,15,18] },
     { nome: "Lamentações", alias: "Lam", capitulos: 5, lidos: [] },
     { nome: "Ezequiel", alias: "Eze", capitulos: 48, lidos: [] },
     { nome: "Daniel", alias: "Dan", capitulos: 12, lidos: [] },
@@ -121,7 +121,14 @@ function salvarProgresso() {
 }
 
 function atualizaAccordionLivrosBiblicos() {
+
     var accordionContainer = document.getElementById("collapseLivrosBiblicos");
+
+    if (!accordionContainer) {
+        console.error("Elemento collapseLivrosBiblicos não encontrado!");
+        return;
+    }
+
     accordionContainer.innerHTML = "";
 
     for (let i = 0; i < tiposLivosBiblicos.length; i++) {
@@ -302,6 +309,7 @@ class JoiaEspiritual {
 
 let joiasEspirituais = JSON.parse(localStorage.getItem("joiasEspirituais")) || {};
 
+
 function salvarJoiaEspiritual() {
 
     let data = document.getElementById("dataJoiaEspiritual").value;
@@ -353,7 +361,7 @@ function salvarJoiaEspiritual() {
     alert(`Joia adicionada em ${livro} ${capitulo}:${versiculo}`);
 }
 
-function mostraDataAtual(idCampo){
+function mostraDataAtualLeituraBiblia(idCampo){
     var data = new Date();
     var dia = String(data.getDate()).padStart(2,'0');
     var mes = String(data.getMonth()+1).padStart(2,'0');
@@ -370,12 +378,21 @@ function mostraJoiasEspirituais() {
     exibicaoQtdCapitulosLivros.innerHTML = '';
     exibicaoQtdCapitulosLivros.innerHTML += `
         <div class="row">
-            <div class="col-3 text-center">
+            <div class="col-auto">
+                <div class="row" style="visibility: hidden;">teste</div>
+                <div class="row">
+                    <span type="button" class="bg-primary text-light px-2 py-1 mt-1 rounded" onclick="mostraJoiasPesquisa('todas','todas')">
+                        <i class="fa fa-solid fa-gem"></i>
+                        <span class="uppercase" style="font-size: 0.7rem">&nbsp;&nbsp;Todas Jóias</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-auto text-center">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     Pesquisar por:
                 </label>
-                <select class="form-select text-center uppercase" style="font-size: 0.7rem"
-                onchange="tipoPesquisaJoia(this.value)">
+                <select class="form-select text-center uppercase" style="font-size: 0.7rem" onchange="tipoPesquisaJoia(this.value)">
                     <option value="-">-</option>
                     <option value="pesquisaJoiaCategoria">Categoria</option>
                     <option value="pesquisaJoiaDataCadastro">Data de Cadastro da Jóia</option>
@@ -384,7 +401,7 @@ function mostraJoiasEspirituais() {
                 </select>
             </div>
 
-            <div class="col-3 d-none text-center" id="colunaDataExibe">
+            <div class="col-auto d-none text-center m-2 m-sm-0 m-lg-0" id="colunaDataExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     data da Jóia Espiritual:
                 </label>
@@ -397,7 +414,7 @@ function mostraJoiasEspirituais() {
                 </div>
             </div>
 
-            <div class="col d-none text-center" id="colunaTipoEscrituraExibe">
+            <div class="col d-none text-center m-2 m-sm-0 m-lg-0" id="colunaTipoEscrituraExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     Tipo de Escritura:
                 </label>
@@ -411,7 +428,7 @@ function mostraJoiasEspirituais() {
                 </div>
             </div>
 
-            <div class="col d-none text-center" id="colunaNomeLivroExibe">
+            <div class="col d-none text-center m-2 m-sm-0 m-lg-0" id="colunaNomeLivroExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     Nome do Livro:
                 </label>
@@ -509,7 +526,7 @@ function tipoPesquisaJoia(valor) {
     var colunaTermoAnotadoExibe = document.getElementById("colunaTermoAnotadoExibe");
     var colunaNomeLivroExibe = document.getElementById('colunaNomeLivroExibe');
 
-    mostraDataAtual('dataPesquisa')
+    mostraDataAtualLeituraBiblia('dataPesquisa')
 
     switch (valor) {
         case '-':
@@ -618,6 +635,9 @@ function mostraJoiasPesquisa(tipo, valor) {
         case 'termoAnotado':
             resultados = joiasFiltradas.filter(j => j.anotacao.toLowerCase().includes(valor.toLowerCase()));
             break;
+        case 'todas':
+            resultados = joiasFiltradas;
+        break;
     }
 
     // Ordenar capítulo e versículo
@@ -665,36 +685,74 @@ function mostraJoiasPesquisa(tipo, valor) {
                                 return `
                                 <div class="mb-2 border-bottom pb-2">
                                     <!-- Linha do título + botões -->
-                                    <div class="d-flex justify-content-between align-items-start mb-1">
-                                        <h6 class="fw-bold mb-0 uppercase" style="font-size: 0.8rem">
-                                            ${j.livro} ${j.capitulo}:${j.versiculo}
-                                        </h6>
-                                        <div>
-                                            <button class="btn btn-sm btn-primary me-1"
-                                                onclick="toggleEditarJoia(this,'${j.categoriaID}','${j.livro}','${j.capitulo}','${j.versiculo}',${j.indice})">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-danger"
-                                                onclick="apagarJoia('${j.categoriaID}','${j.livro}','${j.capitulo}','${j.versiculo}',${j.indice})">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="text-muted fst-italic mb-1" style="font-size:0.92rem"> "${j.textoBiblico}" - <b class="uppercase" style="color: red">${j.livro} ${j.capitulo}:${j.versiculo}</b></p>
+                                                    <p class="fw-bold mb-0 uppercase" style="font-size: 0.8rem"> </p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button class="btn btn-sm btn-dark"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse_${j.categoriaID}_${j.livro}_${j.capitulo}_${j.versiculo}_${index}">
+                                                        <i class="fa fa-solid fa-chevron-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <p class="text-muted fst-italic mb-1" style="font-size:0.75rem">
-                                        "${j.textoBiblico}"
-                                    </p>
+                                    <div class="row collapse" id="collapse_${j.categoriaID}_${j.livro}_${j.capitulo}_${j.versiculo}_${index}">
+                                        <div class="row mt-3">
+                                            <hr>
+                                            <div class="col-3 d-flex align-items-center">
+                                                <p class="small text-muted mb-1">
+                                                    <i class="fa fa-calendar"></i> ${dataFormatada} &nbsp;|&nbsp;
+                                                    <i class="fa fa-tag text-primary"></i> ${nomeCategoria[j.categoriaID] || j.categoriaID}
+                                                </p>
+                                            </div>
+                                            <div class="col"></div>
+                                        </div>
 
-                                    <p class="small text-muted mb-1">
-                                        <i class="fa fa-calendar"></i> ${dataFormatada} &nbsp;|&nbsp;
-                                        <i class="fa fa-tag text-primary"></i> ${nomeCategoria[j.categoriaID] || j.categoriaID}
-                                    </p>
+                                        <div class="col">                                            
+                                            <div class="row mt-2">
+                                                <div class="col">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <p class="card-text text-dark uppercase mb-1" style="font-size: 0.7rem">
+                                                                ${j.anotacao}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                    <p class="card-text text-dark uppercase mb-1" style="font-size: 0.7rem">
-                                        ${j.anotacao}
-                                    </p>
+                                                <div class="col-auto d-flex flex-column">
+                                                    <button class="btn btn-sm btn-primary me-1"
+                                                        onclick="toggleEditarJoia(this,'${j.categoriaID}','${j.livro}','${j.capitulo}','${j.versiculo}',${j.indice})">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger mt-1"
+                                                        onclick="apagarJoia('${j.categoriaID}','${j.livro}','${j.capitulo}','${j.versiculo}',${j.indice})">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
 
-                                    ${j.fonte ? `<small class="text-muted">Fonte: ${j.fonte}</small>` : ''}
+
+                                            <div class="row mt-3">
+                                                <div class="col">
+                                                    <span class="uppercase mb-1" style="font-size: 0.7rem">Fonte de Matéria: </span><br>
+                                                    ${j.fonte ?
+                                                        `<button class="btn btn-sm btn-primary mt-1">
+                                                            <small class="text-muted uppercase" style="font-size="0.8rem;">
+                                                                <a href="${j.fonte}" target="_blank" style="color: white">${j.fonte}</a>
+                                                            </small>
+                                                        </button>` : ''}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 `;
                             }).join('')}
@@ -707,55 +765,6 @@ function mostraJoiasPesquisa(tipo, valor) {
 
     collapseMostraJoias.classList.remove('collapse');
     collapseMostraJoias.classList.add('show');
-}
-
-function exibeTodasJoias() {
-    var campo = document.getElementById('collapseMostraJoias');
-    if(campo.classList.contains('collapse')){
-        campo.classList.remove('collapse');
-        campo.innerHTML = ''; // CORRIGIDO
-
-        joiasEspirituais.forEach(joia => {
-            campo.innerHTML += `
-                <div class="mb-2 border-bottom pb-2">
-                    <!-- Linha do título + botões -->
-                    <div class="d-flex justify-content-between align-items-start mb-1">
-                        <h6 class="fw-bold mb-0 uppercase" style="font-size: 0.8rem">
-                            ${joia.livro} ${joia.capitulo}:${joia.versiculo}
-                        </h6>
-                        <div>
-                            <button class="btn btn-sm btn-primary me-1"
-                                onclick="toggleEditarJoia(this,'${joia.categoriaID}','${joia.livro}','${joia.capitulo}','${joia.versiculo}',${joia.indice})">
-                                <i class="fa fa-edit"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger"
-                                onclick="apagarJoia('${joia.categoriaID}','${joia.livro}','${joia.capitulo}','${joia.versiculo}',${joia.indice})">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <p class="text-muted fst-italic mb-1" style="font-size:0.75rem">
-                        "${joia.textoBiblico}"
-                    </p>
-
-                    <p class="small text-muted mb-1">
-                        <i class="fa fa-calendar"></i> ${joia.dataFormatada} &nbsp;|&nbsp;
-                        <i class="fa fa-tag text-primary"></i> ${nomeCategoria[joia.categoriaID] || joia.categoriaID}
-                    </p>
-
-                    <p class="card-text text-dark uppercase mb-1" style="font-size: 0.7rem">
-                        ${joia.anotacao}
-                    </p>
-
-                    ${joia.fonte ? `<small class="text-muted">Fonte: ${joia.fonte}</small>` : ''}
-                </div>
-            `;
-        });
-
-    } else {
-        campo.classList.add('collapse');
-    }
 }
 
 function apagarJoia(catID, livro, cap, ver, index) {
@@ -852,7 +861,7 @@ function toggleEditarJoia(btn, catID, livro, cap, ver, index) {
 
 }
 
-function mostraDataAtual(idCampo){
+function mostraDataAtualLeituraBiblia(idCampo){
     var campoData = document.getElementById(idCampo);
     var data = new Date();
     var dia = String(data.getDate()).padStart(2,'0');

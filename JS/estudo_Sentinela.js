@@ -1,468 +1,729 @@
-// 🗂️ ESTRUTURA DE DADOS
-let arrayASentinela = {
-    comentario: [],
-    ilustracao: [],
-    citacao: [],
-    experiencia: []
+let arrayEstudosSentinela = JSON.parse(localStorage.getItem('arrayEstudosSentinela')) || [];
+let codigosUtilizados = JSON.parse(localStorage.getItem('codigosUtilizados')) || [];
+
+window.onload = function () {
+    let elementoModal = document.getElementById('modalCadastroAnotacaoSentinela');
+
+    /*if(elementoModal){
+        const modal = new bootstrap.Modal(elementoModal);
+        modal.show();
+
+        document.getElementById('btnTodasAnotacoes').click()
+        document.getElementById('btnChevronCitacao').click()
+
+    }*/
+
+    mostraDataAtualSentinela('dataEstudoSentinela');
+    mostraDataAtualSentinela('dataAtualizacaoAnotacaoSentinela');
+    populaLivrosBiblicos();
+    defineDataInicialSentinela()
+    atualizaAccordionLivrosBiblicos();
+
+    
+    
 };
 
-// 🔢 CONTADORES PARA GERAR CÓDIGOS ÚNICOS
-let contadoresSentinela = {
-    inserir: {
-        comentario: 0,
-        ilustracao: 0,
-        citacao: 0,
-        experiencia: 0
-    },
-    exibir: {
-        comentario: 0,
-        ilustracao: 0,
-        citacao: 0,
-        experiencia: 0
-    }
-};
+function defineDataInicialSentinela() {
 
-// 📚 CLASSE
-class cadastroASentinela {
-    constructor(ano, id, data, numero_estudo, titulo_estudo, paragrafo, comentario) {
-        this.ano = ano;
-        this.id = id;
-        this.data = data;
-        this.numero_estudo = numero_estudo;
-        this.titulo_estudo = titulo_estudo;
-        this.paragrafo = paragrafo;
-        this.comentario = comentario;
+    const campoDataInicial = document.getElementById("dataInicialVerificaDiasReunioes");
+
+    if (!campoDataInicial) {
+        console.log("Campo de data inicial não encontrado.");
+        return;
     }
+
+    if (!arrayEstudosSentinela || arrayEstudosSentinela.length === 0) {
+        console.log("Nenhum estudo da Sentinela cadastrado.");
+        return;
+    }
+
+    let registroMaisAntigo = arrayEstudosSentinela[0];
+
+    for (let i = 1; i < arrayEstudosSentinela.length; i++) {
+
+        if (new Date(arrayEstudosSentinela[i].data) < new Date(registroMaisAntigo.data)) {
+            registroMaisAntigo = arrayEstudosSentinela[i];
+        }
+    }
+
+    campoDataInicial.value = registroMaisAntigo.data;
+
+    console.log("Data inicial Sentinela:", registroMaisAntigo.data);
 }
 
-// 🔄 CARREGA DADOS SALVOS
-function carregarDadosSentinela() {
-    let dadosSalvos = localStorage.getItem('arrayASentinela');
-
-    if (dadosSalvos) {
-        arrayASentinela = JSON.parse(dadosSalvos);
-    } else {
-        arrayASentinela = {
-            comentario: [],
-            ilustracao: [],
-            citacao: [],
-            experiencia: []
-        };
-    }
-
-    console.log('Dados carregados:', arrayASentinela);
-
-    atualizarContadores();
-}
-
-// 🔢 ATUALIZA CONTADORES COM BASE NO QUE JÁ EXISTE
-function atualizarContadores() {
-    Object.keys(arrayASentinela).forEach(categoria => {
-        arrayASentinela[categoria].forEach(item => {
-            const numero = parseInt(item.id.split('_')[1]);
-
-            if (contadoresSentinela.inserir[categoria] <= numero) {
-                contadoresSentinela.inserir[categoria] = numero;
+class Anotacao {
+    constructor(tipo, dataAtualizacao, anotacaoPessoal,numeroParagrafo) {
+        this.tipo = tipo;
+        this.registros = [
+            {
+                dataAtualizacao: dataAtualizacao,
+                anotacaoPessoal: anotacaoPessoal,
+                numeroParagrafo: numeroParagrafo
             }
-        });
-    });
-
-    console.log('Contadores atualizados:', contadoresSentinela);
+        ];
+    }
 }
 
-// 💾 SALVA NOVO CADASTRO
-function salvarCadastroASentinela(escolha, categoria) {
-
-    carregarDadosSentinela();
-    const idField = document.getElementById('idCodigoSentinela');
-    const data = document.getElementById('dataInsereSentinela').value;
-    const numero_estudo = document.getElementById('numeroEstudoSentinela').value;
-    const titulo_estudo = document.getElementById('tituloEstudoSentinela').value;
-    const paragrafo = document.getElementById('paragrafoSentinela').value;
-    const comentario = document.getElementById('comentarioSentinela').value;
-
-    if (!data || !numero_estudo || !titulo_estudo || !paragrafo || !comentario) {
-        alert('Preencha todos os campos obrigatórios!');
-        return;
+class EstudoSentinela {
+    constructor(id, data, diaSemana, titulo, objetivoEstudo, totalParagrafos, status) {
+        this.id = String(id);
+        this.data = data;
+        this.diaSemana = diaSemana;
+        this.titulo = titulo;
+        this.objetivoEstudo = objetivoEstudo;
+        this.totalParagrafos = totalParagrafos;
+        this.anotacoes = [];
+        this.status = status;
     }
 
-    const escolhaNormalizada = escolha.toLowerCase().trim();
+    adicionarAnotacao(tipo, dataAtualizacao, anotacaoPessoal, numeroParagrafo) {
+    let tipoEncontrado = this.anotacoes.find(
+        anotacao => anotacao.tipo === tipo
+    );
+    
+    if (!tipoEncontrado) {
+        let novaAnotacao = new Anotacao(
+            tipo,
+            dataAtualizacao,
+            anotacaoPessoal,
+            numeroParagrafo
+        );
+        this.anotacoes.push(novaAnotacao);
+    } 
+    
+    else {
+        tipoEncontrado.registros.push({
+            dataAtualizacao: dataAtualizacao,
+            anotacaoPessoal: anotacaoPessoal,
+            numeroParagrafo: numeroParagrafo
+        });
+    }}
+}
 
-    const categoriaNormalizada = categoria
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .trim();
+/* ------------------------------[ok] ------------------------------ */
+function formatarData(data) {
+    if (!data) return "";
 
-    if (
-        !contadoresSentinela[escolhaNormalizada] ||
-        contadoresSentinela[escolhaNormalizada][categoriaNormalizada] === undefined
-    ) {
-        console.error("Erro:", escolha, categoria);
-        alert("Categoria ou tipo inválido");
-        return;
-    }
-
-    contadoresSentinela[escolhaNormalizada][categoriaNormalizada]++;
-    const numero = contadoresSentinela[escolhaNormalizada][categoriaNormalizada];
-
-    const id = `${categoriaNormalizada}_${numero}`;
-    idField.value = id;
-
-    const ano = data.split('-')[0];
-
-    const cadastro = new cadastroASentinela(
-        ano,
-        id,
-        data,
-        numero_estudo,
-        titulo_estudo,
-        paragrafo,
-        comentario
+    const [ano, mes, dia] = data.split("-");
+    return `${dia}/${mes}/${ano}`;
+}
+/* ------------------------------[ok] ------------------------------ */
+function salvarDadosNavegador() {
+    localStorage.setItem(
+        'arrayEstudosSentinela',
+        JSON.stringify(arrayEstudosSentinela)
     );
 
-    if (!arrayASentinela[categoriaNormalizada]) {
-        arrayASentinela[categoriaNormalizada] = [];
-    }
-
-    arrayASentinela[categoriaNormalizada].push(cadastro);
-
-    localStorage.setItem('arrayASentinela', JSON.stringify(arrayASentinela));
-
-    console.log('Salvo:', arrayASentinela);
-
-    alert('Cadastro salvo com sucesso!');
-
-    document.getElementById('numeroEstudoSentinela').value = '';
-    document.getElementById('tituloEstudoSentinela').value = '';
-    document.getElementById('paragrafoSentinela').value = '';
-    document.getElementById('comentarioSentinela').value = '';
+    localStorage.setItem(
+        'codigosUtilizados',
+        JSON.stringify(codigosUtilizados)
+    );
 }
 
-// 🆔 GERA CÓDIGO ÚNICO PARA O NOVO CADASTRO
-function geraCodigoSentinela(tipo, subtipo, idCodigo) {
-    // normaliza (remove acento e deixa minúsculo)
-    subtipo = subtipo
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
+/* ------------------------------[ok] ------------------------------ */
+function mostraDataAtualSentinela(idCampo) {
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
 
-    // valida tipo e subtipo corretamente
-    if (
-        !contadoresSentinela[tipo] ||
-        !(subtipo in contadoresSentinela[tipo])
-    ) {
-        console.error("Tipo ou subtipo inválido:", tipo, subtipo);
+    var dataAtual = `${ano}-${mes}-${dia}`;
+
+    var campo = document.getElementById(idCampo);
+
+    if (campo) {
+        campo.value = dataAtual;
+    }
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function verificaQtdDiasSentinela() {
+    let dataInicial = document.getElementById('dataInicialVerificaDiasReunioes').value;
+    let dataFinal = document.getElementById('dataFinalVerificaDiasReunioes').value;
+    let diaSemanaReuniao = Number(document.getElementById("diaReuniaoFinalSemana").value);
+    const exibicaoDatasSentinela = document.getElementById('exibicaoDatasSentinela');
+
+    if (dataInicial === '' || dataFinal === '') {
+        alert('A data INICIAL e FINAL do período deve ser informada');
         return;
     }
 
+    if (dataFinal < dataInicial) {
+        verificaValidadeDataFinal();
+        return; 
+    }
 
-    // prefixos
+    // Criamos uma cópia para não modificar o objeto Date original de forma inesperada
+    let inicio = new Date(dataInicial + "T00:00:00");
+    let fim = new Date(dataFinal + "T00:00:00");
 
-    const subtiposValidos = {
-        comentario: "Coment",
-        ilustracao: "Ilustr",
-        citacao: "Citacao",
-        experiencia: "Experien"
+    exibicaoDatasSentinela.innerHTML = '';
+
+    while (inicio <= fim) {
+        if (inicio.getDay() === diaSemanaReuniao) {
+            
+            let dataExibicao = inicio.toLocaleDateString('pt-BR'); 
+            
+            let ano = inicio.getFullYear();
+            let mes = String(inicio.getMonth() + 1).padStart(2, '0');
+            let dia = String(inicio.getDate()).padStart(2, '0');
+            let dataFormatadaISO = `${ano}-${mes}-${dia}`;
+
+            let estudoEncontrado = arrayEstudosSentinela.find(element => element.data === dataFormatadaISO);
+
+            let coluna = document.createElement('div');
+            coluna.classList.add('col-6');
+
+            let botao = document.createElement('button');
+            botao.classList.add('btn', 'btn-sm', 'w-100', 'm-1');
+            
+            botao.onclick = function () {
+                recuperaDadosSentinela(dataFormatadaISO);
+            };
+            
+            botao.ondblclick = function () {
+                inserenovoCadastroSentinela();
+            };
+
+            // CORRIGIDO: Encadeamento correto dos IFs e ELSE IFs
+            if (estudoEncontrado) {
+                if (estudoEncontrado.status === 'concluido') {
+                    botao.classList.add('btn-success');
+                    botao.innerHTML = `<i class="fa-solid fa-check-double me-1"></i>
+                    <span class="uppercase tamanho07">${dataExibicao} &nbsp; [Concluído]</span>`;
+                } 
+                else if (estudoEncontrado.status === 'iniciado') { // Adicionado o 'else if' aqui
+                    botao.classList.add('btn-primary');
+                    botao.innerHTML = `<i class="fa-solid fa-book-open me-1"></i>
+                    <span class="uppercase tamanho07">${dataExibicao} &nbsp; [Iniciado]</span>`;
+                } 
+                else {
+                    botao.classList.add('btn-info');
+                    botao.innerHTML = `<i class="fa-solid fa-book-open me-1"></i>
+                    <span class="uppercase tamanho07">${dataExibicao} &nbsp; [OUTRO]</span>`;
+                }
+            } else {
+                botao.classList.add('btn-outline-secondary');
+                botao.innerHTML = `<i class="fa-solid fa-book me-1 uppercase"></i><span class="uppercase tamanho07"> ${dataExibicao} &nbsp;  [Pendente]</span>`;
+            }
+
+            coluna.appendChild(botao);
+            exibicaoDatasSentinela.appendChild(coluna);
+        }
+        
+        // Avança para o próximo dia
+        inicio.setDate(inicio.getDate() + 1);
+        document.getElementById('btnVerficaDiasReunioes').click();
+    }
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function recuperaDadosSentinela(data) {
+
+    // Limpa todos os campos antes de carregar novos dados
+    limparCamposSentinela();
+
+    let colunaAnotacaoTemaSentinela = document.getElementById("colunaAnotacaoTemaSentinela");
+
+    let estudoEncontrado = arrayEstudosSentinela.find(element => element.data === data);
+
+    let campoID = document.getElementById('idCadastroEstudoSentinela');
+    let campoDATA = document.getElementById('dataEstudoSentinela');
+    let campoDIASEMANA = document.getElementById('diaSemanaCadastroEstudoSentinela');
+    let campoTITULO_ESTUDO = document.getElementById('tituloCadastroEstudoSentinela');
+    let campoOBJETIVO_ESTUDO = document.getElementById('objetivoCadastroEstudoSentinela');
+    let campoQTDPARAGRAFOS_ESTUDO = document.getElementById('qdParagrafosCadastroEstudoSentinela');
+
+    const formatarParaInputDate = (dataBr) => {
+        if (!dataBr || !dataBr.includes('/')) return dataBr;
+
+        let partes = dataBr.split('/');
+        return `${partes[2]}-${partes[1]}-${partes[0]}`;
     };
 
-    // pega elemento
-    const elemento = document.getElementById(idCodigo);
+    if (estudoEncontrado) {
 
-    if (!elemento) {
-        console.error("Elemento não encontrado:", idCodigo);
-        return;
-    }
+        colunaAnotacaoTemaSentinela.classList.remove('d-none');
 
-    // gera código
-    elemento.value = `${subtiposValidos[subtipo]}_${contadoresSentinela[tipo][subtipo]}`;
-}
+        campoID.value = estudoEncontrado.id;
+        campoDATA.value = formatarParaInputDate(estudoEncontrado.data);
 
-// ⏰ RELÓGIO
-function atualizaRelogio(idRelogio) {
-    var data = new Date();
-    var dia = String(data.getDate()).padStart(2, '0');
-    var mes = String(data.getMonth() + 1).padStart(2, '0');
-    var ano = data.getFullYear();
+        if (estudoEncontrado.diaSemana) {
+            campoDIASEMANA.value = estudoEncontrado.diaSemana;
+        } else {
+            verificaDiaSemana(
+                formatarParaInputDate(estudoEncontrado.data),
+                'diaSemanaCadastroEstudoSentinela'
+            );
+        }
 
-    var horas = String(data.getHours()).padStart(2, '0');
-    var minutos = String(data.getMinutes()).padStart(2, '0');
-    var segundos = String(data.getSeconds()).padStart(2, '0');
+        campoTITULO_ESTUDO.value = estudoEncontrado.titulo;
+        campoOBJETIVO_ESTUDO.value = estudoEncontrado.objetivoEstudo;
+        campoQTDPARAGRAFOS_ESTUDO.value = estudoEncontrado.totalParagrafos;
 
-    var dataAtual = (`${dia}/${mes}/${ano}`)
-    var horaAtual = (`${horas}:${minutos}:${segundos}`)
-
-    var campoRelogio = document.getElementById(idRelogio);
-    campoRelogio.innerHTML = '';
-    campoRelogio.innerHTML = `${dataAtual} - ${horaAtual}`;
-}
-
-// 📅 MOSTRA DATA ATUAL NO CAMPO DE INSERÇÃO
-function mostraDataAtual(id){
-    var campoExibicaoData = document.getElementById(id);
-
-    var data = new Date();
-    var dia = String(data.getDate()).padStart(2, '0');
-    var mes = String(data.getMonth() + 1).padStart(2, '0');
-    var ano = data.getFullYear();
-
-    campoExibicaoData.value = `${ano}-${mes}-${dia}`;
-}
-
-// 🖥️ EXIBE FORMULÁRIO DE INSERÇÃO
-function funcaoSentinela(escolha,categoria){
-    const campoExibicaoResultadoEscolhaSentinela = document.getElementById('campoExibicaoResultadoEscolhaSentinela');
-
-    var amostragem = `
-        <div class="row mb-3">
-            <div class="col-4 col-sm-3 col-md-2 col-lg-2">
-                <label class="label-format mb-2">id</label>
-                <input type="text" style="font-size: 0.8rem" class="form-control uppercase text-center" id="idCodigoSentinela" disabled>
-            </div>
-            <div class="col-5  col-sm-5 col-md-4 col-lg-2">
-                <label class="label-format mb-2 text-center">data</label>
-                <input type="date" style="font-size: 0.8rem" class="form-control uppercase text-center text-center" id="dataInsereSentinela">
-            </div>
-            <div class="col-3  col-sm col-md-3 col-lg-1">
-                <label class="label-format mb-2">Estudo</label>
-                <input type="number" id="numeroEstudoSentinela" style="font-size: 0.8rem" class="form-control uppercase text-center text-center" min=1 value="1">
-            </div>
-            <div class="col-8 col-md-9 col-lg-5 mt-3 mt-lg-0">
-                <label class="label-format mb-2">Título do Estudo</label>
-                <input type="text" id="tituloEstudoSentinela" style="font-size: 0.8rem" class="form-control uppercase text-center" placeholder="Digite o título do estudo de A Sentinela">
-            </div>
-            <div class="col col-md-3 col-lg-2 mt-3 mt-lg-0">
-                <label class="label-format mb-2">Parágrafo</label>
-                <input type="number" id="paragrafoSentinela" style="font-size: 0.8rem" class="form-control uppercase text-center text-center" min=1 value="1">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label class="label-format bg-danger text-light p-2 mb-2 rounded-pill">${categoria}</label>                        
-                <textarea id="comentarioSentinela" class="form-control uppercase mb-5" rows="7" placeholder="Digite o(a) ${categoria.toUpperCase()}"></textarea>
-                <textarea id="citacaoSentinela" style="display:none;"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <button class="btn btn-sm btn-success" onclick="salvarCadastroASentinela('${escolha}','${categoria}')">
-                    <i class="fa fa-save"></i>
-                    <span class="uppercase" style="font-size: 0.8rem">Salvar</span>
-                </button>
-                <button class="btn btn-sm btn-primary">
-                    <i class="fa fa-broom"></i>
-                    <span class="uppercase" style="font-size: 0.8rem">Limpar</span>
-                </button>
-            </div>
-        </div>
-    `
-
-    campoExibicaoResultadoEscolhaSentinela.innerHTML = amostragem;
-    mostraDataAtual('dataInsereSentinela');
-}
-
-// 🖥️ EXIBE DADOS SALVOS
-function gerarEstruturaExibicao(item, categoria) {
-
-    // ✅ corrigido (sem bug de fuso)
-    const [ano, mes, dia] = item.data.split('-');
-    const dataFormatada = `${dia}/${mes}/${ano}`;
-
-    return `
-        <div class="alert alert-info mb-3">
-            <div class="row">
-                <div class="col col-sm-12 col-lg mt-lg-0 d-flex align-items-center justify-content-center">
-                    Titulo: &nbsp;<strong><u>${item.titulo_estudo}</u></strong>
-                </div>
-                <div class="col-10 col-lg-auto mt-4 mt-lg-0">
-                    <span class="badge bg-dark">${dataFormatada}</span>
-                    <span class="badge bg-primary">Nº Estudo ${item.numero_estudo}</span>
-                    <span class="badge bg-danger">Parágrafo: ${item.paragrafo}</span>
-                </div>
-
-                <!--BUTTON TOGGLE-->
-                <div class="col-2 col-lg-1 mt-4 mt-lg-0">
-                    <button class="btn btn-sm btn-dark" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#${item.id}"
-                        onclick="mudaToggle('eye${item.id}','btn-dark')">
-                        <i class="fa fa-eye" id="eye${item.id}"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!--COLLAPSE-->
-            <div class="collapse mt-3" id="${item.id}">
-                <div class="row mt-3">
-                    <div class="col-3 col-sm-2 col-lg-1"><hr></div>
-                    <div class="col-6 col-sm-5 col-lg-3">
-                        <span class="badge bg-warning text-dark mb-2 uppercase p-2 w-100" 
-                        style="font-size: 0.7rem">
-                            ${categoria}
-                        </span>
-                    </div>
-                    <div class="col-3 col-sm"><hr></div>
-                </div>
-
-                <!--EXIBIÇÃO DO COMENTÁRIO-->
-                <div class="row">
-                    <div class="col">
-                        <textarea class="form-control" rows="5" disabled id="comentario_${item.id}">${item.comentario}</textarea>
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-auto col-sm-4 col-lg-2 text-start">
-                        <button class="btn btn-sm btn-secondary">
-                            <i class="fa fa-copy"></i>
-                            <span class="uppercase" style="font-size: 0.7rem">Copiar</span>
-                        </button>
-                    </div>
-
-                    <div class="col text-end">
-                        <button class="btn btn-sm btn-primary"
-                            id="btnEditar_${item.id}"
-                            onclick="editarCampos('${item.id}')">
-                            <i class="fa fa-edit"></i>
-                            <span class="uppercase" style="font-size: 0.7rem">Editar</span>
-                        </button>
-
-                        <button class="btn btn-sm btn-success d-none"
-                            id="btnSalvar_${item.id}"
-                            onclick="salvarEdicao('${item.id}')">
-                            <i class="fa fa-save"></i>
-                            <span class="uppercase" style="font-size: 0.7rem">Salvar</span>
-                        </button>
-
-                        <button class="btn btn-sm btn-danger"
-                             onclick="excluirComentario('${item.id}')">
-                            <i class="fa fa-trash"></i>
-                            <span class="uppercase" style="font-size: 0.7rem">Excluir</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// 👁️ TOGGLE DE EXIBIÇÃO
-function mudaToggle(idToggle,colorAtual){
-    const elemento = document.getElementById(idToggle);
-    const button = elemento.parentElement; // Botão pai do ícone
-
-    if(elemento.classList.contains('fa-eye')){
-        elemento.classList.remove('fa-eye');
-        elemento.classList.add('fa-eye-slash');
-        button.classList.remove(`${colorAtual}`);
-        button.classList.add('btn-warning');
     } else {
-        elemento.classList.remove('fa-eye-slash');
-        elemento.classList.add('fa-eye');
-        button.classList.remove('btn-warning');
-        button.classList.add(`${colorAtual}`);
-    }
-}
 
-// 🖥️ EXIBE DADOS SALVOS
-function exibirDadoSentinela(categoria) {
-    carregarDadosSentinela();
+        let confirmacao = confirm(
+            `Nenhum Estudo Cadastrado para a data ${data}.\nDeseja Cadastrar?`
+        );
 
-    const campo = document.getElementById('campoExibicaoResultadoEscolhaSentinela');
-    const dados = arrayASentinela[categoria];
+        if (confirmacao) {
 
-    if (!dados || dados.length === 0) {
-        campo.innerHTML = '<div class="alert alert-danger uppercase d-flex justify-content-center align-items-center" role="alert" style="font-size: 0.8rem;">Nenhum registro encontrado.</div>';
-        return;
-    }
+            colunaAnotacaoTemaSentinela.classList.remove('d-none');
 
-    let amostragem = `<h5 class="text-center mb-4">${categoria.toUpperCase()}</h5>`;
+            verificaId();
 
-    dados.forEach(item => {
-        amostragem += gerarEstruturaExibicao(item, categoria); // 
-    });
+            campoDATA.value = formatarParaInputDate(data);
 
-    campo.innerHTML = amostragem;
-}
+            verificaDiaSemana(
+                formatarParaInputDate(data),
+                'diaSemanaCadastroEstudoSentinela'
+            );
 
-// 🔓 Habilita edição
-function editarCampos(id) {
-    const campo = document.getElementById(`comentario_${id}`);
-    const btnEditar = document.getElementById(`btnEditar_${id}`);
-    const btnSalvar = document.getElementById(`btnSalvar_${id}`);
+            campoQTDPARAGRAFOS_ESTUDO.value = 17;
 
-    if (!campo) return;
+        } else {
 
-    campo.removeAttribute('disabled');
-    campo.focus();
+            colunaAnotacaoTemaSentinela.classList.add('d-none');
 
-    btnEditar.classList.add('d-none');
-    btnSalvar.classList.remove('d-none');
-}
-
-// 💾 Salva edição
-function salvarEdicao(id) {
-    const campo = document.getElementById(`comentario_${id}`);
-    const btnEditar = document.getElementById(`btnEditar_${id}`);
-    const btnSalvar = document.getElementById(`btnSalvar_${id}`);
-
-    if (!campo) return;
-
-    // percorre o array
-    for (let categoria in arrayASentinela) {
-        let comentarios = arrayASentinela[categoria];
-
-        for (let i = 0; i < comentarios.length; i++) {
-            if (String(comentarios[i].id) === String(id)) {
-
-                comentarios[i].comentario = campo.value;
-
-                // salva no localStorage
-                localStorage.setItem(
-                    'arrayASentinela',
-                    JSON.stringify(arrayASentinela)
-                );
-
-                // UI
-                campo.setAttribute('disabled', true);
-
-                btnSalvar.classList.add('d-none');
-                btnEditar.classList.remove('d-none');
-
-                console.log('Comentário atualizado com sucesso!');
-                return;
-            }
         }
     }
 }
 
-// 🗑️ Exclui comentário
-function excluirComentario(id) {
-    if (!confirm('Tem certeza que deseja excluir este comentário?')) {
+/* ------------------------------[ok] ------------------------------ */
+function limparCamposSentinela(categoria) {
+    document.getElementById('idCadastroEstudoSentinela').value = '';
+    document.getElementById('dataEstudoSentinela').value = '';
+    document.getElementById('diaSemanaCadastroEstudoSentinela').value = '';
+    document.getElementById('tituloCadastroEstudoSentinela').value = '';
+    document.getElementById('objetivoCadastroEstudoSentinela').value = '';
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function verificaDiaSemana(data, idDiaSemana) {
+    let campoMostraDiaSemana = document.getElementById(idDiaSemana);
+    let dataAtual;
+    if (data.includes('/')) {
+        const [dia, mes, ano] = data.split('/');
+        dataAtual = new Date(ano, mes - 1, dia);
+    } else if (data.includes('-')) {
+        const [ano, mes, dia] = data.split('-');
+        dataAtual = new Date(ano, mes - 1, dia);
+    }
+
+    const diasSemana = [
+        "Domingo",
+        "Segunda-feira",
+        "Terça-feira",
+        "Quarta-feira",
+        "Quinta-feira",
+        "Sexta-feira",
+        "Sábado"
+    ];
+
+    campoMostraDiaSemana.value = diasSemana[dataAtual.getDay()];
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function verificaId() {
+    const campoId = document.getElementById('idCadastroEstudoSentinela');
+    let qtdCodigosUtilizados = codigosUtilizados.length;
+
+    campoId.value = qtdCodigosUtilizados + 1;
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function verificaValidadeDataFinal() {
+    let dataInicialVerificaDiasReunioes = document.getElementById('dataInicialVerificaDiasReunioes').value;
+    let dataFinalVerificaDiasReunioes = document.getElementById('dataFinalVerificaDiasReunioes').value;
+
+
+    if (dataFinalVerificaDiasReunioes < dataInicialVerificaDiasReunioes) {
+        alert('Data FINAL informada é menor que a data INICIAL.\nInforme uma data superior a data de inicio.')
+    }
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function mostraEscolhaAnotacaoSentinela(escolha) {
+
+    const campos = {
+        citacao: document.getElementById("campoCitacao"),
+        ilustracao: document.getElementById("campoIlustracao"),
+        aplicacao: document.getElementById("campoAplicacao"),
+        comentario: document.getElementById("campoComentario"),
+        reflexao: document.getElementById("campoReflexao")
+    };
+
+    // Esconde todos
+    Object.values(campos).forEach(campo => {
+        campo.classList.add("d-none");
+    });
+
+    // Se não escolheu nada, apenas sai
+    if (escolha === "nenhum") {
         return;
     }
 
-    // Remove o comentário do array
-    for (let categoria in arrayASentinela) {
-        let comentarios = arrayASentinela[categoria];
-        arrayASentinela[categoria] = comentarios.filter(item => String(item.id) !== String(id));
+    // Mostra somente o selecionado
+    if (campos[escolha]) {
+        campo = campos[escolha];
+        campo.classList.remove("d-none");
     }
-
-    // Salva no localStorage
-    localStorage.setItem('arrayASentinela', JSON.stringify(arrayASentinela));
-
-    // Atualiza a exibição
-    exibirDadoSentinela();
-
-    console.log('Comentário excluído com sucesso!');
 }
 
+/* ------------------------------[XXXXXXXX] ------------------------------ */
+function salvarCabecalhoSentinela() {
+    const id = document.getElementById('idCadastroEstudoSentinela').value;
+    const data = document.getElementById('dataEstudoSentinela').value;
+    const diaSemana = document.getElementById('diaSemanaCadastroEstudoSentinela').value;
+    const titulo = document.getElementById('tituloCadastroEstudoSentinela').value;
+    const objetivo = document.getElementById('objetivoCadastroEstudoSentinela').value;
+    const totalParagrafos = document.getElementById('qdParagrafosCadastroEstudoSentinela').value;
+    const statusSelecionado = document.querySelector('.statusCadastroEstudoSentinela:checked');
+    const status = statusSelecionado ? statusSelecionado.value : '';
 
-// 🔥 INICIALIZAÇÃO
-window.onload = function () {
-    rotacionarIcone('atualizarPaginaEstudoPessoal');
-    carregarDadosSentinela(); // 🔥 FALTAVA ISSO
-    atualizaRelogio('relogioPagina');
-    setInterval(() => atualizaRelogio('relogioPagina'), 1000);
-};
+    if (!id || !data || !diaSemana || !titulo || !objetivo || !totalParagrafos || !status) {
+        alert('Preencha todos os campos e tente novamente!');
+        return;
+    }
 
+    let estudoEncontrado = arrayEstudosSentinela.find(
+        estudo => String(estudo.id) === String(id)
+    );
+
+    // Atualização
+    if (estudoEncontrado) {
+        estudoEncontrado.data = data;
+        estudoEncontrado.diaSemana = diaSemana;
+        estudoEncontrado.titulo = titulo;
+        estudoEncontrado.objetivoEstudo = objetivo;
+        estudoEncontrado.totalParagrafos = totalParagrafos;
+        estudoEncontrado.status = status;
+
+        // garante que anotações antigas não sejam perdidas
+        if (!Array.isArray(estudoEncontrado.anotacoes)) {
+            estudoEncontrado.anotacoes = [];
+        }
+
+        salvarDadosNavegador();
+
+        alert('Estudo atualizado com sucesso!');
+    }
+
+
+    // Novo cadastro
+    else {
+        let novoEstudo = new EstudoSentinela(
+            id,
+            data,
+            diaSemana,
+            titulo,
+            objetivo,
+            totalParagrafos,
+            status
+        );
+
+        arrayEstudosSentinela.push(novoEstudo);
+        if (!codigosUtilizados.includes(id)) {
+            codigosUtilizados.push(id);
+        }
+
+        salvarDadosNavegador();
+        alert('Estudo cadastrado com sucesso!');
+    }
+    
+    document.getElementById('btnVerficaDiasReunioes').click()
+    confirmaDesejoCadastroAnotacao(data);
+
+}
+
+/* ------------------------------[XXXXXXXX] ------------------------------ */
+function salvarAnotacaoSentinela() {
+    let data = document.getElementById('recuperaDataSentinela').value;
+    let dataAtualizacao = document.getElementById('dataAtualizacaoAnotacaoSentinela').value;
+    let tipo = document.getElementById('tipoAnotacaoSentinela').value;
+    let numeroParagrafo = document.getElementById('paragrafoAnotacaoSentinela').value;
+
+    let campos = {
+        citacao: document.getElementById('campoCitacaoInput'),
+        ilustracao: document.getElementById('campoIlustracaoInput'),
+        comentario: document.getElementById('campoComentarioInput'),
+        aplicacao: document.getElementById('campoAplicacaoInput'),
+        reflexao: document.getElementById('campoReflexaoInput')
+    };
+
+    if (tipo === 'nenhum') {
+        alert('Selecione um tipo de anotação.');
+        return;
+    }
+
+    let estudo = arrayEstudosSentinela.find(item => item.data === data);
+
+    if (!estudo) {
+        alert('Estudo não encontrado.');
+        return;
+    }
+
+    let novaAnotacao = adicionarAnotacaoAoEstudo(estudo, tipo, dataAtualizacao, campos[tipo].value, numeroParagrafo);
+    
+
+    salvarDadosNavegador();
+
+    alert('Anotação salva com sucesso!');
+    limparAnotacao();
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function adicionarAnotacaoAoEstudo(estudo, tipo, dataAtualizacao, anotacaoPessoal,numeroParagrafo) {
+    if (!Array.isArray(estudo.anotacoes)) {
+        estudo.anotacoes = [];
+    }
+
+    // Cria o objeto principal de anotações se ainda não existir
+    if (estudo.anotacoes.length === 0) {
+        estudo.anotacoes.push({});
+    }
+
+    // Cria o array do tipo se ainda não existir
+    if (!estudo.anotacoes[0][tipo]) {
+        estudo.anotacoes[0][tipo] = [];
+    }
+
+    // Adiciona o registro
+    estudo.anotacoes[0][tipo].push({
+        dataAtualizacao: dataAtualizacao,
+        anotacaoPessoal: anotacaoPessoal,
+        numeroParagrafo: numeroParagrafo
+    });
+
+        const campos = {
+        citacao: document.getElementById("campoCitacaoInput"),
+        ilustracao: document.getElementById("campoIlustracaoInput"),
+        aplicacao: document.getElementById("campoAplicacaoInput"),
+        comentario: document.getElementById("campoComentarioInput"),
+        reflexao: document.getElementById("campoReflexaoInput")
+    };
+
+    for(let i=0;i<campos.length;i++){
+        campos[0].value = '';
+    }
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function confirmaDesejoCadastroAnotacao(data) {
+    if (confirm('Deseja cadastrar anotações sobre o estudo?')) {
+        document.getElementById('recuperaDataSentinela').value = data;
+        const modal = new bootstrap.Modal(
+            document.getElementById('modalCadastroAnotacaoSentinela')
+        );
+        modal.show();
+    }
+    limparCamposSentinela();
+    document.getElementById('btnVerficaDiasReunioes').click();
+}
+
+/* ------------------------------[ok] ------------------------------*/ 
+function exibeQtdAnotacoesnoCircle() {
+    let dataRecuperada = document.getElementById('recuperaDataSentinela').value;
+    let numeroParagrafo = document.getElementById('paragrafoAnotacaoSentinela').value;
+
+    let circuloCitacao = document.getElementById("circuloCitacao");
+    let circuloIlustracao = document.getElementById("circuloIlustracao");
+    let circuloAplicacao = document.getElementById("circuloAplicacao");
+    let circuloComentario = document.getElementById("circuloComentario");
+    let circuloReflexao = document.getElementById("circuloReflexao");
+
+    // Limpa os círculos
+    circuloCitacao.innerText = 0;
+    circuloIlustracao.innerText = 0;
+    circuloAplicacao.innerText = 0;
+    circuloComentario.innerText = 0;
+    circuloReflexao.innerText = 0;
+
+    if (numeroParagrafo < 1) {
+        return;
+    }
+
+    // Localiza o estudo pela data
+    let estudo = arrayEstudosSentinela.find(
+        item => item.data === dataRecuperada
+    );
+
+    if (!estudo || !estudo.anotacoes) {
+        return;
+    }
+
+    let qtdCitacao = 0;
+    let qtdIlustracao = 0;
+    let qtdAplicacao = 0;
+    let qtdComentario = 0;
+    let qtdReflexao = 0;
+
+    estudo.anotacoes.forEach(anotacao => {
+        if (anotacao.citacao) {
+            qtdCitacao += anotacao.citacao.length;
+        }
+        if (anotacao.ilustracao) {
+            qtdIlustracao += anotacao.ilustracao.length;
+        }
+        if (anotacao.aplicacao) {
+            qtdAplicacao += anotacao.aplicacao.length;
+        }
+        if (anotacao.comentario) {
+            qtdComentario += anotacao.comentario.length;
+        }
+        if (anotacao.reflexao) {
+            qtdReflexao += anotacao.reflexao.length;
+        }
+    });
+
+
+    // Mostra cada valor no seu círculo
+    circuloCitacao.innerText = qtdCitacao;
+    circuloIlustracao.innerText = qtdIlustracao;
+    circuloAplicacao.innerText = qtdAplicacao;
+    circuloComentario.innerText = qtdComentario;
+    circuloReflexao.innerText = qtdReflexao;
+}
+
+/* ------------------------------[ok] ------------------------------*/ 
+function exibeCadastroDetalhadoAnotacoes(categoria, id){
+    let dataRecuperada = document.getElementById('recuperaDataSentinela').value;
+    let campoExibicao = document.getElementById(id);
+
+    let estudo = arrayEstudosSentinela.find(item => item.data === dataRecuperada);
+
+    if (!estudo) {
+        return;
+    }
+
+    campoExibicao.innerHTML = '';
+
+    let contador = 1;
+
+    estudo.anotacoes.forEach(anotacao => {
+        if (anotacao[categoria]) {
+            anotacao[categoria].forEach(registro => {
+                let linha = document.createElement('div');
+                linha.classList.add('row', 'mb-2');
+
+
+                let coluna = document.createElement('div');
+                coluna.classList.add('col');
+
+
+                let card = document.createElement('div');
+                card.classList.add('card');
+
+
+                let cardHeader = document.createElement('div');
+                cardHeader.classList.add('card-header');
+
+
+                cardHeader.innerHTML = `
+                    <div class="row mb-2">
+                        <div class="col-auto">
+                            <label class="uppercase fw-bold tamanho07 mb-2">
+                                Última Atualização:
+                            </label><br>
+                            <span class="uppercase fw-bold tamanho07 bg-danger text-white px-4 py-2 mb-2">
+                                ${formatarData(registro.dataAtualizacao)}
+                            </span>
+                        </div>
+
+                        <div class="col-auto text-center">
+                            <label class="uppercase fw-bold tamanho07 mb-2">
+                                referente a(o) ${categoria} do(a)
+                            </label><br>
+                            <span class="uppercase fw-bold tamanho07 bg-primary text-white px-4 py-2 mb-2">
+                                páragrafo ${registro.numeroParagrafo}
+                            </span>
+                        </div>
+                        
+                        <div class="col"></div>
+
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-secondary"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#body_${contador}"
+                                onclick="mudaChevron('icone_${contador}')">
+                                <i class="fa fa-chevron-down" id="icone_${contador}"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+
+                let cardBody = document.createElement('div');
+                cardBody.classList.add('card-body');
+
+
+                cardBody.innerHTML = `
+                    <div class="row collapse" id="body_${contador}">
+                        <div class="col">
+
+                            <div class="row">
+                                <div class="col">
+                                    <strong class="uppercase tamanho07">
+                                        Registro de ${categoria}:
+                                    </strong>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <cite class="uppercase tamanho07">
+                                        ${registro.anotacaoPessoal}
+                                    </cite>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                `;
+
+
+                card.appendChild(cardHeader);
+                card.appendChild(cardBody);
+
+                coluna.appendChild(card);
+                linha.appendChild(coluna);
+
+                campoExibicao.appendChild(linha);
+                contador++;
+
+            });
+        }
+    });
+}
+
+/* ------------------------------[ok] ------------------------------ */
+function mudaChevron(idChevron) {
+    const chevron = document.getElementById(idChevron);
+
+    if (chevron.classList.contains('fa-chevron-down')) {
+        chevron.classList.remove('fa-chevron-down');
+        chevron.classList.add('fa-chevron-up');
+    } else {
+        chevron.classList.remove('fa-chevron-up');
+        chevron.classList.add('fa-chevron-down');
+    }
+}
+
+function limparAnotacao(){
+    const tipoAnotacaoSentinela = document.getElementById('tipoAnotacaoSentinela').value;
+
+    const campos = {
+        citacao: document.getElementById('campoCitacaoInput'),
+        ilustracao: document.getElementById('campoIlustracaoInput'),
+        aplicacao: document.getElementById('campoAplicacaoInput'),
+        comentario: document.getElementById('campoComentarioInput'),
+        reflexao: document.getElementById('campoReflexaoInput')
+    };
+
+    if (campos[tipoAnotacaoSentinela]) {
+        campos[tipoAnotacaoSentinela].value = '';
+    }
+}
