@@ -191,7 +191,7 @@ function verificaQtdCapitulos(tipoIndex, livroIndex) {
 
     exibicaoQtdCapitulosLivros.innerHTML = ""; // limpa antes
     exibicaoQtdCapitulosLivros.innerHTML = `
-        <div class="alert alert-info mb-3">
+        <div class="alert alert-info mb-3" data-aos="fade-up" data-aos-delay="400">
             <div class="row d-flex justify-content-center">
                 <div class="col text-center">
                     <span class="uppercase tamanho08">Capítulos do Livro de &nbsp;<b>${livro.nome}</b>  &nbsp;(${tipo})</span>
@@ -209,7 +209,7 @@ function verificaQtdCapitulos(tipoIndex, livroIndex) {
         const classe = livro.lidos.includes(i) ? "btn-success" : "btn-secondary";
 
         exibicaoQtdCapitulosLivros.innerHTML += `
-            <button class="btn ${classe} mb-1 me-1"
+            <button class="btn ${classe} mb-1 me-1" data-aos="fade-up" data-aos-delay="500"
                 onclick="toggleCapitulo(this, ${tipoIndex}, ${livroIndex}, ${i}); exibirCapitulo('${tipo}', '${livro.nome}', ${i})"
                 ondblclick="abreCadastroJoias('${livro.nome}', ${i})"
                 style="width:48px;height:48px;font-size:0.9rem;">
