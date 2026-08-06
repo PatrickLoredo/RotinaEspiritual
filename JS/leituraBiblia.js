@@ -80,7 +80,7 @@ let escriturasGregas = [
     { nome: "Mateus", alias: "Mat", capitulos: 28, lidos: [] },
     { nome: "Marcos", alias: "Mar", capitulos: 16, lidos: [] },
     { nome: "Lucas", alias: "Luc", capitulos: 24, lidos: [] },
-    { nome: "João", alias: "Joã", capitulos: 21, lidos: [] },
+    { nome: "João", alias: "Jo", capitulos: 21, lidos: [] },
     { nome: "Atos dos Apóstolos", alias: "Atos", capitulos: 28, lidos: [] },
     { nome: "Romanos", alias: "Rom", capitulos: 16, lidos: [] },
     { nome: "1 Coríntios", alias: "1Co", capitulos: 16, lidos: [] },
@@ -166,9 +166,11 @@ function atualizaAccordionLivrosBiblicos() {
         // array de livros desse tipo
         let livros = livrosBiblicos[i];
 
+        let inicialFade = 200;
+
         for (let j = 0; j < livros.length; j++) {
             containerLivros.innerHTML += `
-                <div class="col-3 mb-2">
+                <div class="col-3 mb-2" data-aos="fade-up" data-aos-delay="${inicialFade}">
                     <button class="btn btn-primary w-100 uppercase"
                         onclick="verificaQtdCapitulos(${i},${j})"
                         style="font-size: 0.6rem;">
@@ -177,6 +179,7 @@ function atualizaAccordionLivrosBiblicos() {
                 </div>
             `;
         }
+        inicialFade += 50;
     }
 }
 
