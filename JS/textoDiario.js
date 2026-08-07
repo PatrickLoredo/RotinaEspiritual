@@ -69,15 +69,15 @@ let livrosBiblicos = [
     "Apocalipse"
 ];
 
-class CadastroTextoDiario{
-    constructor(data,livroBiblico,Capitulo,Versiculo,textoBiblico,comentarios = []){
+class CadastroTextoDiario {
+    constructor(data, livroBiblico, Capitulo, Versiculo, textoBiblico, comentarios = []) {
         this.data = data; //inputDateaTextoDiario
         this.livroBiblico = livroBiblico; //selectLivroBiblicoTextoDiario
         this.Capitulo = Capitulo; //capituloTextoDiario
         this.Versiculo = Versiculo; //versiculoTextoDiario
         this.textoBiblico = textoBiblico; //textoBiblicoTranscritoTextoDiarop
         this.comentarios = comentarios; //comentarioTextoDiario
-   }
+    }
 }
 function alteraData(idCampo, escolha) {
     let campoData = document.getElementById(idCampo);
@@ -86,20 +86,20 @@ function alteraData(idCampo, escolha) {
 
     if (campoData.value) {
         data = new Date(campoData.value + "T00:00:00");
-   } 
+    }
     else {
         data = new Date();
-   }
+    }
 
     if (escolha === '-1') {
         data.setDate(data.getDate() - 1);
-   }
+    }
     else if (escolha === '0') {
         data = new Date();
-   }
+    }
     else if (escolha === '1') {
         data.setDate(data.getDate() + 1);
-   }
+    }
 
     let dia = String(data.getDate()).padStart(2, '0');
     let mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -120,7 +120,7 @@ function recuperarTextoDiario() {
     let dados = localStorage.getItem("cadastrosTextoDiario");
     if (dados) {
         let lista = JSON.parse(dados);
-        arrayCadastrosTextoDiario = lista.map(item => 
+        arrayCadastrosTextoDiario = lista.map(item =>
             new CadastroTextoDiario(
                 item.data,
                 item.livroBiblico,
@@ -138,12 +138,12 @@ function cadastrarTextoDiario() {
     let comentario = document.getElementById("comentarioTextoDiario").value;
 
     // Verifica se já existe texto para essa data
-    let textoExistente = arrayCadastrosTextoDiario.find(item => 
+    let textoExistente = arrayCadastrosTextoDiario.find(item =>
         item.data === dataTexto
     );
 
     // Se já existe a data
-    if(textoExistente){
+    if (textoExistente) {
         textoExistente.comentarios.push(comentario);
         salvarTextoDiario();
         alert("Novo comentário adicionado ao texto diário!");
@@ -171,7 +171,7 @@ function cadastrarTextoDiario() {
     document.getElementById("comentarioTextoDiario").value = '';
 }
 
-function limparFormularioTextoDiario(){
+function limparFormularioTextoDiario() {
     document.getElementById("inputDateTextoDiario").value = '';
     document.getElementById("selectLivroBiblicoTextoDiario").value = '';
     document.getElementById("capituloTextoDiario").value = '';
@@ -191,109 +191,182 @@ function popularLivrosBiblicos(id) {
     }
 }
 
-function veririficaDataTextoDiario(){
+function veririficaDataTextoDiario() {
+
     const campoMensagemAlertTextoDiario = document.getElementById('mensagemAlertTextoDiario');
+
     const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
 
-    console.log(campoDataTextoDiario.value);
-    for(let i=0;i<arrayCadastrosTextoDiario.length;i++){
-        if(campoDataTextoDiario.value === arrayCadastrosTextoDiario[i].data){
-            campoMensagemAlertTextoDiario.innerHTML = '';
-            campoMensagemAlertTextoDiario.innerHTML = `
-                <div class="row">
-                    <div class="col">
-                        <div type="button" class="alert alert-success uppercase tamanho07 text-center"
-                            data-bs-toggle="collapse" data-bs-target="#detalhesTextoDiario">
-                            <i class="fa fa-check"></i>
-                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class=""> texto diário considerado para essa data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
-                            data-bs-target="#ModalCadastroTextoDiario">
-                            <i class="fa fa-circle-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            `
+    let textoEncontrado = arrayCadastrosTextoDiario.find(item =>
+        item.data === campoDataTextoDiario.value
+    );
 
-            document.getElementById('detalhesTextoDiario').innerHTML = '';
-            document.getElementById('detalhesTextoDiario').innerHTML = `
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col text-center">
-                            <label for="" class="label-format fw-bold">texto Diário&nbsp; - &nbsp;${arrayCadastrosTextoDiario[i].data}</label>
-                            <cite class="uppercase tamanho07">
-                                ${arrayCadastrosTextoDiario[i].textoBiblico}
-                            </cite>
-                            <span>-</span>
-                            <cite class="uppercase tamanho07 text-danger fw-bold">
-                                ${arrayCadastrosTextoDiario[i].livroBiblico} ${arrayCadastrosTextoDiario[i].Capitulo}:${arrayCadastrosTextoDiario[i].Versiculo}
-                            </cite>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body" id="campoComentarios">
-                
-                </div>
-            `;
-            for(let j=0;j<arrayCadastrosTextoDiario[i].comentarios.length;j++){
-                document.getElementById('campoComentarios').innerHTML = '';
-                document.getElementById('campoComentarios').innerHTML += `
-                    <div class="row">
-                        <div class="col">
-                            <textarea class="form-control uppercase" style="font-size: 0.7rem;" rows="5">
-                                ${arrayCadastrosTextoDiario[i].comentarios[j]}
-                            </textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col-auto">
-                            <button class="btn btn-sm btn-primary mt-3">
-                                <i class="fa fa-edit"></i>&nbsp;&nbsp;
-                                <span class="uppercase tamanho07">editar</span>
-                            </button>
 
-                            <button class="btn btn-sm btn-success mt-3">
-                                <i class="fa fa-save"></i>&nbsp;&nbsp;
-                                <span class="uppercase tamanho07">salvar</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-        else{
-            campoMensagemAlertTextoDiario.innerHTML = '';
-            campoMensagemAlertTextoDiario.innerHTML = `
-            <div class="row">
-                    <div class="col">
-                        <div class="alert alert-danger uppercase tamanho07 text-center">
-                            <i class="fa fa-x"></i>
-                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class=""> Nenhum texto diário considerado para esta data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
-                            data-bs-target="#ModalCadastroTextoDiario">
-                            <i class="fa fa-circle-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            `
-        }
+    if (textoEncontrado) {
+
+
+        campoMensagemAlertTextoDiario.innerHTML = `
+
+<div class="row">
+    <div class="col">
+
+        <div class="alert alert-success uppercase tamanho07 text-center"
+        data-bs-toggle="collapse"
+        data-bs-target="#detalhesTextoDiario">
+
+            <i class="fa fa-check"></i>
+            <i class="fa fa-eye"></i>
+
+            Texto diário considerado para essa data
+
+        </div>
+
+    </div>
+</div>
+
+<div class="row mb-2">
+
+<div class="col">
+
+<button class="btn btn-sm btn-primary w-100"
+data-bs-toggle="modal"
+data-bs-target="#CarouselCadastroTextoDiario">
+
+<i class="fa fa-circle-plus"></i>
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+
+
+        document.getElementById('detalhesTextoDiario').innerHTML = `
+
+
+<div class="card-header">
+
+<div class="text-center">
+
+<label class="label-format fw-bold">
+
+Texto Diário - ${textoEncontrado.data}
+
+</label>
+
+
+<cite class="uppercase tamanho07">
+
+${textoEncontrado.textoBiblico}
+
+</cite>
+
+
+<br>
+
+
+<cite class="uppercase tamanho07 text-danger fw-bold">
+
+${textoEncontrado.livroBiblico}
+${textoEncontrado.Capitulo}:${textoEncontrado.Versiculo}
+
+</cite>
+
+
+</div>
+
+</div>
+
+
+<div class="card-body" id="campoComentarios">
+
+
+</div>
+
+
+`;
+
+
+
+        let campoComentarios = document.getElementById("campoComentarios");
+
+
+        campoComentarios.innerHTML = "";
+
+
+        textoEncontrado.comentarios.forEach(comentario => {
+
+
+            campoComentarios.innerHTML += `
+
+
+<div class="row mb-3">
+
+<div class="col">
+
+<textarea 
+class="form-control uppercase"
+rows="5">
+
+${comentario}
+
+</textarea>
+
+
+</div>
+
+</div>
+
+
+`;
+
+
+        });
+
+
+
     }
+    else {
+
+
+        campoMensagemAlertTextoDiario.innerHTML = `
+
+<div class="alert alert-danger uppercase tamanho07 text-center">
+
+<i class="fa fa-x"></i>
+
+Nenhum texto diário considerado para esta data
+
+</div>
+
+
+<div class="row mb-2">
+
+<div class="col">
+
+<button class="btn btn-sm btn-primary w-100"
+data-bs-toggle="modal"
+data-bs-target="#CarouselCadastroTextoDiario">
+
+<i class="fa fa-circle-plus"></i>
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+    }
+
 }
 
 window.onload = function () {
-    alteraData('inputDateTextoDiario','0');
+    alteraData('inputDateTextoDiario', '0');
     popularLivrosBiblicos('selectLivroBiblicoTextoDiario');
     recuperarTextoDiario();
     veririficaDataTextoDiario();
