@@ -194,106 +194,81 @@ function popularLivrosBiblicos(id) {
 }
 
 function veririficaDataTextoDiario(){
+
     const campoMensagemAlertTextoDiario = document.getElementById('mensagemAlertTextoDiario');
     const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
 
-    console.log(campoDataTextoDiario.value);
-    
-    for(let i=-1;i<arrayCadastrosTextoDiario.length;i++){
-        if(campoDataTextoDiario.value === arrayCadastrosTextoDiario[i].data){
-            campoMensagemAlertTextoDiario.innerHTML = '';
-            campoMensagemAlertTextoDiario.innerHTML = `
-                <div class="row">
-                    <div class="col">
-                        <div type="button" class="alert alert-success uppercase tamanho07 text-center"
-                            data-bs-toggle="collapse" data-bs-target="#detalhesTextoDiario">
-                            <i class="fa fa-check"></i>
-                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class=""> texto diário considerado para essa data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
-                            data-bs-target="#ModalCadastroTextoDiario">
-                            <i class="fa fa-circle-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            `
+    console.log("Data pesquisada:", campoDataTextoDiario.value);
+    console.log("Cadastros:", arrayCadastrosTextoDiario);
 
-            document.getElementById('detalhesTextoDiario').innerHTML = '';
-            document.getElementById('detalhesTextoDiario').innerHTML = `
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col text-center">
-                            <label for="" class="label-format fw-bold">texto Diário&nbsp; - &nbsp;${arrayCadastrosTextoDiario[i].data}</label>
-                            <cite class="uppercase tamanho07">
-                                ${arrayCadastrosTextoDiario[i].textoBiblico}
-                            </cite>
-                            <span>-</span>
-                            <cite class="uppercase tamanho07 text-danger fw-bold">
-                                ${arrayCadastrosTextoDiario[i].livroBiblico} ${arrayCadastrosTextoDiario[i].Capitulo}:${arrayCadastrosTextoDiario[i].Versiculo}
-                            </cite>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body" id="campoComentarios">
-                
-                </div>
+
+    let textoEncontrado = arrayCadastrosTextoDiario.find(item => 
+        item.data === campoDataTextoDiario.value
+    );
+
+
+    if(textoEncontrado){
+
+        campoMensagemAlertTextoDiario.innerHTML = `
+            <div class="alert alert-success uppercase tamanho07 text-center">
+                <i class="fa fa-check"></i>
+                Texto diário considerado para essa data
+            </div>
+        `;
+
+
+        document.getElementById('detalhesTextoDiario').innerHTML = `
+            <div class="card-header text-center">
+                <label class="fw-bold">
+                    Texto Diário - ${textoEncontrado.data}
+                </label>
+
+                <br>
+
+                <cite>
+                    ${textoEncontrado.textoBiblico}
+                </cite>
+
+                <br>
+
+                <cite class="text-danger fw-bold">
+                    ${textoEncontrado.livroBiblico}
+                    ${textoEncontrado.Capitulo}:${textoEncontrado.Versiculo}
+                </cite>
+            </div>
+
+            <div class="card-body" id="campoComentarios"></div>
+        `;
+
+
+        let campoComentarios = document.getElementById('campoComentarios');
+
+        campoComentarios.innerHTML = "";
+
+        textoEncontrado.comentarios.forEach(comentario => {
+
+            campoComentarios.innerHTML += `
+                <textarea class="form-control mb-2">
+                    ${comentario}
+                </textarea>
             `;
-            for(let j=0;j<arrayCadastrosTextoDiario[i].comentarios.length;j++){
-                document.getElementById('campoComentarios').innerHTML = '';
-                document.getElementById('campoComentarios').innerHTML += `
-                    <div class="row">
-                        <div class="col">
-                            <textarea class="form-control uppercase" style="font-size: 0.7rem;" rows="5">
-                                ${arrayCadastrosTextoDiario[i].comentarios[j]}
-                            </textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col-auto">
-                            <button class="btn btn-sm btn-primary mt-3">
-                                <i class="fa fa-edit"></i>&nbsp;&nbsp;
-                                <span class="uppercase tamanho07">editar</span>
-                            </button>
 
-                            <button class="btn btn-sm btn-success mt-3">
-                                <i class="fa fa-save"></i>&nbsp;&nbsp;
-                                <span class="uppercase tamanho07">editar</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-        else{
-            campoMensagemAlertTextoDiario.innerHTML = '';
-            campoMensagemAlertTextoDiario.innerHTML = `
-            <div class="row">
-                    <div class="col">
-                        <div class="alert alert-danger uppercase tamanho07 text-center">
-                            <i class="fa fa-x"></i>
-                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class=""> Nenhum texto diário considerado para esta data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
-                            data-bs-target="#ModalCadastroTextoDiario">
-                            <i class="fa fa-circle-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            `
-        }
+        });
+
+
+    } else {
+
+
+        campoMensagemAlertTextoDiario.innerHTML = `
+            <div class="alert alert-danger uppercase tamanho07 text-center">
+                <i class="fa fa-x"></i>
+                Nenhum texto diário considerado para esta data
+            </div>
+        `;
+
     }
 }
+
 
 window.onload = function () {
     alteraData('inputDateTextoDiario','0');
