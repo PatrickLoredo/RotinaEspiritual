@@ -198,30 +198,8 @@ function veririficaDataTextoDiario(){
     const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
 
     console.log(campoDataTextoDiario.value);
-
-    if(arrayCadastrosTextoDiario.length<0){
-        campoMensagemAlertTextoDiario.innerHTML = '';
-        campoMensagemAlertTextoDiario.innerHTML = `
-            <div class="row">
-                <div class="col">
-                    <div type="button" class="alert alert-danger uppercase tamanho07 text-center">
-                        <i class="fa fa-x"></i>
-                        <span class=""> texto diário considerado para essa data</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-2">
-                <div class="col">
-                    <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
-                        data-bs-target="#ModalCadastroTextoDiario">
-                        <i class="fa fa-circle-plus"></i>
-                    </button>
-                </div>
-            </div>
-        `
-    }
     
-    for(let i=0;i<arrayCadastrosTextoDiario.length;i++){
+    for(let i=0;i<=arrayCadastrosTextoDiario.length;i++){
         if(campoDataTextoDiario.value === arrayCadastrosTextoDiario[i].data){
             campoMensagemAlertTextoDiario.innerHTML = '';
             campoMensagemAlertTextoDiario.innerHTML = `
