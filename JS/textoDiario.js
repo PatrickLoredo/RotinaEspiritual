@@ -199,7 +199,7 @@ function veririficaDataTextoDiario(){
 
     console.log(campoDataTextoDiario.value);
     
-    for(let i=0;i<=arrayCadastrosTextoDiario.length;i++){
+    for(let i=-1;i<arrayCadastrosTextoDiario.length;i++){
         if(campoDataTextoDiario.value === arrayCadastrosTextoDiario[i].data){
             campoMensagemAlertTextoDiario.innerHTML = '';
             campoMensagemAlertTextoDiario.innerHTML = `
