@@ -153,7 +153,7 @@
                                                 <sp class="label-format-start">Estudos Pessoais</span>
                                             </a>
                                         </li>
-                                        
+
                                         <li>
                                             <a class="dropdown-item" href="/HTML/genealogiaBiblica.html">
                                                 <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
@@ -169,15 +169,13 @@
                                         </li>
                                         <li class="dropdown-divider"></li>
                                         <li>
-                                            <a class="dropdown-item"
-                                                href="/HTML/estudo_Sentinela.html">
+                                            <a class="dropdown-item" href="/HTML/estudo_Sentinela.html">
                                                 <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
                                                 <span class="label-format-start">Estudo A Sentinela</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item"
-                                                href="/HTML/reuniaoVidaMinisterio.html">
+                                            <a class="dropdown-item" href="/HTML/reuniaoVidaMinisterio.html">
                                                 <i class="fa fa-asterisk">&nbsp;&nbsp;</i>
                                                 <span class="label-format-start">Reunião Vida & Ministério</span>
                                             </a>
@@ -195,8 +193,7 @@
                 <!--RELOGIO DO BODY-->
                 <div class="row">
                     <div class="col">
-                        <button class="btn btn-danger"
-                            onclick="window.open('/html/index.html', '_blank')"
+                        <button class="btn btn-danger" onclick="window.open('/html/index.html', '_blank')"
                             id="relogioPagina"></button>
                     </div>
                 </div>
@@ -218,62 +215,46 @@
                             <div class="card-body">
 
                                 <div class="input-group">
-                                    <button class="btn btn-sm btn-dark input-group-text"
-                                        onclick="alteraData('inputDateTextoDiario','-1')">
+                                    <button class="btn btn-sm btn-dark input-group-text" onclick="alteraData('inputDateTextoDiario','-1'),
+                                        veririficaDataTextoDiario()">
                                         <i class="fa fa-chevron-left"></i>
                                     </button>
 
-                                    <input type="date" 
-                                    id="inputDateTextoDiario"class="form-control text-center" 
-                                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">
+                                    <input type="date" id="inputDateTextoDiario" class="form-control text-center"
+                                        style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">
 
-                                    <button class="btn btn-sm btn-dark input-group-text"
-                                        onclick="alteraData('inputDateTextoDiario','1')">
+                                    <button class="btn btn-sm btn-dark input-group-text" onclick="alteraData('inputDateTextoDiario','1'),
+                                        veririficaDataTextoDiario();">
                                         <i class="fa fa-chevron-right"></i>
                                     </button>
 
-                                    <button class="btn btn-sm btn-primary input-group-text"
-                                    onclick="alteraData('inputDateTextoDiario','0')">
+                                    <button class="btn btn-sm btn-primary input-group-text" onclick="alteraData('inputDateTextoDiario','0'),
+                                    veririficaDataTextoDiario()">
                                         <i class="fa fa-calendar"></i>
                                     </button>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col">
-                                        <div type="button" 
-                                        class="alert alert-success uppercase tamanho07 text-center"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#texto_07082026">
-                                            <i class="fa fa-check"></i>&nbsp;
-                                            <span class=""> texto diário considerado</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#CarouselCadastroTextoDiario">
-                                            <i class="fa fa-circle-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="card-footer" id="mensagemAlertTextoDiario">
+                                
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Modal -->
-                    <div class="modal fade" id="CarouselCadastroTextoDiario" tabindex="-1" aria-labelledby="CarouselCadastroTextoDiarioLabel" aria-hidden="true">
+                    <div class="modal fade" id="ModalCadastroTextoDiario" tabindex="-1"
+                        aria-labelledby="ModalCadastroTextoDiarioLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header d-flex justify-content-center">
                                     <div class="row">
                                         <div class="col-11 d-flex justify-content-center align-items-center">
-                                            <h1 class="modal-title uppercase tamanho10" id="CarouselCadastroTextoDiarioLabel">Cadastro de Texto Diário</h1>
+                                            <h1 class="modal-title uppercase tamanho10"
+                                                id="ModalCadastroTextoDiarioLabel">Cadastro de Texto Diário</h1>
                                         </div>
                                         <div class="col-1">
-                                            <button type="button" id="btnCloseModalCadastroTextoDiario" 
-                                            class="btn btn-sm btn-danger" 
-                                            data-bs-dismiss="modal" aria-label="Close">
+                                            <button type="button" id="btnCloseModalCadastroTextoDiario"
+                                                class="btn btn-sm btn-danger" data-bs-dismiss="modal"
+                                                aria-label="Close">
                                                 <i class="fa fa-x"></i>
                                             </button>
                                         </div>
@@ -287,8 +268,9 @@
                                                 <span class="input-group-text bg-danger text-light">
                                                     <i class="fa fa-book-open"></i>
                                                 </span>
-                                                <input type="date" name="" id="dataNovoCadastroDiarioTexto" 
-                                                class="form-control uppercase text-center" style="font-size: 0.7rem;" disabled>
+                                                <input type="date" name="" id="dataNovoCadastroDiarioTexto"
+                                                    class="form-control uppercase text-center"
+                                                    style="font-size: 0.7rem;" disabled>
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -297,9 +279,9 @@
                                                 <span class="input-group-text bg-danger text-light">
                                                     <i class="fa fa-book-open"></i>
                                                 </span>
-                                                <select name="" 
-                                                id="selectLivroBiblicoTextoDiario" 
-                                                class="form-select uppercase text-center" style="font-size: 0.7rem;"></select>
+                                                <select name="" id="selectLivroBiblicoTextoDiario"
+                                                    class="form-select uppercase text-center"
+                                                    style="font-size: 0.7rem;"></select>
                                             </div>
                                         </div>
                                         <div class="col mt-4">
@@ -308,7 +290,9 @@
                                                 <span class="input-group-text bg-danger text-light">
                                                     <i class="fa fa-c"> .</i>
                                                 </span>
-                                                <input type="number" name="" id="capituloTextoDiario" class="form-control text-center uppercase" min="1" value="1" style="font-size: 0.7rem;">
+                                                <input type="number" name="" id="capituloTextoDiario"
+                                                    class="form-control text-center uppercase" min="1" value="1"
+                                                    style="font-size: 0.7rem;">
                                             </div>
                                         </div>
                                         <div class="col mt-4">
@@ -317,7 +301,9 @@
                                                 <span class="input-group-text bg-danger text-light">
                                                     <i class="fa fa-v">.</i>
                                                 </span>
-                                                <input type="number" name="" id="versiculoTextoDiario" class="form-control text-center uppercase" min="1" value="1" style="font-size: 0.7rem;">
+                                                <input type="number" name="" id="versiculoTextoDiario"
+                                                    class="form-control text-center uppercase" min="1" value="1"
+                                                    style="font-size: 0.7rem;">
                                             </div>
                                         </div>
 
@@ -327,31 +313,35 @@
                                                 <span class="input-group-text bg-danger text-light">
                                                     <i class="fa fa-edit"></i>
                                                 </span>
-                                                <textarea name="" id="textoBiblicoTranscritoTextoDiarop" 
-                                                class="form-control uppercase" style="letter-spacing: 1px; font-size: 0.7rem;"></textarea>
+                                                <textarea id="textoBiblicoTranscritoTextoDiario"
+                                                    class="form-control uppercase" style="font-size: 0.7rem;">
+                                                    </textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
+                                    <div class="row mb-4 container">
                                         <div class="col">
                                             <label for="" class="label-format">comentário</label>
                                             <div class="input-group">
                                                 <span class="input-group-text bg-primary text-light">
-                                                        <i class="fa fa-star"></i>
-                                                    </span>
-                                                <textarea name="" id="comentarioTextoDiario" 
-                                                class="form-control uppercase" style="letter-spacing: 1px; font-size: 0.7rem;"></textarea>
+                                                    <i class="fa fa-star"></i>
+                                                </span>
+                                                <textarea name="" id="comentarioTextoDiario" class="form-control uppercase"
+                                                    style="letter-spacing: 1px; font-size: 0.7rem;"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm uppercase btn-success" style="font-size: 0.7rem;">
+                                    <button type="button" onclick="cadastrarTextoDiario()"
+                                        class="btn btn-sm uppercase btn-success" style="font-size: 0.7rem;">
                                         <i class="fa fa-save"></i>&nbsp;&nbsp;
                                         Salvar
+
                                     </button>
-                                    <button type="button" class="btn btn-sm uppercase btn-primary" style="font-size: 0.7rem;">
+                                    <button type="button" class="btn btn-sm uppercase btn-primary"
+                                        style="font-size: 0.7rem;">
                                         <i class="fa fa-broom"></i>&nbsp;&nbsp;
                                         Limpar
                                     </button>
@@ -361,38 +351,14 @@
                     </div>
 
                     <div class="col-12 d-flex justify-content-center">
-                        <div class="card w-100 colllapse" id="texto_07082026">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col" id="mensagemTextoDiario">
-                                        
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col text-center">
-                                        <label for="" class="label-format fw-bold">texto Biblico</label>
-                                        <cite class="uppercase tamanho07">
-                                            "Começou uma grande perseguição contra a congregação em Jerusalém."
-                                        </cite>
-                                        <span>-</span>
-                                        <cite class="uppercase tamanho07 text-danger fw-bold"> Atos 8:1</cite>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-3">
-                                    <hr>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <textarea name="" id="" class="form-control" disabled></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card w-100 collapse" id="detalhesTextoDiario">
+                            
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
 </body>
+
 </html>

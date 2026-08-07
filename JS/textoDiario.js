@@ -114,17 +114,12 @@ function salvarTextoDiario() {
         "cadastrosTextoDiario",
         JSON.stringify(arrayCadastrosTextoDiario)
     );
-
 }
 
 function recuperarTextoDiario() {
-
     let dados = localStorage.getItem("cadastrosTextoDiario");
-
     if (dados) {
-
         let lista = JSON.parse(dados);
-
         arrayCadastrosTextoDiario = lista.map(item => 
             new CadastroTextoDiario(
                 item.data,
@@ -135,39 +130,45 @@ function recuperarTextoDiario() {
                 item.comentarios
             )
         );
-
     }
-
 }
 
 function cadastrarTextoDiario() {
+    let dataTexto = document.getElementById("inputDateTextoDiario").value;
+    let comentario = document.getElementById("comentarioTextoDiario").value;
+
+    // Verifica se já existe texto para essa data
+    let textoExistente = arrayCadastrosTextoDiario.find(item => 
+        item.data === dataTexto
+    );
+
+    // Se já existe a data
+    if(textoExistente){
+        textoExistente.comentarios.push(comentario);
+        salvarTextoDiario();
+        alert("Novo comentário adicionado ao texto diário!");
+        document.getElementById("comentarioTextoDiario").value = '';
+        return;
+    }
+
+    // Se não existe a data, cria novo texto diário
     let novoTexto = new CadastroTextoDiario(
-        document.getElementById("inputDateTextoDiario").value,
+        dataTexto,
         document.getElementById("selectLivroBiblicoTextoDiario").value,
         document.getElementById("capituloTextoDiario").value,
         document.getElementById("versiculoTextoDiario").value,
         document.getElementById("textoBiblicoTranscritoTextoDiario").value,
         [
-            document.getElementById("comentarioTextoDiario").value
+            comentario
         ]
     );
 
     arrayCadastrosTextoDiario.push(novoTexto);
     salvarTextoDiario();
-
-    let confirmacao = confirm(
-        "Deseja cadastrar um novo comentário para esse mesmo texto diário?"
+    alert(
+        `Texto diário cadastrado com sucesso para ${novoTexto.livroBiblico} ${novoTexto.Capitulo}:${novoTexto.Versiculo}`
     );
-
-    if (confirmacao) {
-        document.getElementById("comentarioTextoDiario").value = "";
-   } 
-    else {
-        limparFormularioTextoDiario();
-        document
-        .getElementById("btnCloseModalCadastroTextoDiario")
-        .click();
-   }
+    document.getElementById("comentarioTextoDiario").value = '';
 }
 
 function limparFormularioTextoDiario(){
@@ -190,8 +191,110 @@ function popularLivrosBiblicos(id) {
     }
 }
 
+function veririficaDataTextoDiario(){
+    const campoMensagemAlertTextoDiario = document.getElementById('mensagemAlertTextoDiario');
+    const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
+
+    console.log(campoDataTextoDiario.value);
+    for(let i=0;i<arrayCadastrosTextoDiario.length;i++){
+        if(campoDataTextoDiario.value === arrayCadastrosTextoDiario[i].data){
+            campoMensagemAlertTextoDiario.innerHTML = '';
+            campoMensagemAlertTextoDiario.innerHTML = `
+                <div class="row">
+                    <div class="col">
+                        <div type="button" class="alert alert-success uppercase tamanho07 text-center"
+                            data-bs-toggle="collapse" data-bs-target="#detalhesTextoDiario">
+                            <i class="fa fa-check"></i>
+                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class=""> texto diário considerado para essa data</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
+                            data-bs-target="#ModalCadastroTextoDiario">
+                            <i class="fa fa-circle-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `
+
+            document.getElementById('detalhesTextoDiario').innerHTML = '';
+            document.getElementById('detalhesTextoDiario').innerHTML = `
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col text-center">
+                            <label for="" class="label-format fw-bold">texto Diário&nbsp; - &nbsp;${arrayCadastrosTextoDiario[i].data}</label>
+                            <cite class="uppercase tamanho07">
+                                ${arrayCadastrosTextoDiario[i].textoBiblico}
+                            </cite>
+                            <span>-</span>
+                            <cite class="uppercase tamanho07 text-danger fw-bold">
+                                ${arrayCadastrosTextoDiario[i].livroBiblico} ${arrayCadastrosTextoDiario[i].Capitulo}:${arrayCadastrosTextoDiario[i].Versiculo}
+                            </cite>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" id="campoComentarios">
+                
+                </div>
+            `;
+            for(let j=0;j<arrayCadastrosTextoDiario[i].comentarios.length;j++){
+                document.getElementById('campoComentarios').innerHTML = '';
+                document.getElementById('campoComentarios').innerHTML += `
+                    <div class="row">
+                        <div class="col">
+                            <textarea class="form-control uppercase" style="font-size: 0.7rem;" rows="5">
+                                ${arrayCadastrosTextoDiario[i].comentarios[j]}
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-primary mt-3">
+                                <i class="fa fa-edit"></i>&nbsp;&nbsp;
+                                <span class="uppercase tamanho07">editar</span>
+                            </button>
+
+                            <button class="btn btn-sm btn-success mt-3">
+                                <i class="fa fa-save"></i>&nbsp;&nbsp;
+                                <span class="uppercase tamanho07">salvar</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        else{
+            campoMensagemAlertTextoDiario.innerHTML = '';
+            campoMensagemAlertTextoDiario.innerHTML = `
+            <div class="row">
+                    <div class="col">
+                        <div class="alert alert-danger uppercase tamanho07 text-center">
+                            <i class="fa fa-x"></i>
+                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class=""> Nenhum texto diário considerado para esta data</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
+                            data-bs-target="#ModalCadastroTextoDiario">
+                            <i class="fa fa-circle-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `
+        }
+    }
+}
+
 window.onload = function () {
     alteraData('inputDateTextoDiario','0');
     popularLivrosBiblicos('selectLivroBiblicoTextoDiario');
     recuperarTextoDiario();
+    veririficaDataTextoDiario();
 };
