@@ -81,6 +81,7 @@ class CadastroTextoDiario{
 }
 function alteraData(idCampo, escolha) {
     let campoData = document.getElementById(idCampo);
+    let campoModal = document.getElementById('dataNovoCadastroDiarioTexto');
     let data;
 
     if (campoData.value) {
@@ -105,6 +106,7 @@ function alteraData(idCampo, escolha) {
     let ano = data.getFullYear();
 
     campoData.value = `${ano}-${mes}-${dia}`;
+    campoModal.value = `${ano}-${mes}-${dia}`;
 }
 
 function salvarTextoDiario() {

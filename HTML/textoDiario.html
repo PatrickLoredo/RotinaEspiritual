@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!--CSS
+    <link rel="stylesheet" href="/RotinaEspiritual/CSS/rotinaEspiritual.css">-->
+
+    <!--JAVASCRIPT
+    <script src="/RotinaEspiritual/JS/textoDiario.js" defer></script>-->
+
+    <!--JAVASCRIPT-->
+    <script src="/JS/textoDiario.js" defer></script>
+
     <!--CSS-->
     <link rel="stylesheet" href="/CSS/rotinaEspiritual.css">
 
@@ -19,8 +28,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
         </script>
 
-    <!--JAVASCRIPT-->
-    <script src="/JS/textoDiario.js" defer></script>
+
 
     <title>Texto Diário - Rotina Espiritual</title>
 </head>
@@ -273,7 +281,17 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-6">
+                                            <label for="" class="label-format">Data Cadastro</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-danger text-light">
+                                                    <i class="fa fa-book-open"></i>
+                                                </span>
+                                                <input type="date" name="" id="dataNovoCadastroDiarioTexto" 
+                                                class="form-control uppercase text-center" style="font-size: 0.7rem;" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
                                             <label for="" class="label-format">livro bíblico</label>
                                             <div class="input-group">
                                                 <span class="input-group-text bg-danger text-light">
@@ -309,7 +327,8 @@
                                                 <span class="input-group-text bg-danger text-light">
                                                     <i class="fa fa-edit"></i>
                                                 </span>
-                                                <textarea name="" id="textoBiblicoTranscritoTextoDiarop" class="form-control"></textarea>
+                                                <textarea name="" id="textoBiblicoTranscritoTextoDiarop" 
+                                                class="form-control uppercase" style="letter-spacing: 1px; font-size: 0.7rem;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -317,7 +336,13 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="" class="label-format">comentário</label>
-                                            <textarea name="" id="comentarioTextoDiario" class="form-control"></textarea>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-primary text-light">
+                                                        <i class="fa fa-star"></i>
+                                                    </span>
+                                                <textarea name="" id="comentarioTextoDiario" 
+                                                class="form-control uppercase" style="letter-spacing: 1px; font-size: 0.7rem;"></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
