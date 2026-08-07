@@ -121,7 +121,6 @@ function salvarProgresso() {
 }
 
 function atualizaAccordionLivrosBiblicos() {
-
     var accordionContainer = document.getElementById("collapseLivrosBiblicos");
 
     if (!accordionContainer) {
