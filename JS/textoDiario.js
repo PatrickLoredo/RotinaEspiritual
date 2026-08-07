@@ -210,9 +210,20 @@ function veririficaDataTextoDiario(){
     if(textoEncontrado){
 
         campoMensagemAlertTextoDiario.innerHTML = `
-            <div class="alert alert-success uppercase tamanho07 text-center">
-                <i class="fa fa-check"></i>
-                Texto diário considerado para essa data
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success uppercase tamanho07 text-center">
+                        <i class="fa fa-check"></i>
+                        Texto diário considerado para essa data
+                    </div>
+                <div class="col">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-sm btn-primary w-100">
+                        <i class="fa fa-circle-plus">
+                    </button>
+                <div class="col">
             </div>
         `;
 
