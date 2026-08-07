@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--CSS-->
-    <link rel="stylesheet" href="/CSS/rotinaEspiritual.css">
+    <link rel="stylesheet" href="/RotinaEspiritual/CSS/rotinaEspiritual.css">
 
     <!--FONTAWESOME-->
     <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
@@ -20,7 +20,7 @@
         </script>
 
     <!--JAVASCRIPT-->
-    <script src="/JS/textoDiario.js" defer></script>
+    <script src="/RotinaEspiritual/JS/textoDiario.js" defer></script>
 
     <title>Texto Diário - Rotina Espiritual</title>
 </head>
@@ -201,25 +201,156 @@
                     </div>
                 </div>
             </div>
-            <div class="row m-auto">
-                <div class="col-12 mb-2 d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input type="date" 
-                                class="form-control text-center" 
-                                style="text-transform: uppercase; 
-                                font-size: 0.7rem; 
-                                letter-spacing: 1px;"
-                                id="inputDateTextoDiario">
+
+            <!--MAIN BODY-->
+            <main>
+                <div class="row m-auto">
+                    <div class="col-12 mb-2 d-flex justify-content-center">
+                        <div class="card w-100">
+                            <div class="card-body">
+
+                                <div class="input-group">
+                                    <button class="btn btn-sm btn-dark input-group-text"
+                                        onclick="alteraData('inputDateTextoDiario','-1')">
+                                        <i class="fa fa-chevron-left"></i>
+                                    </button>
+
+                                    <input type="date" id="inputDateTextoDiario"class="form-control text-center" 
+                                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">
+
+                                    <button class="btn btn-sm btn-dark input-group-text"
+                                        onclick="alteraData('inputDateTextoDiario','1')">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+
+                                    <button class="btn btn-sm btn-primary input-group-text"
+                                    onclick="alteraData('inputDateTextoDiario','0')">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col">
+                                        <div type="button" 
+                                        class="alert alert-success uppercase tamanho07 text-center"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#texto_07082026">
+                                            <i class="fa fa-check"></i>&nbsp;
+                                            <span class=""> texto diário considerado</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#CarouselCadastroTextoDiario">
+                                            <i class="fa fa-circle-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="CarouselCadastroTextoDiario" tabindex="-1" aria-labelledby="CarouselCadastroTextoDiarioLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header d-flex justify-content-center">
+                                    <div class="row">
+                                        <div class="col-11 d-flex justify-content-center align-items-center">
+                                            <h1 class="modal-title uppercase tamanho10" id="CarouselCadastroTextoDiarioLabel">Cadastro de Texto Diário</h1>
+                                        </div>
+                                        <div class="col-1">
+                                            <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" aria-label="Close">
+                                                <i class="fa fa-x"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="" class="label-format">livro bíblico</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-danger text-light">
+                                                    <i class="fa fa-book-open"></i>
+                                                </span>
+                                                <select name="" id="" class="form-select" style="font-size: 0.7rem;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col mt-4">
+                                            <label for="" class="label-format">Capítulo</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-danger text-light">
+                                                    <i class="fa fa-3"></i>
+                                                </span>
+                                                <input type="number" name="" id="" class="form-control text-center uppercase" min="1" value="1" style="font-size: 0.7rem;">
+                                            </div>
+                                        </div>
+                                        <div class="col mt-4">
+                                            <label for="" class="label-format">Versículo</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-danger text-light">
+                                                    <i class="fa fa-3"></i>
+                                                </span>
+                                                <input type="number" name="" id="" class="form-control text-center uppercase" min="1" value="1" style="font-size: 0.7rem;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <textarea name="" id="" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm uppercase btn-success" style="font-size: 0.7rem;">
+                                        <i class="fa fa-save"></i>&nbsp;&nbsp;
+                                        Salvar
+                                    </button>
+                                    <button type="button" class="btn btn-sm uppercase btn-primary" style="font-size: 0.7rem;">
+                                        <i class="fa fa-broom"></i>&nbsp;&nbsp;
+                                        Limpar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="card w-100 colllapse" id="texto_07082026">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col" id="mensagemTextoDiario">
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <label for="" class="label-format fw-bold">texto Biblico</label>
+                                        <cite class="uppercase tamanho07">
+                                            "Começou uma grande perseguição contra a congregação em Jerusalém."
+                                        </cite>
+                                        <span>-</span>
+                                        <cite class="uppercase tamanho07 text-danger fw-bold"> Atos 8:1</cite>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <textarea name="" id="" class="form-control" disabled></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 d-flex justify-content-center">
-                    teste
-                </div>
-            </div>
+            </main>
         </div>
     </div>
 </body>
