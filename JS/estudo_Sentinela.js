@@ -18,9 +18,6 @@ window.onload = function () {
     populaLivrosBiblicos();
     defineDataInicialSentinela()
     atualizaAccordionLivrosBiblicos();
-
-    
-    
 };
 
 function defineDataInicialSentinela() {
