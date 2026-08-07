@@ -1,3 +1,5 @@
+console.log("JS carregado");
+
 let arrayCadastrosTextoDiario = [];
 
 let livrosBiblicos = [
