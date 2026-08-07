@@ -192,164 +192,104 @@ function popularLivrosBiblicos(id) {
 }
 
 function veririficaDataTextoDiario(){
-
     const campoMensagemAlertTextoDiario = document.getElementById('mensagemAlertTextoDiario');
     const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
 
-    let textoEncontrado = arrayCadastrosTextoDiario.find(item => 
-        item.data === campoDataTextoDiario.value
-    );
-
-
-    if(textoEncontrado){
-
-
-        campoMensagemAlertTextoDiario.innerHTML = `
-
-            <div class="row">
-                <div class="col">
-
-                    <div class="alert alert-success uppercase tamanho07 text-center"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#detalhesTextoDiario">
-
-                        <i class="fa fa-check"></i>
-                        <i class="fa fa-eye"></i>&nbsp;&nbsp;
-
-                        Texto diário considerado para essa data
-
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="row mb-2">
-                <div class="col">
-
-                    <button class="btn btn-sm btn-primary w-100"
-                        data-bs-toggle="modal"
-                        data-bs-target="#CarouselCadastroTextoDiario">
-
-                        <i class="fa fa-circle-plus"></i>
-
-                    </button>
-
-                </div>
-            </div>
-
-        `;
-
-
-
-        document.getElementById('detalhesTextoDiario').innerHTML = `
-
-            <div class="card-header">
-
-                <div class="text-center">
-
-                    <label class="label-format fw-bold">
-                        Texto Diário - ${textoEncontrado.data}
-                    </label>
-
-                    <br>
-
-                    <cite class="uppercase tamanho07">
-                        ${textoEncontrado.textoBiblico}
-                    </cite>
-
-                    <br>
-
-                    <cite class="uppercase tamanho07 text-danger fw-bold">
-                        ${textoEncontrado.livroBiblico} 
-                        ${textoEncontrado.Capitulo}:${textoEncontrado.Versiculo}
-                    </cite>
-
-                </div>
-
-            </div>
-
-
-            <div class="card-body" id="campoComentarios">
-
-            </div>
-
-        `;
-
-
-
-        let campoComentarios = document.getElementById("campoComentarios");
-
-
-        textoEncontrado.comentarios.forEach(comentario => {
-
-
-            campoComentarios.innerHTML += `
-
-                <div class="row mb-3">
-
+    console.log(campoDataTextoDiario.value);
+    for(let i=0;i<arrayCadastrosTextoDiario.length;i++){
+        if(campoDataTextoDiario.value === arrayCadastrosTextoDiario[i].data){
+            campoMensagemAlertTextoDiario.innerHTML = '';
+            campoMensagemAlertTextoDiario.innerHTML = `
+                <div class="row">
                     <div class="col">
-
-                        <textarea 
-                        class="form-control uppercase"
-                        style="font-size:0.7rem;"
-                        rows="5"
-                        disabled>${comentario}</textarea>
-
+                        <div type="button" class="alert alert-success uppercase tamanho07 text-center"
+                            data-bs-toggle="collapse" data-bs-target="#detalhesTextoDiario">
+                            <i class="fa fa-check"></i>
+                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class=""> texto diário considerado para essa data</span>
+                        </div>
                     </div>
-
                 </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
+                            data-bs-target="#ModalCadastroTextoDiario">
+                            <i class="fa fa-circle-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `
 
+            document.getElementById('detalhesTextoDiario').innerHTML = '';
+            document.getElementById('detalhesTextoDiario').innerHTML = `
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col text-center">
+                            <label for="" class="label-format fw-bold">texto Diário&nbsp; - &nbsp;${arrayCadastrosTextoDiario[i].data}</label>
+                            <cite class="uppercase tamanho07">
+                                ${arrayCadastrosTextoDiario[i].textoBiblico}
+                            </cite>
+                            <span>-</span>
+                            <cite class="uppercase tamanho07 text-danger fw-bold">
+                                ${arrayCadastrosTextoDiario[i].livroBiblico} ${arrayCadastrosTextoDiario[i].Capitulo}:${arrayCadastrosTextoDiario[i].Versiculo}
+                            </cite>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" id="campoComentarios">
+                
+                </div>
             `;
-
-
-        });
-
-
-
-    }
-    else{
-
-
-        campoMensagemAlertTextoDiario.innerHTML = `
-
-            <div class="row">
-
-                <div class="col">
-
-                    <div class="alert alert-danger uppercase tamanho07 text-center">
-
-                        <i class="fa fa-x"></i>&nbsp;&nbsp;
-
-                        Nenhum texto diário considerado para esta data
-
+            for(let j=0;j<arrayCadastrosTextoDiario[i].comentarios.length;j++){
+                document.getElementById('campoComentarios').innerHTML = '';
+                document.getElementById('campoComentarios').innerHTML += `
+                    <div class="row">
+                        <div class="col">
+                            <textarea class="form-control uppercase" style="font-size: 0.7rem;" rows="5">
+                                ${arrayCadastrosTextoDiario[i].comentarios[j]}
+                            </textarea>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-primary mt-3">
+                                <i class="fa fa-edit"></i>&nbsp;&nbsp;
+                                <span class="uppercase tamanho07">editar</span>
+                            </button>
 
+                            <button class="btn btn-sm btn-success mt-3">
+                                <i class="fa fa-save"></i>&nbsp;&nbsp;
+                                <span class="uppercase tamanho07">editar</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        else{
+            campoMensagemAlertTextoDiario.innerHTML = '';
+            campoMensagemAlertTextoDiario.innerHTML = `
+            <div class="row">
+                    <div class="col">
+                        <div class="alert alert-danger uppercase tamanho07 text-center">
+                            <i class="fa fa-x"></i>
+                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class=""> Nenhum texto diário considerado para esta data</span>
+                        </div>
+                    </div>
                 </div>
-
-            </div>
-
-
-            <div class="row mb-2">
-
-                <div class="col">
-
-                    <button class="btn btn-sm btn-primary w-100"
-                        data-bs-toggle="modal"
-                        data-bs-target="#CarouselCadastroTextoDiario">
-
-                        <i class="fa fa-circle-plus"></i>
-
-                    </button>
-
+                <div class="row mb-2">
+                    <div class="col">
+                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
+                            data-bs-target="#ModalCadastroTextoDiario">
+                            <i class="fa fa-circle-plus"></i>
+                        </button>
+                    </div>
                 </div>
-
-            </div>
-
-        `;
-
+            `
+        }
     }
-
 }
 
 window.onload = function () {
