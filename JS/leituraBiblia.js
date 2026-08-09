@@ -199,8 +199,6 @@ function rolarParaElemento(idElemento, margem = 100) {
     });
 }
 
-
-
 function verificaQtdCapitulos(tipoIndex, livroIndex) {
     const tipo = tiposLivosBiblicos[tipoIndex];
     const livro = livrosBiblicos[tipoIndex][livroIndex];
