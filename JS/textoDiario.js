@@ -220,7 +220,6 @@ function verificaDataTextoDiario() {
         `;
 
         campoExibicaoInfoTextoDiario.innerHTML = `
-
             <div class="row my-3 py-3 bg-primary text-light w-100 m-auto d-flex align-items-center" style="min-height: 2rem;">
                 <div class="col text-center">
                     <div class="row">
@@ -246,12 +245,11 @@ function verificaDataTextoDiario() {
             cadastroEncontrado.comentarios.forEach((comentario, indice) => {
                 campoExibicaoInfoTextoDiario.innerHTML += `
                     <div class="container">
-                        <div class="row text-center mb-2">
+                        <div class="row mb-2">
                             <div class="col">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row align-items-center">
-
                                             <div class="col">
                                                 <span
                                                     class="tamanho07 uppercase"
@@ -261,7 +259,6 @@ function verificaDataTextoDiario() {
                                             </div>
 
                                             <div class="col-auto d-flex gap-2">
-
                                                 <button
                                                     type="button"
                                                     id="btnEditarComentario-${indice}"
@@ -351,7 +348,8 @@ function editarComentarioTextoDiario(indice) {
     const comentarioAtual = cadastroEncontrado.comentarios[indice].trim();
 
     campoComentario.outerHTML = `
-        <textarea class="form-control uppercase tamanho06" id="comentarioTexto-${indice}" rows="10">${comentarioAtual}</textarea>
+        <textarea class="form-control uppercase" 
+        id="comentarioTexto-${indice}" rows="10" style="font-size: 0.7rem">${comentarioAtual}</textarea>
     `;
 
     btnEditar.classList.add('d-none');
