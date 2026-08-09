@@ -267,6 +267,7 @@ function mostraCategoriasSalvas(){
     }
 }
 
+
 function rolarParaElemento(idElemento, margem = 100) {
     const elemento = document.getElementById(idElemento);
 
@@ -281,6 +282,20 @@ function rolarParaElemento(idElemento, margem = 100) {
         behavior: 'smooth'
     });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const campoNovoEstudo = document.getElementById(
+        'campoInformacoesNovoEstudoPessoal'
+    );
+
+    campoNovoEstudo.addEventListener('shown.bs.collapse', function () {
+
+        rolarParaElemento('tituloNovoEstudoPessoal', 100);
+
+    });
+
+});
 
 //Função para carregar estudos pessoais cadastrados, com opção de filtro por categoria, exibir na tela, atualizar editores e botões de ação
 function carregarEstudos(tipoEscolha, categoria = null){
