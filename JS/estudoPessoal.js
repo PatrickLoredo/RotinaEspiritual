@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     campoNovoEstudo.addEventListener('shown.bs.collapse', function () {
 
-        rolarParaElemento('tituloNovoEstudoPessoal', 100);
+        rolarParaElemento('dataNovoEstudoPessoal', 100);
 
     });
 

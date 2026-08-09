@@ -35,7 +35,8 @@ body a{
 #modalCadastroCidadesBiblicas .modal-body select,
 #modalCadastroProfissoesBiblicas input,
 #modalCadastroProfissoesBiblicas select,
-#modalCadastroAnotacaoSentinela .textAreaSentinela{
+#modalCadastroAnotacaoSentinela .textAreaSentinela,
+#campoInformacoesNovoEstudoPessoal label{
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -74,7 +75,8 @@ body a{
 #modalCadastroCidadesBiblicas input,
 #modalCadastroCidadesBiblicas select,
 #modalCadastroProfissoesBiblicas input,
-#modalCadastroProfissoesBiblicas select{
+#modalCadastroProfissoesBiblicas select,
+#campoInformacoesNovoEstudoPessoal label{
     font-size:0.7rem;
 }
 .tamanho06{
@@ -323,7 +325,7 @@ button:hover .refresh-icon {
 }
 
 #editorInfoNovoEstudoPessoal {
-    min-height: 200px;
+    height: 50vh;
 }
 .quill-wrapper {
     max-height: 500px;
