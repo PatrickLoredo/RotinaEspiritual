@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../CSS/rotinaEspiritual.css">
+    <link rel="stylesheet" href="/CSS/rotinaEspiritual.css">
 
-    <script src="../JS/textoDiario.js" defer></script>
+    <script src="/JS/textoDiario.js" defer></script>
 
     <!--FONTAWESOME-->
     <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
@@ -202,37 +202,39 @@
             <!--MAIN BODY-->
             <main>
                 <div class="row m-auto">
-                    <div class="col-12 col-lg-3 mb-2 ">
+                    <div class="col-12 col-scol-lg-4 mb-2">
                         <div class="card">
                             <div class="card-body">
                                 <div class="input-group">
-                                    <button class="btn btn-sm btn-dark input-group-text w-50" 
+                                    <button class="btn btn-sm btn-dark input-group-text w-25" 
                                     onclick="alteraData('inputDateTextoDiario','-1'),verificaDataTextoDiario()">
                                         <i class="fa fa-chevron-left"></i>
                                     </button>
 
-                                    <input type="date" id="inputDateTextoDiario" class="form-control text-center"
-                                        style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">
+                                    <input type="date" id="inputDateTextoDiario" class="form-control text-center fw-bold text-danger"
+                                        style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">
 
-                                    <button class="btn btn-sm btn-dark input-group-text w-50" 
+                                    <button class="btn btn-sm btn-dark input-group-text w-25" 
                                     onclick="alteraData('inputDateTextoDiario','1'),verificaDataTextoDiario();">
                                         <i class="fa fa-chevron-right"></i>
                                     </button>
 
-                                    <button class="btn btn-sm btn-primary input-group-text" 
+                                    <button class="btn btn-sm btn-warning input-group-text w-100 mt-2" 
                                     onclick="alteraData('inputDateTextoDiario','0'),verificaDataTextoDiario()">
                                         <i class="fa fa-calendar"></i>
+                                        <span class="uppercase tamanho07">&nbsp;&nbsp; data de hoje</span>
                                     </button>
+                                </div>
+
+                                <div class="col-12 col-lg-8">
+                                        <div class="mt-3" id="mensagemAlertTextoDiario">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12 col-lg-9 mb-2">
-                        <div class="card mb-3">
-                            <div class="card-body mt-3" id="mensagemAlertTextoDiario">
-                        </div>
-                    </div>
+                    
 
                     <!-- Modal -->
                     <div class="modal fade" id="ModalCadastroTextoDiario" tabindex="-1"
