@@ -403,7 +403,7 @@ function mostraJoiasEspirituais() {
 
     exibicaoQtdCapitulosLivros.innerHTML = '';
     exibicaoQtdCapitulosLivros.innerHTML += `
-        <div class="row">
+        <div class="row" id="campoFiltroJoiasEspirituais">
             <div class="col-12 mb-2">
                 <div class="row d-none" style="visibility: hidden;">teste</div>
                 <div class="row">
