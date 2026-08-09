@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/CSS/rotinaEspiritual.css">
+    <link rel="stylesheet" href="../CSS/rotinaEspiritual.css">
 
-    <script src="/JS/textoDiario.js" defer></script>
+    <script src="../JS/textoDiario.js" defer></script>
 
     <!--FONTAWESOME-->
     <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
@@ -207,21 +207,21 @@
                             <div class="card-body">
 
                                 <div class="input-group">
-                                    <button class="btn btn-sm btn-dark input-group-text" onclick="alteraData('inputDateTextoDiario','-1'),
-                                        veririficaDataTextoDiario()">
+                                    <button class="btn btn-sm btn-dark input-group-text" 
+                                    onclick="alteraData('inputDateTextoDiario','-1'),verificaDataTextoDiario()">
                                         <i class="fa fa-chevron-left"></i>
                                     </button>
 
                                     <input type="date" id="inputDateTextoDiario" class="form-control text-center"
                                         style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">
 
-                                    <button class="btn btn-sm btn-dark input-group-text" onclick="alteraData('inputDateTextoDiario','1'),
-                                        veririficaDataTextoDiario();">
+                                    <button class="btn btn-sm btn-dark input-group-text" 
+                                    onclick="alteraData('inputDateTextoDiario','1'),verificaDataTextoDiario();">
                                         <i class="fa fa-chevron-right"></i>
                                     </button>
 
-                                    <button class="btn btn-sm btn-primary input-group-text" onclick="alteraData('inputDateTextoDiario','0'),
-                                    veririficaDataTextoDiario()">
+                                    <button class="btn btn-sm btn-primary input-group-text" 
+                                    onclick="alteraData('inputDateTextoDiario','0'),verificaDataTextoDiario()">
                                         <i class="fa fa-calendar"></i>
                                     </button>
                                 </div>

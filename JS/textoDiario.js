@@ -1,5 +1,3 @@
-console.log("JS carregado");
-
 let arrayCadastrosTextoDiario = [];
 
 let livrosBiblicos = [
@@ -193,111 +191,233 @@ function popularLivrosBiblicos(id) {
     }
 }
 
-function veririficaDataTextoDiario(){
+function verificaDataTextoDiario() {
     const campoMensagemAlertTextoDiario = document.getElementById('mensagemAlertTextoDiario');
     const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
+    const campoExibicaoInfoTextoDiario = document.getElementById('detalhesTextoDiario');
+    const dataSelecionada = campoDataTextoDiario.value;
 
-    console.log(campoDataTextoDiario.value);
-    
-    for(let i=0;i<arrayCadastrosTextoDiario.length;i++){
-        if(campoDataTextoDiario.value === arrayCadastrosTextoDiario[i].data){
-            campoMensagemAlertTextoDiario.innerHTML = '';
-            campoMensagemAlertTextoDiario.innerHTML = `
-                <div class="row">
-                    <div class="col">
-                        <div type="button" class="alert alert-success uppercase tamanho07 text-center"
-                            data-bs-toggle="collapse" data-bs-target="#detalhesTextoDiario">
-                            <i class="fa fa-check"></i>
-                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class=""> texto diário considerado para essa data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
-                            data-bs-target="#ModalCadastroTextoDiario">
-                            <i class="fa fa-circle-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            `
+    const cadastroEncontrado = arrayCadastrosTextoDiario.find(
+        cadastro => cadastro.data === dataSelecionada
+    );
 
-            document.getElementById('detalhesTextoDiario').innerHTML = '';
-            document.getElementById('detalhesTextoDiario').innerHTML = `
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col text-center">
-                            <label for="" class="label-format fw-bold">texto Diário&nbsp; - &nbsp;${arrayCadastrosTextoDiario[i].data}</label>
-                            <cite class="uppercase tamanho07">
-                                ${arrayCadastrosTextoDiario[i].textoBiblico}
-                            </cite>
-                            <span>-</span>
-                            <cite class="uppercase tamanho07 text-danger fw-bold">
-                                ${arrayCadastrosTextoDiario[i].livroBiblico} ${arrayCadastrosTextoDiario[i].Capitulo}:${arrayCadastrosTextoDiario[i].Versiculo}
-                            </cite>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body" id="campoComentarios">
-                
-                </div>
-            `;
-            for(let j=0;j<arrayCadastrosTextoDiario[i].comentarios.length;j++){
-                document.getElementById('campoComentarios').innerHTML = '';
-                document.getElementById('campoComentarios').innerHTML += `
-                    <div class="row">
-                        <div class="col">
-                            <textarea class="form-control uppercase" style="font-size: 0.7rem;" rows="5">
-                                ${arrayCadastrosTextoDiario[i].comentarios[j]}
-                            </textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col-auto">
-                            <button class="btn btn-sm btn-primary mt-3">
-                                <i class="fa fa-edit"></i>&nbsp;&nbsp;
-                                <span class="uppercase tamanho07">editar</span>
-                            </button>
+    if (cadastroEncontrado) {
+        campoMensagemAlertTextoDiario.innerHTML = `
+            <div class="row">
+                <div class="col">
+                    <div type="button"
+                        class="alert alert-success uppercase tamanho07 text-center" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#detalhesTextoDiario">
 
-                            <button class="btn btn-sm btn-success mt-3">
-                                <i class="fa fa-save"></i>&nbsp;&nbsp;
-                                <span class="uppercase tamanho07">editar</span>
-                            </button>
+                        <i class="fa fa-check"></i>
+                        <i class="fa fa-eye"></i>
+
+                        <span>clique para ver os comentarios cadastrados para o texto diario</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        campoExibicaoInfoTextoDiario.innerHTML = `
+            <div class="row">
+                <div class="col text-center">
+                    <span class="uppercase tamanho08 fw-bold">
+                        <cite class="uppercase tamanho07">
+                            "${cadastroEncontrado.textoBiblico}"
+                        </cite>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col text-center">
+                    <span class="uppercase tamanho07 text-danger">
+                        <span>
+                            ${cadastroEncontrado.livroBiblico}
+                            ${cadastroEncontrado.Capitulo}:${cadastroEncontrado.Versiculo}
+                        </span>
+                    </span>
+                </div>
+            </div>
+        `;
+
+        if (cadastroEncontrado.comentarios && cadastroEncontrado.comentarios.length > 0) {
+            cadastroEncontrado.comentarios.forEach((comentario, indice) => {
+                campoExibicaoInfoTextoDiario.innerHTML += `
+                    <div class="container">
+                        <div class="row text-center mb-2">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+
+                                            <div class="col">
+                                                <span
+                                                    class="tamanho07"
+                                                    id="comentarioTexto-${indice}">
+                                                    ${comentario}
+                                                </span>
+                                            </div>
+
+                                            <div class="col-auto d-flex gap-2">
+
+                                                <button
+                                                    type="button"
+                                                    id="btnEditarComentario-${indice}"
+                                                    class="btn btn-sm btn-primary"
+                                                    onclick="editarComentarioTextoDiario(${indice})">
+
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    id="btnSalvarComentario-${indice}"
+                                                    class="btn btn-sm btn-success d-none"
+                                                    onclick="salvarComentarioTextoDiario(${indice})">
+
+                                                    <i class="fa fa-save"></i>
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="excluirComentarioTextoDiario(${indice})">
+
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
-            }
+            });
         }
-        else{
-            campoMensagemAlertTextoDiario.innerHTML = '';
-            campoMensagemAlertTextoDiario.innerHTML = `
+    } else {
+        campoMensagemAlertTextoDiario.innerHTML = `
             <div class="row">
-                    <div class="col">
-                        <div class="alert alert-danger uppercase tamanho07 text-center">
-                            <i class="fa fa-x"></i>
-                            <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class=""> Nenhum texto diário considerado para esta data</span>
-                        </div>
+                <div class="col">
+                    <div type="button"
+                        class="alert alert-danger uppercase tamanho07 text-center"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#detalhesTextoDiario">
+
+                        <i class="fa fa-x"></i>
+
+                        <span>
+                            texto diário NÃO FOI CONSIDERADO para essa data
+                        </span>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal"
-                            data-bs-target="#ModalCadastroTextoDiario">
-                            <i class="fa fa-circle-plus"></i>
-                        </button>
-                    </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col">
+                    <button
+                        class="btn btn-sm btn-primary w-100"
+                        data-bs-toggle="modal"
+                        data-bs-target="#ModalCadastroTextoDiario">
+
+                        <i class="fa fa-circle-plus"></i>
+                    </button>
                 </div>
-            `
-        }
+            </div>
+        `;
+
+        campoExibicaoInfoTextoDiario.innerHTML = '';
     }
+}
+
+function editarComentarioTextoDiario(indice) {
+    const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
+    const dataSelecionada = campoDataTextoDiario.value;
+
+    const cadastroEncontrado = arrayCadastrosTextoDiario.find(
+        cadastro => cadastro.data === dataSelecionada
+    );
+
+    if (!cadastroEncontrado) {
+        return;
+    }
+
+    const campoComentario = document.getElementById(`comentarioTexto-${indice}`);
+    const btnEditar = document.getElementById(`btnEditarComentario-${indice}`);
+    const btnSalvar = document.getElementById(`btnSalvarComentario-${indice}`);
+
+    const comentarioAtual = cadastroEncontrado.comentarios[indice];
+
+    campoComentario.outerHTML = `
+        <textarea
+            class="form-control uppercase tamanho07"
+            id="comentarioTexto-${indice}"
+            rows="3">${comentarioAtual}</textarea>
+    `;
+
+    btnEditar.classList.add('d-none');
+    btnSalvar.classList.remove('d-none');
+}
+
+function salvarComentarioTextoDiario(indice) {
+    const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
+    const dataSelecionada = campoDataTextoDiario.value;
+
+    const cadastroEncontrado = arrayCadastrosTextoDiario.find(
+        cadastro => cadastro.data === dataSelecionada
+    );
+
+    if (!cadastroEncontrado) {
+        return;
+    }
+
+    const campoComentario = document.getElementById(`comentarioTexto-${indice}`);
+
+    cadastroEncontrado.comentarios[indice] = campoComentario.value;
+
+    salvarTextoDiario();
+
+    verificaDataTextoDiario();
+
+    alert(`O comentário do texto diário da data ${dataSelecionada} foi editado com sucesso.`);
+}
+
+function excluirComentarioTextoDiario(indice) {
+    const campoDataTextoDiario = document.getElementById('inputDateTextoDiario');
+    const dataSelecionada = campoDataTextoDiario.value;
+
+    const cadastroEncontrado = arrayCadastrosTextoDiario.find(
+        cadastro => cadastro.data === dataSelecionada
+    );
+
+    if (!cadastroEncontrado) {
+        return;
+    }
+
+    const confirmarExclusao = confirm(
+        `Tem certeza que deseja excluir o comentário do texto diário da data ${dataSelecionada}?`
+    );
+
+    if (!confirmarExclusao) {
+        return;
+    }
+
+    cadastroEncontrado.comentarios.splice(indice, 1);
+
+    salvarTextoDiario();
+
+    verificaDataTextoDiario();
+
+    alert(`O comentário do texto diário da data ${dataSelecionada} foi excluído com sucesso.`);
 }
 
 window.onload = function () {
     alteraData('inputDateTextoDiario','0');
     popularLivrosBiblicos('selectLivroBiblicoTextoDiario');
     recuperarTextoDiario();
-    veririficaDataTextoDiario();
+    verificaDataTextoDiario();
 };
