@@ -351,7 +351,7 @@ function editarComentarioTextoDiario(indice) {
     const comentarioAtual = cadastroEncontrado.comentarios[indice].trim();
 
     campoComentario.outerHTML = `
-        <textarea class="form-control uppercase tamanho07" id="comentarioTexto-${indice}" rows="10">${comentarioAtual}</textarea>
+        <textarea class="form-control uppercase tamanho06" id="comentarioTexto-${indice}" rows="10">${comentarioAtual}</textarea>
     `;
 
     btnEditar.classList.add('d-none');
