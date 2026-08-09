@@ -501,11 +501,6 @@ function mostraJoiasEspirituais() {
             </div>
         </div>
     `
-
-    console.log("Filtradas:", joiasFiltradas.length);
-    console.log("Tipo:", tipo);
-    console.log("Valor:", valor);
-    console.log("Array completo:", joiasEspirituais);
 }
 
 function escolhaTipoEscritura(valor) {
