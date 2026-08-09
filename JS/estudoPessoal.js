@@ -286,7 +286,7 @@ function rolarParaElemento(idElemento, margem = 100) {
 document.addEventListener('DOMContentLoaded', function () {
 
     const campoNovoEstudo = document.getElementById(
-        'campoInformacoesNovoEstudoPessoal'
+        'codigoNovoEstudoPessoal'
     );
 
     campoNovoEstudo.addEventListener('shown.bs.collapse', function () {
