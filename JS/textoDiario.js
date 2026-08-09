@@ -254,7 +254,7 @@ function verificaDataTextoDiario() {
 
                                             <div class="col">
                                                 <span
-                                                    class="tamanho07"
+                                                    class="tamanho07 uppercase"
                                                     id="comentarioTexto-${indice}">
                                                     ${comentario}
                                                 </span>
@@ -287,9 +287,7 @@ function verificaDataTextoDiario() {
 
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
