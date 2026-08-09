@@ -348,12 +348,10 @@ function editarComentarioTextoDiario(indice) {
     const btnEditar = document.getElementById(`btnEditarComentario-${indice}`);
     const btnSalvar = document.getElementById(`btnSalvarComentario-${indice}`);
 
-    const comentarioAtual = cadastroEncontrado.comentarios[indice];
+    const comentarioAtual = cadastroEncontrado.comentarios[indice].trim();
 
     campoComentario.outerHTML = `
-        <textarea class="form-control uppercase tamanho07" id="comentarioTexto-${indice}" rows="10">
-            ${comentarioAtual}
-        </textarea>
+        <textarea class="form-control uppercase tamanho07" id="comentarioTexto-${indice}" rows="10">${comentarioAtual}</textarea>
     `;
 
     btnEditar.classList.add('d-none');
@@ -374,7 +372,7 @@ function salvarComentarioTextoDiario(indice) {
 
     const campoComentario = document.getElementById(`comentarioTexto-${indice}`);
 
-    cadastroEncontrado.comentarios[indice] = campoComentario.value;
+    cadastroEncontrado.comentarios[indice] = campoComentario.value.trim();
 
     salvarTextoDiario();
 
