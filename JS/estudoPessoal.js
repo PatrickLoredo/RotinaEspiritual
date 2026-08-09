@@ -267,6 +267,21 @@ function mostraCategoriasSalvas(){
     }
 }
 
+function rolarParaElemento(idElemento, margem = 100) {
+    const elemento = document.getElementById(idElemento);
+
+    if (!elemento) {
+        return;
+    }
+
+    const posicao = elemento.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+        top: posicao - margem,
+        behavior: 'smooth'
+    });
+}
+
 //Função para carregar estudos pessoais cadastrados, com opção de filtro por categoria, exibir na tela, atualizar editores e botões de ação
 function carregarEstudos(tipoEscolha, categoria = null){
     editores = {};
