@@ -284,10 +284,17 @@ function rolarParaElemento(idElemento, margem = 100) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const campoNovoEstudo = document.getElementById('campoInformacoesNovoEstudoPessoal');
+
+    const campoNovoEstudo = document.getElementById(
+        'campoInformacoesNovoEstudoPessoal'
+    );
+
     campoNovoEstudo.addEventListener('shown.bs.collapse', function () {
-        rolarParaElemento('codigoNovoEstudoPessoal', 100);
+
+        rolarParaElemento('tituloNovoEstudoPessoal', 100);
+
     });
+
 });
 
 
