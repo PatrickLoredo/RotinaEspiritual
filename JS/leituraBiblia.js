@@ -169,18 +169,37 @@ function atualizaAccordionLivrosBiblicos() {
 
         for (let j = 0; j < livros.length; j++) {
             containerLivros.innerHTML += `
-                <div class="col-3 mb-2" data-aos="fade-up" data-aos-delay="${inicialFade}">
-                    <button class="btn btn-primary w-100 uppercase"
-                        onclick="verificaQtdCapitulos(${i},${j})"
+                <div class="col-6 col-sm-3 mb-2" data-aos="fade-up" data-aos-delay="${inicialFade}">
+                    <button
+                        class="btn btn-primary w-100 uppercase"
+                        onclick="verificaQtdCapitulos(${i},${j}); rolarParaElemento('exibicaoQtdCapitulosLivros', 100);"
                         style="font-size: 0.6rem;">
                         ${livros[j].alias}
                     </button>
                 </div>
             `;
+
         }
         inicialFade += 50;
     }
 }
+
+function rolarParaElemento(idElemento, margem = 100) {
+    const elemento = document.getElementById(idElemento);
+
+    if (!elemento) {
+        return;
+    }
+
+    const posicao = elemento.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+        top: posicao - margem,
+        behavior: 'smooth'
+    });
+}
+
+
 
 function verificaQtdCapitulos(tipoIndex, livroIndex) {
     const tipo = tiposLivosBiblicos[tipoIndex];
@@ -199,8 +218,9 @@ function verificaQtdCapitulos(tipoIndex, livroIndex) {
                     <span class="uppercase tamanho08">Capítulos do Livro de &nbsp;<b>${livro.nome}</b>  &nbsp;(${tipo})</span>
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-sm btn-dark" onclick="location.reload();">
-                        <i class="fa fa-refresh"></i>
+                    <button class="btn btn-sm btn-danger"
+                    onclick="rolarParaElemento('collapseLivrosBiblicos', 100)">
+                        <i class="fa fa-arrow-up"></i>
                     </button>
                 </div>
             </div>
