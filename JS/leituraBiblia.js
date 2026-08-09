@@ -406,17 +406,17 @@ function mostraJoiasEspirituais() {
     exibicaoQtdCapitulosLivros.innerHTML = '';
     exibicaoQtdCapitulosLivros.innerHTML += `
         <div class="row">
-            <div class="col-auto">
-                <div class="row" style="visibility: hidden;">teste</div>
+            <div class="col-12 mb-2">
+                <div class="row d-none" style="visibility: hidden;">teste</div>
                 <div class="row">
-                    <span type="button" class="bg-primary text-light px-2 py-1 mt-1 rounded" onclick="mostraJoiasPesquisa('todas','todas')">
+                    <span type="button" class="bg-primary text-light px-2 rounded text-center py-2" onclick="mostraJoiasPesquisa('todas','todas')">
                         <i class="fa fa-solid fa-gem"></i>
-                        <span class="uppercase" style="font-size: 0.7rem">&nbsp;&nbsp;Todas Jóias</span>
+                        <span class="uppercase" style="font-size: 0.7rem">&nbsp;&nbsp;Ver todas as Jóias Espirituais Cadastradas</span>
                     </span>
                 </div>
             </div>
 
-            <div class="col-auto text-center">
+            <div class="col-12 mb-2 text-center">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     Pesquisar por:
                 </label>
@@ -429,7 +429,7 @@ function mostraJoiasEspirituais() {
                 </select>
             </div>
 
-            <div class="col-auto d-none text-center m-2 m-sm-0 m-lg-0" id="colunaDataExibe">
+            <div class="col-12 d-none text-center mt-2 m-sm-0 m-lg-0" id="colunaDataExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     data da Jóia Espiritual:
                 </label>
@@ -442,7 +442,7 @@ function mostraJoiasEspirituais() {
                 </div>
             </div>
 
-            <div class="col d-none text-center m-2 m-sm-0 m-lg-0" id="colunaTipoEscrituraExibe">
+            <div class="col-12 d-none text-center mt-2 m-sm-0 m-lg-0" id="colunaTipoEscrituraExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     Tipo de Escritura:
                 </label>
@@ -456,7 +456,7 @@ function mostraJoiasEspirituais() {
                 </div>
             </div>
 
-            <div class="col d-none text-center m-2 m-sm-0 m-lg-0" id="colunaNomeLivroExibe">
+            <div class="col-12 d-none text-center mt-2 m-sm-0 m-lg-0" id="colunaNomeLivroExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     Nome do Livro:
                 </label>
@@ -469,7 +469,7 @@ function mostraJoiasEspirituais() {
                 </div>
             </div>
 
-            <div class="col d-none text-center" id="colunaTermoAnotadoExibe">
+            <div class="col-12 d-none text-center mt-2 m-sm-0 m-lg-0" id="colunaTermoAnotadoExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     Termo Anotado:
                 </label>
@@ -482,7 +482,7 @@ function mostraJoiasEspirituais() {
                 </div>
             </div>
 
-            <div class="col-3 d-none text-center" id="colunaCategoriasExibe">
+            <div class="col-12 d-none text-center mt-2 m-sm-0 m-lg-0" id="colunaCategoriasExibe">
                 <label class="uppercase mb-2" style="font-size: 0.7rem">
                     nome da categoria:
                 </label>
