@@ -222,7 +222,7 @@ function verificaDataTextoDiario() {
         campoExibicaoInfoTextoDiario.innerHTML = `
             <div class="row">
                 <div class="col text-center">
-                    <span class="uppercase tamanho08 fw-bold">
+                    <span class="uppercase tamanho08 fw-bold text-center">
                         <cite class="uppercase tamanho07">
                             "${cadastroEncontrado.textoBiblico}"
                         </cite>
@@ -253,11 +253,11 @@ function verificaDataTextoDiario() {
                                         <div class="row align-items-center">
 
                                             <div class="col">
-                                                <span
+                                                <textarea rows="10"
                                                     class="tamanho07 uppercase"
                                                     id="comentarioTexto-${indice}">
                                                     ${comentario}
-                                                </span>
+                                                </textarea>
                                             </div>
 
                                             <div class="col-auto d-flex gap-2">
