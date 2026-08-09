@@ -220,24 +220,24 @@ function verificaDataTextoDiario() {
         `;
 
         campoExibicaoInfoTextoDiario.innerHTML = `
-            <div class="row">
-                <div class="col text-center">
-                    <span class="uppercase tamanho08 fw-bold d-flex justify-content-center">
-                        <cite class="uppercase tamanho07">
-                            "${cadastroEncontrado.textoBiblico}"
-                        </cite>
-                    </span>
-                </div>
-            </div>
 
-            <div class="row mb-3">
+            <div class="row my-3 py-3 bg-primary text-light w-100 m-auto d-flex align-items-center" style="min-height: 2rem;">
                 <div class="col text-center">
-                    <span class="uppercase tamanho07 text-danger">
-                        <span>
-                            ${cadastroEncontrado.livroBiblico}
-                            ${cadastroEncontrado.Capitulo}:${cadastroEncontrado.Versiculo}
-                        </span>
-                    </span>
+                    <div class="row">
+                        <div class="col">
+                            <span class="uppercase tamanho08 fw-bold">
+                                "${cadastroEncontrado.textoBiblico}"
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span class="uppercase tamanho08 fw-bold bg-danger px-2">
+                                ${cadastroEncontrado.livroBiblico}
+                                ${cadastroEncontrado.Capitulo}:${cadastroEncontrado.Versiculo}
+                            </span>
+                        </div>
+                    </di>
                 </div>
             </div>
         `;
