@@ -63,7 +63,7 @@ function exibeQtdTextArea(qtd, localExibe) {
 
         // ===== COLUNA 2 - Anotações do Discurso Inicial =====
         const colAnotacoesDiscursoInicial = document.createElement("div");
-        colAnotacoesDiscursoInicial.classList.add("col-12", "mb-2");
+        colAnotacoesDiscursoInicial.classList.add("col-12", "mb-5");
 
         const grupoAnotacoesDiscursoInicial = document.createElement("div");
         grupoAnotacoesDiscursoInicial.classList.add("input-group");
