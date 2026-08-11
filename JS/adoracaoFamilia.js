@@ -170,8 +170,9 @@ function consultaAgendamentodAdoracaoFamilia() {
                                 id="diaSemana-${index}"
                                 class="form-control text-center uppercase mb-2"
                                 style="font-size:0.7rem;"
+                                value="${item.diaSemana}"
                                 disabled>
-                                ${item.diaSemana}
+                                
                         </div>
 
                         <div class="col d-none"></div>
