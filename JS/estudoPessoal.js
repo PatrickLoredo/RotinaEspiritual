@@ -248,7 +248,8 @@ function mostraCategoriasSalvas(){
                 <div class="col-auto mb-2">
                     <button class="w-100 btn btn-sm btn-success uppercase px-3"
                     id="categoriaSalva_${arrayCategoriasEstudoPessoal[i].tituloEstudoPessoal}"
-                    onclick="carregarEstudos('filtrar', '${arrayCategoriasEstudoPessoal[i].tituloEstudoPessoal}')">
+                    onclick="carregarEstudos('filtrar', '${arrayCategoriasEstudoPessoal[i].tituloEstudoPessoal}'),
+                    rolarParaElemento('campoExibicaoEstudosCategoria')">
                         ${arrayCategoriasEstudoPessoal[i].tituloEstudoPessoal}
                     </button>
                 </div>
@@ -258,7 +259,8 @@ function mostraCategoriasSalvas(){
             categoriasEstudosRealizados.innerHTML += `
                 <div class="col-auto mb-2">
                     <button class="w-100 btn btn-sm btn-primary uppercase px-3"
-                    onclick="carregarEstudos('filtrar', '${arrayCategoriasEstudoPessoal[i].tituloEstudoPessoal}')">
+                    onclick="carregarEstudos('filtrar', '${arrayCategoriasEstudoPessoal[i].tituloEstudoPessoal}'),
+                    rolarParaElemento('campoExibicaoEstudosCategoria')">
                         ${arrayCategoriasEstudoPessoal[i].tituloEstudoPessoal}
                     </button>
                 </div>
@@ -298,7 +300,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//Função para carregar estudos pessoais cadastrados, com opção de filtro por categoria, exibir na tela, atualizar editores e botões de ação
+//Função para carregar estudos pessoais cadastrados, com opção de filtro por categoria, 
+// exibir na tela, atualizar editores e botões de ação
 function carregarEstudos(tipoEscolha, categoria = null){
     editores = {};
 
