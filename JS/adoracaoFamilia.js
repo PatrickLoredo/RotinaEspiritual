@@ -107,8 +107,6 @@ function salvarAdoracaoEmFamilia(){
     alert("Agendamento salvo com sucesso!");
 
     assuntoCadastroAdoracaoFamilia.value = "";
-    dataCadastroAdoracaoFamilia.value = "";
-    diaSemanaCadastroAdoracaoFamilia.value = "";
 
     mostraDataAtual('dataAtualAdoracaoEmFamilia');
     consultaAgendamentodAdoracaoFamilia();
