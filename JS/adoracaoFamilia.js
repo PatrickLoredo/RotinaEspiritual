@@ -63,7 +63,8 @@ function mostraDiaSemana(dataSelecionada, idCampo){
 
 //CLASSE PARA CRIAR OS OBJETOS DE ADORAÇÃO EM FAMÍLIA
 class adoracaoEmFamilia {
-    constructor(data, diaSemana, assunto, status){
+    constructor(id, data, diaSemana, assunto, status){
+        this.id = id;
         this.data = data;
         this.diaSemana = diaSemana;
         this.assunto = assunto;
@@ -72,25 +73,31 @@ class adoracaoEmFamilia {
 }
 
 //SALVA O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA NO LOCALSTORAGE
-function salvarAdoracaoEmFamilia(){
+function salvarAdoracaoEmFamilia() {
+
     let data = dataCadastroAdoracaoFamilia.value;
     let diaSemana = diaSemanaCadastroAdoracaoFamilia.value;
     let assunto = assuntoCadastroAdoracaoFamilia.value;
 
-    if(!data || !diaSemana || !assunto){
+    if (!data || !diaSemana || !assunto) {
         alert("Preencha todos os campos!");
         return;
     }
 
-    // converte a data do input para objeto Date
-    let dataAgendamento = new Date(data + "T00:00:00"); 
-    let hoje = new Date();
-    hoje.setHours(0,0,0,0); // zera horas para comparar só a data
+    let dataAgendamento = new Date(data + "T00:00:00");
 
-    // define status automaticamente
-    let status = dataAgendamento < hoje ? "Atrasado" : "Agendado";
+    let hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    let status = dataAgendamento < hoje
+        ? "Atrasado"
+        : "Agendado";
+
+    // Cria um ID único
+    let id = crypto.randomUUID();
 
     let novaAdoracao = new adoracaoEmFamilia(
+        id,
         data,
         diaSemana,
         assunto,
@@ -109,12 +116,16 @@ function salvarAdoracaoEmFamilia(){
     assuntoCadastroAdoracaoFamilia.value = "";
 
     mostraDataAtual('dataAtualAdoracaoEmFamilia');
+
     consultaAgendamentodAdoracaoFamilia();
 }
+
 // CONSULTA OS AGENDAMENTOS DE ADORAÇÃO EM FAMÍLIA E EXIBE NA TELA
 function consultaAgendamentodAdoracaoFamilia() {
 
-    var campoMensagem = document.getElementById('exibicaoAgendamentosAdoracaoEmFamilia');
+    var campoMensagem = document.getElementById(
+        'exibicaoAgendamentosAdoracaoEmFamilia'
+    );
 
     if (agendamentosAdoracaoFamilia.length === 0) {
 
@@ -124,6 +135,7 @@ function consultaAgendamentodAdoracaoFamilia() {
                     <div class="col-1 text-center">
                         <i class="fa fa-calendar-xmark fa-fade"></i>
                     </div>
+
                     <div class="col-10 text-start">
                         <span class="uppercase tamanho08">
                             Nenhuma Adoração em Família em aberto
@@ -133,103 +145,134 @@ function consultaAgendamentodAdoracaoFamilia() {
             </div>
         `;
 
-    } else {
-        campoMensagem.innerHTML = '';
+        return;
+    }
 
-        // Ordena pela data: mais antiga → mais recente
-        const agendamentosOrdenados = [...agendamentosAdoracaoFamilia].sort(function (a, b) {
+    campoMensagem.innerHTML = '';
+
+    // Cria uma cópia e ordena pela data
+    const agendamentosOrdenados = [...agendamentosAdoracaoFamilia]
+        .sort(function (a, b) {
             return a.data.localeCompare(b.data);
         });
 
-        agendamentosOrdenados.forEach(function (item, index) {
+    agendamentosOrdenados.forEach(function (item) {
 
-            // Define a cor do card conforme o status
-            let corCard = item.status.toLowerCase() === 'concluído'
-                ? 'alert-success'
-                : 'alert-secondary';
+        let corCard = item.status.toLowerCase() === 'concluído'
+            ? 'alert-success'
+            : 'alert-secondary';
 
-            campoMensagem.innerHTML += `
-                <div class="alert ${corCard}" id="agendamentoAdoracaoFamilia-${index}">
+        campoMensagem.innerHTML += `
+            <div class="alert ${corCard}"
+                id="agendamentoAdoracaoFamilia-${item.id}">
 
-                    <div class="row text-center mb-3">
-                        <div class="col-5 col-sm-4 col-lg-3 absoluto absoluto-${item.status.toLowerCase()}">
-                            ${item.status}
-                        </div>
+                <div class="row text-center mb-3">
+
+                    <div class="col-5 col-sm-4 col-lg-3 absoluto absoluto-${item.status.toLowerCase()}">
+                        ${item.status}
                     </div>
 
-                    <div class="row text-center">
-                        <div class="col-5 col-lg-3">
-                            <input type="date"
-                                id="data-${index}"
-                                class="form-control text-center uppercase mb-2"
-                                style="font-size:0.8rem;"
-                                value="${item.data}"
-                                onchange="mostraDiaSemana(this.value, 'diaSemana-${index}')"
-                                disabled>
-                        </div>
-                        <div class="col-7 col-lg-3">
-                            <input type="text"
-                                id="diaSemana-${index}"
-                                class="form-control text-center uppercase mb-2"
-                                style="font-size:0.8rem;"
-                                value="${item.diaSemana}"
-                                disabled>
-                        </div>
-
-                        <div class="col d-none"></div>
-
-                        <div class="col-7 col-lg-4 mt-2 mt-lg-0">
-                            <div class="input-group">
-                                <input type="text"
-                                    id="status-${index}"
-                                    class="form-control text-center uppercase mb-2"
-                                    style="font-size:0.8rem;"
-                                    value="${item.status}"
-                                    disabled>
-
-                                <button class="btn btn-sm btn-success mb-2"
-                                    onclick="checarAgendamentoAdoracaoFamilia('concluído',${index})">
-                                    <i class="fa fa-circle-check"></i>
-                                </button>
-
-                                <button class="btn btn-sm btn-primary mb-2"
-                                    onclick="checarAgendamentoAdoracaoFamilia('agendado',${index})">
-                                    <i class="fa fa-calendar"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="col mt-2 mt-lg-0 d-flex justify-content-center gap-1">
-                            <button class="btn btn-sm btn-primary mb-4"
-                                onclick="editarAgendamentoAdoracaoFamilia(${index})">
-                                <i class="fa fa-pen-to-square"></i>
-                            </button>
-
-                            <button class="btn btn-sm btn-success mb-4"
-                                onclick="confirmarAgendamentoAdoracaoFamilia(${index})">
-                                <i class="fa fa-save"></i>
-                            </button>
-
-                            <button class="btn btn-sm btn-danger mb-4"
-                                onclick="excluirAgendamentoAdoracaoFamilia(${index})">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </div>
-
-                        <div class="col-12">
-                            <input type="text"
-                                id="assunto-${index}"
-                                class="form-control text-center uppercase mb-2"
-                                style="font-size:0.8rem;"
-                                value="${item.assunto}"
-                                disabled>
-                        </div>
-                    </div>
                 </div>
-            `;
-        });
-    }
+
+                <div class="row text-center">
+
+                    <div class="col-5 col-lg-3">
+
+                        <input type="date"
+                            id="data-${item.id}"
+                            class="form-control text-center uppercase mb-2"
+                            style="font-size:0.8rem;"
+                            value="${item.data}"
+                            onchange="mostraDiaSemana(this.value, 'diaSemana-${item.id}')"
+                            disabled>
+
+                    </div>
+
+                    <div class="col-7 col-lg-3">
+
+                        <input type="text"
+                            id="diaSemana-${item.id}"
+                            class="form-control text-center uppercase mb-2"
+                            style="font-size:0.8rem;"
+                            value="${item.diaSemana}"
+                            disabled>
+
+                    </div>
+
+                    <div class="col d-none"></div>
+
+                    <div class="col-7 col-lg-4 mt-2 mt-lg-0">
+
+                        <div class="input-group">
+
+                            <input type="text"
+                                id="status-${item.id}"
+                                class="form-control text-center uppercase mb-2"
+                                style="font-size:0.8rem;"
+                                value="${item.status}"
+                                disabled>
+
+                            <button class="btn btn-sm btn-success mb-2"
+                                onclick="checarAgendamentoAdoracaoFamilia('concluído', ${JSON.stringify(item.id)})">
+
+                                <i class="fa fa-circle-check"></i>
+
+                            </button>
+
+                            <button class="btn btn-sm btn-primary mb-2"
+                                onclick="checarAgendamentoAdoracaoFamilia('agendado', ${JSON.stringify(item.id)})">
+
+                                <i class="fa fa-calendar"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col mt-2 mt-lg-0 d-flex justify-content-center gap-1">
+
+                        <button class="btn btn-sm btn-primary mb-4"
+                            onclick="editarAgendamentoAdoracaoFamilia(${JSON.stringify(item.id)})">
+
+                            <i class="fa fa-pen-to-square"></i>
+
+                        </button>
+
+                        <button class="btn btn-sm btn-success mb-4"
+                            onclick="confirmarAgendamentoAdoracaoFamilia(${JSON.stringify(item.id)})">
+
+                            <i class="fa fa-save"></i>
+
+                        </button>
+
+                        <button class="btn btn-sm btn-danger mb-4"
+                            onclick="excluirAgendamentoAdoracaoFamilia(${JSON.stringify(item.id)})">
+
+                            <i class="fa fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <input type="text"
+                            id="assunto-${item.id}"
+                            class="form-control text-center uppercase mb-2"
+                            style="font-size:0.8rem;"
+                            value="${item.assunto}"
+                            disabled>
+
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+    });
 }
+
 
 
 function checarAgendamentoAdoracaoFamilia(status, index) {
