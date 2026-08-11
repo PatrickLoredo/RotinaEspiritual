@@ -202,22 +202,22 @@ function consultaAgendamentodAdoracaoFamilia() {
 
                         <div class="col-12 mt-2 mt-lg-0 d-flex justify-content-center gap-1">
                             <div class="input-group">
-                                <button class="btn btn-sm btn-primary mb-4"
+                                <button class="btn btn-sm btn-primary mb-4 w-25"
                                     onclick="editarAgendamentoAdoracaoFamilia(${index})">
                                     <i class="fa fa-pen-to-square"></i>
                                 </button>
 
-                                <button class="btn btn-sm btn-success mb-4"
+                                <button class="btn btn-sm btn-success mb-4 w-25"
                                     onclick="confirmarAgendamentoAdoracaoFamilia(${index})">
                                     <i class="fa fa-save"></i>
                                 </button>
 
-                                <button class="btn btn-sm btn-danger mb-4"
+                                <button class="btn btn-sm btn-danger mb-4 w-25"
                                     onclick="excluirAgendamentoAdoracaoFamilia(${index})">
                                     <i class="fa fa-trash"></i>
                                 </button>
 
-                                <button class="btn btn-sm btn-dark mb-4"
+                                <button class="btn btn-sm btn-dark mb-4 w-25"
                                     onclick="compartilharWhatsApp(${index})">
                                     <i class="fa fa-share"></i>
                                 </button>
