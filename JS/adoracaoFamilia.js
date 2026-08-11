@@ -152,7 +152,7 @@ function consultaAgendamentodAdoracaoFamilia() {
                 <div class="alert ${corCard}" id="agendamentoAdoracaoFamilia-${index}">
 
                     <div class="row text-center mb-3">
-                        <div class="col-5 col-sm-4 col-lg-3 absoluto absoluto-${item.status.toLowerCase()}">
+                        <div class="col-12 col-sm-4 col-lg-3 absoluto absoluto-${item.status.toLowerCase()}">
                             ${item.status}
                         </div>
                     </div>
