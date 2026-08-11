@@ -227,8 +227,8 @@ function consultaAgendamentodAdoracaoFamilia() {
                         <div class="col-12">
                             <textarea type="text"
                                 id="assunto-${index}"
-                                class="form-control text-center uppercase mb-2"
-                                style="font-size:0.8rem;"
+                                class="form-control uppercase mb-2"
+                                style="font-size:0.7rem;"
                                 rows="7"
                                 disabled>
                             ${item.assunto.trim()}
