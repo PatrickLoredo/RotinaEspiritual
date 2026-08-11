@@ -230,7 +230,7 @@ function consultaAgendamentodAdoracaoFamilia() {
                                 class="form-control text-center uppercase mb-2"
                                 style="font-size:0.8rem;"
                                 disabled>
-                            ${item.assunto}
+                            ${item.assunto.trim()}
                             </textarea>
                         </div>
                     </div>
