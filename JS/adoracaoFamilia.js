@@ -225,15 +225,11 @@ function consultaAgendamentodAdoracaoFamilia() {
                         </div>
 
                         <div class="col-12">
-                            <textarea type="text"
-                                id="assunto-${index}"
-                                class="form-control uppercase mb-2"
-                                style="font-size:0.7rem;"
-                                rows="7"
-                                disabled>
-                            ${item.assunto.trim()}
+                            <textarea id="assunto-${index}" class="form-control uppercase mb-2" style="font-size:0.7rem;" rows="7" disabled>
+                                ${item.assunto.trim()}
                             </textarea>
                         </div>
+
                     </div>
                 </div>
             `;
@@ -289,7 +285,6 @@ function checarAgendamentoAdoracaoFamilia(status, index) {
 
 //EDITA O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
 function editarAgendamentoAdoracaoFamilia(index){
-
     let campoData = document.getElementById(`data-${index}`);
     let campoAssunto = document.getElementById(`assunto-${index}`);
 
