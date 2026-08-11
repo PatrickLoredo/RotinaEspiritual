@@ -75,7 +75,7 @@ class adoracaoEmFamilia {
 function salvarAdoracaoEmFamilia(){
     let data = dataCadastroAdoracaoFamilia.value;
     let diaSemana = diaSemanaCadastroAdoracaoFamilia.value;
-    let assunto = assuntoCadastroAdoracaoFamilia.value;
+    let assunto = assuntoCadastroAdoracaoFamilia.value.trim();
 
     if(!data || !diaSemana || !assunto){
         alert("Preencha todos os campos!");
