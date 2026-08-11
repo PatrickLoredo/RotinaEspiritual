@@ -180,7 +180,7 @@ function consultaAgendamentodAdoracaoFamilia() {
 
                         <div class="col d-none"></div>
 
-                        <div class="col-7 col-lg-3 mt-2 mt-lg-0">
+                        <div class="col-12 col-lg-3 mt-2 mt-lg-0">
                             <div class="input-group">
                                 <input type="text"
                                     id="status-${index}"
@@ -201,7 +201,7 @@ function consultaAgendamentodAdoracaoFamilia() {
                             </div>
                         </div>
 
-                        <div class="col mt-2 mt-lg-0 d-flex justify-content-center gap-1">
+                        <div class="col-12 mt-2 mt-lg-0 d-flex justify-content-center gap-1">
                             <div class="input-group">
                                 <button class="btn btn-sm btn-primary mb-4"
                                     onclick="editarAgendamentoAdoracaoFamilia(${index})">
