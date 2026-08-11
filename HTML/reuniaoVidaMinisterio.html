@@ -266,7 +266,10 @@
                                                 <label for="" class="label-format" style="font-size: 0.7rem;">Capitulo
                                                     Inicial</label>
                                                 <input type="number" name="" id="capituloInicialVidaMinisterio"
-                                                    class="form-control uppercase" style="font-size: 0.7rem"
+                                                    class="form-control uppercase" 
+                                                    min="1"
+                                                    value="1"
+                                                    style="font-size: 0.7rem"
                                                     onchange="incrementaCapitulo('capituloInicialVidaMinisterio','capituloFinalVidaMinisterio')">
                                             </div>
                                         </div>
@@ -283,8 +286,11 @@
                                             <div class="col-auto">
                                                 <label for="" class="label-format" style="font-size: 0.7rem;">Capitulo
                                                     Final</label>
-                                                <select name="" id="capituloFinalVidaMinisterio"
-                                                    class="form-select uppercase" style="font-size: 0.7rem;"></select>
+                                                <input type="number" name="" id="capituloFinalVidaMinisterio"
+                                                    class="form-control uppercase" 
+                                                    min="1"
+                                                    value="1"
+                                                    style="font-size: 0.7rem;">
                                             </div>
                                         </div>
                                     </div>
