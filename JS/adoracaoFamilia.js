@@ -169,13 +169,12 @@ function consultaAgendamentodAdoracaoFamilia() {
                         </div>
 
                         <div class="col-7 col-lg-3">
-                            <textarea type="text"
+                            <input type="text"
                                 id="diaSemana-${index}"
                                 class="form-control text-center uppercase mb-2"
                                 style="font-size:0.7rem;"
                                 disabled>
                                 ${item.diaSemana}
-                            </textarea>
                         </div>
 
                         <div class="col d-none"></div>
@@ -226,12 +225,13 @@ function consultaAgendamentodAdoracaoFamilia() {
                         </div>
 
                         <div class="col-12">
-                            <input type="text"
+                            <textarea type="text"
                                 id="assunto-${index}"
                                 class="form-control text-center uppercase mb-2"
                                 style="font-size:0.8rem;"
-                                value="${item.assunto}"
                                 disabled>
+                            ${item.assunto}
+                            </textarea>
                         </div>
                     </div>
                 </div>
