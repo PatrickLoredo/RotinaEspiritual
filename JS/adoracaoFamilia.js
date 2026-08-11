@@ -18,12 +18,6 @@ window.onload = function () {
     consultaAgendamentodAdoracaoFamilia();
 };
 
-function testeBotao(id) {
-    console.log("BOTÃO FUNCIONOU!");
-    console.log("ID RECEBIDO:", id);
-}
-
-
 //ATUALIZA A FUNCAO DO RELOGIO A CADA SEGUNDO
 function atualizaRelogio(idRelogio){
     var dataHoje = new Date();
@@ -69,8 +63,7 @@ function mostraDiaSemana(dataSelecionada, idCampo){
 
 //CLASSE PARA CRIAR OS OBJETOS DE ADORAÇÃO EM FAMÍLIA
 class adoracaoEmFamilia {
-    constructor(id, data, diaSemana, assunto, status){
-        this.id = id;
+    constructor(data, diaSemana, assunto, status){
         this.data = data;
         this.diaSemana = diaSemana;
         this.assunto = assunto;
@@ -79,31 +72,25 @@ class adoracaoEmFamilia {
 }
 
 //SALVA O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA NO LOCALSTORAGE
-function salvarAdoracaoEmFamilia() {
-
+function salvarAdoracaoEmFamilia(){
     let data = dataCadastroAdoracaoFamilia.value;
     let diaSemana = diaSemanaCadastroAdoracaoFamilia.value;
     let assunto = assuntoCadastroAdoracaoFamilia.value;
 
-    if (!data || !diaSemana || !assunto) {
+    if(!data || !diaSemana || !assunto){
         alert("Preencha todos os campos!");
         return;
     }
 
-    let dataAgendamento = new Date(data + "T00:00:00");
-
+    // converte a data do input para objeto Date
+    let dataAgendamento = new Date(data + "T00:00:00"); 
     let hoje = new Date();
-    hoje.setHours(0, 0, 0, 0);
+    hoje.setHours(0,0,0,0); // zera horas para comparar só a data
 
-    let status = dataAgendamento < hoje
-        ? "Atrasado"
-        : "Agendado";
-
-    // Cria um ID único
-    let id = crypto.randomUUID();
+    // define status automaticamente
+    let status = dataAgendamento < hoje ? "Atrasado" : "Agendado";
 
     let novaAdoracao = new adoracaoEmFamilia(
-        id,
         data,
         diaSemana,
         assunto,
@@ -120,18 +107,17 @@ function salvarAdoracaoEmFamilia() {
     alert("Agendamento salvo com sucesso!");
 
     assuntoCadastroAdoracaoFamilia.value = "";
+    dataCadastroAdoracaoFamilia.value = "";
+    diaSemanaCadastroAdoracaoFamilia.value = "";
 
     mostraDataAtual('dataAtualAdoracaoEmFamilia');
-
     consultaAgendamentodAdoracaoFamilia();
 }
 
 // CONSULTA OS AGENDAMENTOS DE ADORAÇÃO EM FAMÍLIA E EXIBE NA TELA
+// CONSULTA OS AGENDAMENTOS DE ADORAÇÃO EM FAMÍLIA E EXIBE NA TELA
 function consultaAgendamentodAdoracaoFamilia() {
-
-    var campoMensagem = document.getElementById(
-        'exibicaoAgendamentosAdoracaoEmFamilia'
-    );
+    var campoMensagem = document.getElementById('exibicaoAgendamentosAdoracaoEmFamilia');
 
     if (agendamentosAdoracaoFamilia.length === 0) {
 
@@ -151,287 +137,217 @@ function consultaAgendamentodAdoracaoFamilia() {
             </div>
         `;
 
-        return;
-    }
-
-    campoMensagem.innerHTML = '';
-
-    // Cria uma cópia e ordena pela data
-    const agendamentosOrdenados = [...agendamentosAdoracaoFamilia]
-        .sort(function (a, b) {
-            return a.data.localeCompare(b.data);
-        });
-
-    agendamentosOrdenados.forEach(function (item) {
-
-        let corCard = item.status.toLowerCase() === 'concluído'
-            ? 'alert-success'
-            : 'alert-secondary';
-
-        campoMensagem.innerHTML += `
-            <div class="alert ${corCard}"
-                id="agendamentoAdoracaoFamilia-${item.id}">
-
-                <div class="row text-center mb-3">
-
-                    <div class="col-5 col-sm-4 col-lg-3 absoluto absoluto-${item.status.toLowerCase()}">
-                        ${item.status}
-                    </div>
-
-                </div>
-
-                <div class="row text-center">
-
-                    <div class="col-5 col-lg-3">
-
-                        <input type="date"
-                            id="data-${item.id}"
-                            class="form-control text-center uppercase mb-2"
-                            style="font-size:0.8rem;"
-                            value="${item.data}"
-                            onchange="mostraDiaSemana(this.value, 'diaSemana-${item.id}')"
-                            disabled>
-
-                    </div>
-
-                    <div class="col-7 col-lg-3">
-
-                        <input type="text"
-                            id="diaSemana-${item.id}"
-                            class="form-control text-center uppercase mb-2"
-                            style="font-size:0.8rem;"
-                            value="${item.diaSemana}"
-                            disabled>
-
-                    </div>
-
-                    <div class="col d-none"></div>
-
-                    <div class="col-7 col-lg-4 mt-2 mt-lg-0">
-
-                        <div class="input-group">
-
-                            <input type="text"
-                                id="status-${item.id}"
-                                class="form-control text-center uppercase mb-2"
-                                style="font-size:0.8rem;"
-                                value="${item.status}"
-                                disabled>
-
-                            <button class="btn btn-sm btn-success mb-2"
-                                onclick="checarAgendamentoAdoracaoFamilia('concluído', ${JSON.stringify(item.id)}),
-                                "testeBotao('${item.id}')">
-
-                                <i class="fa fa-circle-check"></i>
-
-                            </button>
-
-                            <button class="btn btn-sm btn-primary mb-2"
-                                onclick="checarAgendamentoAdoracaoFamilia('agendado', ${JSON.stringify(item.id)})">
-
-                                <i class="fa fa-calendar"></i>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col mt-2 mt-lg-0 d-flex justify-content-center gap-1">
-
-                        <button class="btn btn-sm btn-primary mb-4"
-                            onclick="editarAgendamentoAdoracaoFamilia(${JSON.stringify(item.id)})">
-
-                            <i class="fa fa-pen-to-square"></i>
-
-                        </button>
-
-                        <button class="btn btn-sm btn-success mb-4"
-                            onclick="confirmarAgendamentoAdoracaoFamilia(${JSON.stringify(item.id)})">
-
-                            <i class="fa fa-save"></i>
-
-                        </button>
-
-                        <button class="btn btn-sm btn-danger mb-4"
-                            onclick="excluirAgendamentoAdoracaoFamilia(${JSON.stringify(item.id)})">
-
-                            <i class="fa fa-trash"></i>
-
-                        </button>
-
-                    </div>
-
-                    <div class="col-12">
-
-                        <input type="text"
-                            id="assunto-${item.id}"
-                            class="form-control text-center uppercase mb-2"
-                            style="font-size:0.8rem;"
-                            value="${item.assunto}"
-                            disabled>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-}
-
-// ALTERA O STATUS DO AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
-function checarAgendamentoAdoracaoFamilia(status, id) {
-
-    // Procura o agendamento pelo ID
-    let agendamento = agendamentosAdoracaoFamilia.find(function (item) {
-        return item.id === id;
-    });
-
-    if (!agendamento) {
-        console.error("Agendamento não encontrado:", id);
-        alert("Agendamento não encontrado!");
-        return;
-    }
-
-    // Altera o status
-    agendamento.status = status;
-
-    // Salva a alteração no LocalStorage
-    localStorage.setItem(
-        "agendamentosAdoracaoFamilia",
-        JSON.stringify(agendamentosAdoracaoFamilia)
-    );
-
-    if (status.toLowerCase() === "agendado") {
-
-        alert(`
-            A Adoração em Família:
-            ${agendamento.assunto.toUpperCase()},
-            foi alterada para AGENDADA.
-        `);
-
     } else {
 
-        alert(`
-            A Adoração em Família:
-            ${agendamento.assunto.toUpperCase()},
-            foi alterada para CONCLUÍDA.
-        `);
+        campoMensagem.innerHTML = '';
+
+        agendamentosAdoracaoFamilia.forEach(function (item, index) {
+
+            // Define a cor do card conforme o status
+            let corCard = item.status.toLowerCase() === 'concluído'
+                ? 'alert-success'
+                : 'alert-secondary';
+
+            campoMensagem.innerHTML += `
+                <div class="alert ${corCard}" id="agendamentoAdoracaoFamilia-${index}">
+
+                    <div class="row text-center mb-3">
+                        <div class="col-5 col-sm-4 col-lg-3 absoluto absoluto-${item.status.toLowerCase()}">
+                            ${item.status}
+                        </div>
+                    </div>
+
+                    <div class="row text-center">
+                        <div class="col-5 col-lg-3">
+                            <input type="date"
+                                id="data-${index}"
+                                class="form-control text-center uppercase mb-2"
+                                style="font-size:0.7rem;"
+                                value="${item.data}"
+                                onchange="mostraDiaSemana(this.value, 'diaSemana-${index}')"
+                                disabled>
+                        </div>
+
+                        <div class="col-7 col-lg-3">
+                            <input type="text"
+                                id="diaSemana-${index}"
+                                class="form-control text-center uppercase mb-2"
+                                style="font-size:0.7rem;"
+                                value="${item.diaSemana}"
+                                disabled>
+                        </div>
+
+                        <div class="col d-none"></div>
+
+                        <div class="col-7 col-lg-3 mt-2 mt-lg-0">
+                            <div class="input-group">
+                                <input type="text"
+                                    id="status-${index}"
+                                    class="form-control text-center uppercase mb-2"
+                                    style="font-size:0.7rem;"
+                                    value="${item.status}"
+                                    disabled>
+
+                                <button class="btn btn-sm btn-success mb-2"
+                                    onclick="checarAgendamentoAdoracaoFamilia('concluído', ${index})">
+                                    <i class="fa fa-circle-check"></i>
+                                </button>
+
+                                <button class="btn btn-sm btn-primary mb-2"
+                                    onclick="checarAgendamentoAdoracaoFamilia('agendado', ${index})">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col mt-2 mt-lg-0 d-flex justify-content-center gap-1">
+                            <div class="input-group">
+                                <button class="btn btn-sm btn-primary mb-4"
+                                    onclick="editarAgendamentoAdoracaoFamilia(${index})">
+                                    <i class="fa fa-pen-to-square"></i>
+                                </button>
+
+                                <button class="btn btn-sm btn-success mb-4"
+                                    onclick="confirmarAgendamentoAdoracaoFamilia(${index})">
+                                    <i class="fa fa-save"></i>
+                                </button>
+
+                                <button class="btn btn-sm btn-danger mb-4"
+                                    onclick="excluirAgendamentoAdoracaoFamilia(${index})">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
+                                <button class="btn btn-sm btn-dark mb-4"
+                                    onclick="compartilharWhatsApp(${index})">
+                                    <i class="fa fa-share"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <input type="text"
+                                id="assunto-${index}"
+                                class="form-control text-center uppercase mb-2"
+                                style="font-size:0.8rem;"
+                                value="${item.assunto}"
+                                disabled>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+}
+
+
+function compartilharWhatsApp(index) {
+
+    const dataAdoracao = document.getElementById(`data-${index}`).value;
+    const assuntoAdoracao = document.getElementById(`assunto-${index}`).value;
+
+    let dataFormatada = '';
+
+    if (dataAdoracao) {
+        const [ano, mes, dia] = dataAdoracao.split('-');
+        dataFormatada = `${dia}/${mes}/${ano}`;
+    }
+
+    const mensagem =
+        "Olá, tudo bem ? Gostaria de convidar você para a *Adoração em Família*. \n\n" +
+        "*Data:* " + dataFormatada + "\n" +
+        "*Assunto:* " + assuntoAdoracao + "\n\n" +
+        "Será um momento muito especial! \n" +
+        "Esperamos você! ";
+
+    const url = "https://wa.me/?text=" + encodeURIComponent(mensagem);
+
+    window.open(url, "_blank");
+}
+
+
+
+
+function checarAgendamentoAdoracaoFamilia(status, index) {
+    let agendamento = agendamentosAdoracaoFamilia[index];
+    agendamento.status = status;
+
+    if (status === "agendado") {
+        alert(`A Adoração em Família:
+        ${agendamento.assunto.toUpperCase()},
+        foi alterada para AGENDADA.`);
+    } else {
+        alert(`A Adoração em Família:
+        ${agendamento.assunto.toUpperCase()},
+        foi alterada para CONCLUÍDA.`);
     }
 
     consultaAgendamentodAdoracaoFamilia();
-}
+    console.log(agendamentosAdoracaoFamilia)
+}  
 
+//EDITA O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
+function editarAgendamentoAdoracaoFamilia(index){
 
-// EDITA O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
-function editarAgendamentoAdoracaoFamilia(id) {
-
-    let campoData = document.getElementById(`data-${id}`);
-    let campoAssunto = document.getElementById(`assunto-${id}`);
-
-    if (!campoData || !campoAssunto) {
-        console.error("Campos do agendamento não encontrados:", id);
-        return;
-    }
+    let campoData = document.getElementById(`data-${index}`);
+    let campoAssunto = document.getElementById(`assunto-${index}`);
 
     campoData.disabled = false;
     campoAssunto.disabled = false;
+
+    if(campoData.disabled){
+
+        campoData.disabled = false;
+        campoAssunto.disabled = false;
+        campoStatus.disabled = false;
+    }
 }
 
+//CONFIRMA A EDIÇÃO DO AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
+function confirmarAgendamentoAdoracaoFamilia(index){
 
-// CONFIRMA A EDIÇÃO DO AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
-function confirmarAgendamentoAdoracaoFamilia(id) {
+    let campoData = document.getElementById(`data-${index}`);
+    let campoAssunto = document.getElementById(`assunto-${index}`);
+    let campoDiaSemana = document.getElementById(`diaSemana-${index}`);
 
-    let campoData = document.getElementById(`data-${id}`);
-    let campoAssunto = document.getElementById(`assunto-${id}`);
-    let campoDiaSemana = document.getElementById(`diaSemana-${id}`);
-
-    if (!campoData || !campoAssunto || !campoDiaSemana) {
-        console.error("Campos do agendamento não encontrados:", id);
-        return;
-    }
-
-    if (!campoData.value || !campoAssunto.value) {
+    if(!campoData.value || !campoAssunto.value){
         alert("Preencha todos os campos!");
         return;
     }
 
-    // Procura o objeto pelo ID
-    let agendamento = agendamentosAdoracaoFamilia.find(function (item) {
-        return item.id === id;
-    });
-
-    if (!agendamento) {
-        console.error("Agendamento não encontrado:", id);
-        alert("Agendamento não encontrado!");
-        return;
-    }
-
-    // Calcula novamente o dia da semana
     let dataObj = new Date(campoData.value + "T00:00:00");
-
     let novoDiaSemana = diasSemana[dataObj.getDay()];
-
     campoDiaSemana.value = novoDiaSemana;
 
-    // Atualiza o próprio objeto encontrado
-    agendamento.data = campoData.value;
-    agendamento.diaSemana = novoDiaSemana;
-    agendamento.assunto = campoAssunto.value;
+    agendamentosAdoracaoFamilia[index] = {
+        ...agendamentosAdoracaoFamilia[index],
+        data: campoData.value,
+        diaSemana: novoDiaSemana,
+        assunto: campoAssunto.value,
+        status: agendamentosAdoracaoFamilia[index].status
+    };
 
-    // Salva no LocalStorage
     localStorage.setItem(
         "agendamentosAdoracaoFamilia",
         JSON.stringify(agendamentosAdoracaoFamilia)
     );
 
-    // Bloqueia novamente os campos
     campoData.disabled = true;
     campoAssunto.disabled = true;
 
     alert("Agendamento atualizado com sucesso!");
-
-    // Atualiza a tela
     consultaAgendamentodAdoracaoFamilia();
 }
 
-
-// EXCLUI O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
-function excluirAgendamentoAdoracaoFamilia(id) {
-
-    // Procura o agendamento pelo ID
-    let agendamento = agendamentosAdoracaoFamilia.find(function (item) {
-        return item.id === id;
-    });
-
-    if (!agendamento) {
-        console.error("Agendamento não encontrado:", id);
-        alert("Agendamento não encontrado!");
-        return;
-    }
-
-    if (confirm(`
-        Tem certeza que deseja excluir o agendamento:
-
-        ${agendamento.assunto}
-    `)) {
-
-        // Remove pelo ID, e não pela posição no array
-        agendamentosAdoracaoFamilia =
-            agendamentosAdoracaoFamilia.filter(function (item) {
-                return item.id !== id;
-            });
-
-        // Salva no LocalStorage
+function excluirAgendamentoAdoracaoFamilia(index){
+    if(confirm("Tem certeza que deseja excluir este agendamento?")){
+        agendamentosAdoracaoFamilia.splice(index, 1);
         localStorage.setItem(
             "agendamentosAdoracaoFamilia",
             JSON.stringify(agendamentosAdoracaoFamilia)
         );
-
         alert("Agendamento excluído com sucesso!");
-
         consultaAgendamentodAdoracaoFamilia();
-
     } else {
-
         alert("Ação cancelada!");
     }
 }
