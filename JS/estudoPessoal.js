@@ -349,7 +349,7 @@ function carregarEstudos(tipoEscolha, categoria = null){
                         <input class="form-control text-center uppercase" id="input_tituloEstudo_${index}" value="${estudo.titulo}" disabled style="font-size: 0.8em;">
                     </div>
 
-                    <div class="col-12 col-md-3 col-lg-2 d-flex gap-2 align-items-center">
+                    <div class="col-12 col-md-3 col-lg-2 mt-2 mt-md-0 d-flex gap-2 align-items-center justify-content-center">
                         <button class="btn btn-primary"
                             id="btnEditarEstudo_${id}"
                             onclick="editarEstudo('${id}')">
