@@ -111,11 +111,13 @@ function salvarAdoracaoEmFamilia(){
     mostraDataAtual('dataAtualAdoracaoEmFamilia');
     consultaAgendamentodAdoracaoFamilia();
 }
-
 // CONSULTA OS AGENDAMENTOS DE ADORAÇÃO EM FAMÍLIA E EXIBE NA TELA
 function consultaAgendamentodAdoracaoFamilia() {
+
     var campoMensagem = document.getElementById('exibicaoAgendamentosAdoracaoEmFamilia');
+
     if (agendamentosAdoracaoFamilia.length === 0) {
+
         campoMensagem.innerHTML = `
             <div class="alert alert-danger">
                 <div class="row d-flex justify-content-center">
@@ -133,12 +135,22 @@ function consultaAgendamentodAdoracaoFamilia() {
 
     } else {
         campoMensagem.innerHTML = '';
-        agendamentosAdoracaoFamilia.forEach(function (item, index) {
+
+        // Ordena pela data: mais antiga → mais recente
+        const agendamentosOrdenados = [...agendamentosAdoracaoFamilia].sort(function (a, b) {
+            return a.data.localeCompare(b.data);
+        });
+
+        agendamentosOrdenados.forEach(function (item, index) {
+
             // Define a cor do card conforme o status
-            let corCard = item.status.toLowerCase() === 'concluído' ? 'alert-success': 'alert-secondary';
+            let corCard = item.status.toLowerCase() === 'concluído'
+                ? 'alert-success'
+                : 'alert-secondary';
 
             campoMensagem.innerHTML += `
                 <div class="alert ${corCard}" id="agendamentoAdoracaoFamilia-${index}">
+
                     <div class="row text-center mb-3">
                         <div class="col-5 col-sm-4 col-lg-3 absoluto absoluto-${item.status.toLowerCase()}">
                             ${item.status}
@@ -155,7 +167,6 @@ function consultaAgendamentodAdoracaoFamilia() {
                                 onchange="mostraDiaSemana(this.value, 'diaSemana-${index}')"
                                 disabled>
                         </div>
-
                         <div class="col-7 col-lg-3">
                             <input type="text"
                                 id="diaSemana-${index}"
@@ -168,9 +179,7 @@ function consultaAgendamentodAdoracaoFamilia() {
                         <div class="col d-none"></div>
 
                         <div class="col-7 col-lg-4 mt-2 mt-lg-0">
-
                             <div class="input-group">
-
                                 <input type="text"
                                     id="status-${index}"
                                     class="form-control text-center uppercase mb-2"
@@ -187,13 +196,10 @@ function consultaAgendamentodAdoracaoFamilia() {
                                     onclick="checarAgendamentoAdoracaoFamilia('agendado',${index})">
                                     <i class="fa fa-calendar"></i>
                                 </button>
-
                             </div>
-
                         </div>
 
                         <div class="col mt-2 mt-lg-0 d-flex justify-content-center gap-1">
-
                             <button class="btn btn-sm btn-primary mb-4"
                                 onclick="editarAgendamentoAdoracaoFamilia(${index})">
                                 <i class="fa fa-pen-to-square"></i>
@@ -208,27 +214,23 @@ function consultaAgendamentodAdoracaoFamilia() {
                                 onclick="excluirAgendamentoAdoracaoFamilia(${index})">
                                 <i class="fa fa-trash"></i>
                             </button>
-
                         </div>
 
                         <div class="col-12">
-
                             <input type="text"
                                 id="assunto-${index}"
                                 class="form-control text-center uppercase mb-2"
                                 style="font-size:0.8rem;"
                                 value="${item.assunto}"
                                 disabled>
-
                         </div>
-
                     </div>
-
                 </div>
             `;
         });
     }
 }
+
 
 function checarAgendamentoAdoracaoFamilia(status, index) {
     let agendamento = agendamentosAdoracaoFamilia[index];
