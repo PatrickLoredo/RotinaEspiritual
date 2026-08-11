@@ -138,11 +138,8 @@ function consultaAgendamentodAdoracaoFamilia() {
         `;
 
     } else {
-
         campoMensagem.innerHTML = '';
-
         agendamentosAdoracaoFamilia.forEach(function (item, index) {
-
             // Define a cor do card conforme o status
             let corCard = item.status.toLowerCase() === 'concluído'
                 ? 'alert-success'
@@ -225,9 +222,12 @@ function consultaAgendamentodAdoracaoFamilia() {
                         </div>
 
                         <div class="col-12">
-                            <textarea id="assunto-${index}" class="form-control uppercase mb-2" style="font-size:0.7rem;" rows="7" disabled>
-                                ${item.assunto.trim()}
-                            </textarea>
+                            <textarea
+                                id="assunto-${index}"
+                                class="form-control uppercase mb-2"
+                                style="font-size:0.7rem;"
+                                rows="7"
+                                disabled>${(item.assunto || '').trim()}</textarea>
                         </div>
 
                     </div>
