@@ -203,6 +203,7 @@ function defineLivroBiblicoCapitulo() {
 
     incrementaCapitulo('capituloInicialVidaMinisterio', 'capituloFinalVidaMinisterio');
 }
+
 function incrementaCapitulo(idInicial, idFinal) {
     const campoCapituloLivroInicial = document.getElementById(idInicial);
     const campoCapituloLivroFinal = document.getElementById(idFinal);
@@ -210,4 +211,10 @@ function incrementaCapitulo(idInicial, idFinal) {
     campoCapituloLivroFinal.value = Number(campoCapituloLivroInicial.value) + 2;
 
     console.log(campoCapituloLivroFinal.value);
+}
+
+function inserirNovaPesquisaJoiaEspirital(){
+    const campoInserePesquisaJoiasEspirituais = document.getElementById('campoInserirPesquisasJoiasEspirituais');
+
+    
 }

@@ -399,12 +399,12 @@
                                                             <div class="col">
                                                                 <label for="" class="label-format fw-bold">
                                                                     Que joias espirituais você encontrou na leitura
-                                                                    da
-                                                                    Bíblia desta semana?
+                                                                    da Bíblia desta semana?
                                                                 </label>
                                                             </div>
                                                             <div class="col-auto">
                                                                 <button class="btn btn-sm btn-primary"
+                                                                onclick="inserirNovaPesquisaJoiaEspirital()"
                                                                     style="border-radius: 5px;">
                                                                     <i class="fa fa-plus-circle"></i>
                                                                 </button>
@@ -412,8 +412,9 @@
                                                         </div>
                                                     </div>
 
+
                                                     <!--ALERT CADASTRO DE JOIA ESPIRITUAL-->
-                                                    <div class="card-body">
+                                                    <div class="card-body" id="campoInserirPesquisasJoiasEspirituais">
                                                         <div class="alert alert-primary">
                                                             <div class="row">
                                                                 <div class="col-2">
@@ -460,17 +461,19 @@
                                                                         placeholder="Digite sua pesquisa da joia espiritual..."
                                                                         style="font-size: 0.7rem;" rows="6"></textarea>
                                                                 </div>
-                                                                <div class="col-12 mt-2">
-                                                                    <label for="" class="label-format">&nbsp;</label>
-                                                                    <button class="btn btn-sm btn-success w-100">
-                                                                        <i class="fa fa-save"></i>&nbsp;&nbsp;
-                                                                        <span class="uppercase tamanho07">salvar</span>
-                                                                    </button>
-                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"></div>
+                                                    <div class="card-footer">
+                                                        <div class="col-12 py-2">
+                                                            <label for="" class="label-format">&nbsp;</label>
+                                                            <button class="btn btn-sm btn-success w-100">
+                                                                <i class="fa fa-save"></i>&nbsp;&nbsp;
+                                                                <span class="uppercase tamanho07">salvar</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -661,8 +664,7 @@
                                     <div class="col">
                                         <button class="btn btn-sm btn-dark uppercase tamanho07">
                                             <i class="fa fa-circle-plus"></i>&nbsp;&nbsp;
-                                            <span class="uppercase" style="font-size: 0.7rem;">adicionar
-                                                parte</span>
+                                            <span class="uppercase" style="font-size: 0.7rem;">adicionar parte</span>
                                         </button>
                                     </div>
                                 </div>
