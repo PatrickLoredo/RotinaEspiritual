@@ -263,99 +263,168 @@ function consultaAgendamentodAdoracaoFamilia() {
                             style="font-size:0.8rem;"
                             value="${item.assunto}"
                             disabled>
-
                     </div>
-
                 </div>
-
             </div>
         `;
     });
 }
 
+// ALTERA O STATUS DO AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
+function checarAgendamentoAdoracaoFamilia(status, id) {
 
+    // Procura o agendamento pelo ID
+    let agendamento = agendamentosAdoracaoFamilia.find(function (item) {
+        return item.id === id;
+    });
 
-function checarAgendamentoAdoracaoFamilia(status, index) {
-    let agendamento = agendamentosAdoracaoFamilia[index];
-    agendamento.status = status;
-
-    if (status === "agendado") {
-        alert(`A Adoração em Família:
-        ${agendamento.assunto.toUpperCase()},
-        foi alterada para AGENDADA.`);
-    } else {
-        alert(`A Adoração em Família:
-        ${agendamento.assunto.toUpperCase()},
-        foi alterada para CONCLUÍDA.`);
-    }
-
-    consultaAgendamentodAdoracaoFamilia();
-    console.log(agendamentosAdoracaoFamilia)
-}  
-
-//EDITA O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
-function editarAgendamentoAdoracaoFamilia(index){
-
-    let campoData = document.getElementById(`data-${index}`);
-    let campoAssunto = document.getElementById(`assunto-${index}`);
-
-    campoData.disabled = false;
-    campoAssunto.disabled = false;
-
-    if(campoData.disabled){
-
-        campoData.disabled = false;
-        campoAssunto.disabled = false;
-        campoStatus.disabled = false;
-    }
-}
-
-//CONFIRMA A EDIÇÃO DO AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
-function confirmarAgendamentoAdoracaoFamilia(index){
-
-    let campoData = document.getElementById(`data-${index}`);
-    let campoAssunto = document.getElementById(`assunto-${index}`);
-    let campoDiaSemana = document.getElementById(`diaSemana-${index}`);
-
-    if(!campoData.value || !campoAssunto.value){
-        alert("Preencha todos os campos!");
+    if (!agendamento) {
+        console.error("Agendamento não encontrado:", id);
+        alert("Agendamento não encontrado!");
         return;
     }
 
-    let dataObj = new Date(campoData.value + "T00:00:00");
-    let novoDiaSemana = diasSemana[dataObj.getDay()];
-    campoDiaSemana.value = novoDiaSemana;
+    // Altera o status
+    agendamento.status = status;
 
-    agendamentosAdoracaoFamilia[index] = {
-        ...agendamentosAdoracaoFamilia[index],
-        data: campoData.value,
-        diaSemana: novoDiaSemana,
-        assunto: campoAssunto.value,
-        status: agendamentosAdoracaoFamilia[index].status
-    };
-
+    // Salva a alteração no LocalStorage
     localStorage.setItem(
         "agendamentosAdoracaoFamilia",
         JSON.stringify(agendamentosAdoracaoFamilia)
     );
 
+    if (status.toLowerCase() === "agendado") {
+
+        alert(`
+            A Adoração em Família:
+            ${agendamento.assunto.toUpperCase()},
+            foi alterada para AGENDADA.
+        `);
+
+    } else {
+
+        alert(`
+            A Adoração em Família:
+            ${agendamento.assunto.toUpperCase()},
+            foi alterada para CONCLUÍDA.
+        `);
+    }
+
+    consultaAgendamentodAdoracaoFamilia();
+}
+
+
+// EDITA O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
+function editarAgendamentoAdoracaoFamilia(id) {
+
+    let campoData = document.getElementById(`data-${id}`);
+    let campoAssunto = document.getElementById(`assunto-${id}`);
+
+    if (!campoData || !campoAssunto) {
+        console.error("Campos do agendamento não encontrados:", id);
+        return;
+    }
+
+    campoData.disabled = false;
+    campoAssunto.disabled = false;
+}
+
+
+// CONFIRMA A EDIÇÃO DO AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
+function confirmarAgendamentoAdoracaoFamilia(id) {
+
+    let campoData = document.getElementById(`data-${id}`);
+    let campoAssunto = document.getElementById(`assunto-${id}`);
+    let campoDiaSemana = document.getElementById(`diaSemana-${id}`);
+
+    if (!campoData || !campoAssunto || !campoDiaSemana) {
+        console.error("Campos do agendamento não encontrados:", id);
+        return;
+    }
+
+    if (!campoData.value || !campoAssunto.value) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    // Procura o objeto pelo ID
+    let agendamento = agendamentosAdoracaoFamilia.find(function (item) {
+        return item.id === id;
+    });
+
+    if (!agendamento) {
+        console.error("Agendamento não encontrado:", id);
+        alert("Agendamento não encontrado!");
+        return;
+    }
+
+    // Calcula novamente o dia da semana
+    let dataObj = new Date(campoData.value + "T00:00:00");
+
+    let novoDiaSemana = diasSemana[dataObj.getDay()];
+
+    campoDiaSemana.value = novoDiaSemana;
+
+    // Atualiza o próprio objeto encontrado
+    agendamento.data = campoData.value;
+    agendamento.diaSemana = novoDiaSemana;
+    agendamento.assunto = campoAssunto.value;
+
+    // Salva no LocalStorage
+    localStorage.setItem(
+        "agendamentosAdoracaoFamilia",
+        JSON.stringify(agendamentosAdoracaoFamilia)
+    );
+
+    // Bloqueia novamente os campos
     campoData.disabled = true;
     campoAssunto.disabled = true;
 
     alert("Agendamento atualizado com sucesso!");
+
+    // Atualiza a tela
     consultaAgendamentodAdoracaoFamilia();
 }
 
-function excluirAgendamentoAdoracaoFamilia(index){
-    if(confirm("Tem certeza que deseja excluir este agendamento?")){
-        agendamentosAdoracaoFamilia.splice(index, 1);
+
+// EXCLUI O AGENDAMENTO DE ADORAÇÃO EM FAMÍLIA
+function excluirAgendamentoAdoracaoFamilia(id) {
+
+    // Procura o agendamento pelo ID
+    let agendamento = agendamentosAdoracaoFamilia.find(function (item) {
+        return item.id === id;
+    });
+
+    if (!agendamento) {
+        console.error("Agendamento não encontrado:", id);
+        alert("Agendamento não encontrado!");
+        return;
+    }
+
+    if (confirm(`
+        Tem certeza que deseja excluir o agendamento:
+
+        ${agendamento.assunto}
+    `)) {
+
+        // Remove pelo ID, e não pela posição no array
+        agendamentosAdoracaoFamilia =
+            agendamentosAdoracaoFamilia.filter(function (item) {
+                return item.id !== id;
+            });
+
+        // Salva no LocalStorage
         localStorage.setItem(
             "agendamentosAdoracaoFamilia",
             JSON.stringify(agendamentosAdoracaoFamilia)
         );
+
         alert("Agendamento excluído com sucesso!");
+
         consultaAgendamentodAdoracaoFamilia();
+
     } else {
+
         alert("Ação cancelada!");
     }
 }
