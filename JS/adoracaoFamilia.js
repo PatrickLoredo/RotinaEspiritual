@@ -18,6 +18,12 @@ window.onload = function () {
     consultaAgendamentodAdoracaoFamilia();
 };
 
+function testeBotao(id) {
+    console.log("BOTÃO FUNCIONOU!");
+    console.log("ID RECEBIDO:", id);
+}
+
+
 //ATUALIZA A FUNCAO DO RELOGIO A CADA SEGUNDO
 function atualizaRelogio(idRelogio){
     var dataHoje = new Date();
@@ -213,7 +219,8 @@ function consultaAgendamentodAdoracaoFamilia() {
                                 disabled>
 
                             <button class="btn btn-sm btn-success mb-2"
-                                onclick="checarAgendamentoAdoracaoFamilia('concluído', ${JSON.stringify(item.id)})">
+                                onclick="checarAgendamentoAdoracaoFamilia('concluído', ${JSON.stringify(item.id)}),
+                                "testeBotao('${item.id}')">
 
                                 <i class="fa fa-circle-check"></i>
 
