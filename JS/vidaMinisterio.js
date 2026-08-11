@@ -34,7 +34,7 @@ function exibeQtdTextArea(qtd, localExibe) {
 
         // ===== COLUNA 1 - Matéria do Discurso Inicial =====
         const colMateriaDiscursoInicial = document.createElement("div");
-        colMateriaDiscursoInicial.classList.add("col-12", "mb-2");
+        colMateriaDiscursoInicial.classList.add("col-12", 'mt-3', "mb-2");
 
         const grupoMateriaDiscursoInicial = document.createElement("div");
         grupoMateriaDiscursoInicial.classList.add("input-group");
