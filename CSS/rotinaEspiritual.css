@@ -27,6 +27,7 @@ body a{
 }
 /*-------------------------------------Tipografia-------------------------------------*/
 .uppercase,
+input,
 #navbar-superior ul li span,
 #statusReuniaoSentinela,
 #modalCadastroPeronagemBiblico input,
@@ -67,6 +68,7 @@ body a{
 #modalCadastroAnotacaoSentinela .textAreaSentinela{
     font-size:0.8rem;
 }
+#paginaSaidasCampo input,
 .tamanho07,
 #estudosPessoaisContainer .btn,
 #headerCardPrincipalPersonagensBiblicos .btn-comando-personagem,
@@ -92,7 +94,8 @@ body a{
 
 .center,
 #navbar-superior li,
-.tagAlert{
+.tagAlert,
+#paginaSaidasCampo input{
     text-align: center;
 }
 
