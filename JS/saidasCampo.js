@@ -10,3 +10,12 @@ class SaidaCampo{
     }
 }
 
+window.onload = function () {
+    atualizaRelogio('relogioPagina');
+
+    setInterval(function () {
+        atualizaRelogio('relogioPagina');
+    }, 1000); // 1 segundo
+
+    popularLivrosBiblicos('livrosBiblicosSaidaCampo')
+};
