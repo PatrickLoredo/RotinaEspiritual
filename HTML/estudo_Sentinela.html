@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--CSS-->
-    <link rel="stylesheet" href="/CSS/rotinaEspiritual.css">
+    <link rel="stylesheet" href="CSS/rotinaEspiritual.css">
 
     <!--FONTAWESOME-->
     <script src="https://kit.fontawesome.com/e9987e6d2b.js" crossorigin="anonymous"></script>
@@ -20,8 +20,9 @@
         </script>
 
     <!--JAVASCRIPT-->
-    <script src="/JS/leituraBiblia.js"></script>
-    <script src="/JS/estudo_Sentinela.js" defer></script>
+    <script src="JS/leituraBiblia.js"></script>
+    <script src="JS/estudoPessoal.js" defer></script>
+    <script src="JS/estudo_Sentinela.js" defer></script>
 
     <title>A Sentinela</title>
 </head>
@@ -188,12 +189,32 @@
                     </div>
                 </div>
 
+                <!--FAVORITOS-->
+                <div class="row my-5 stick" >
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="display-6 text-center">Favoritos</h6>
+                                </div>
+                                <div class="card-body" id="atalhosFavoritos"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--TITULO DA PAGINA MAIN-->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="container my-5">
+                <div class="row" >
+                    <div class="col-10">
+                        <div class="container" id="cabecalhoASentinela">
                             <h6 class="display-6 text-center">Estudo de A Sentinela</h6>
                         </div>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                        <button class="btn-sm btn btn-primary"
+                        onclick="favoritarAtalho('Estudo de A Sentinela','A Sentinela','https://rotina-espiritual.vercel.app/HTML/estudo_Sentinela.html')">
+                            <i class="fa fa-star text-light"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -228,7 +249,7 @@
                                             data final
                                         </label>
                                         <input type="date" class="form-control uppercase text-center"
-                                            style="font-size: 0.7rem;" id="dataFinalVerificaDiasReunioes" value="2026-12-31">
+                                            style="font-size: 0.7rem;" id="dataFinalVerificaDiasReunioes">
                                     </div>
                                 </div>
                                 <div class="row mt-3">
@@ -236,8 +257,8 @@
                                         <button class="btn btn-danger btn-sm uppercase px-4 w-75"
                                             style="font-size: 0.8rem;" onclick="verificaQtdDiasSentinela()"
                                             id="btnVerficaDiasReunioes">
-                                            <i class="fa-solid fa-people-group"></i>
-                                            <span>&nbsp;verificar datas de reuniões</span>
+                                            <i class="fa-solid fa-calendar"></i>
+                                            <span>&nbsp;&nbsp;VER Reuniões no Período</span>
                                         </button>
                                     </div>
                                 </div>
@@ -305,7 +326,7 @@
                                     </div>
 
                                     <!--QUANTIDADE TOTAL DE PÁRAFOS ESTUDO SENTINELA - CABEÇALHO-->
-                                    <div class="col-4 col-md-auto col-md col-lg-auto mb-2 text-center">
+                                    <div class="col-4 mb-2 col-md-auto col-md col-lg-auto mb-2 text-center">
                                         <label for="" class="uppercase tamanho08 mb-2">Parágrafos</label>
                                         <input type="number" class="form-control text-center uppercase" value="17"
                                             style="font-size: 0.7rem" min="15" max="25"
@@ -313,7 +334,7 @@
                                     </div>
                                     
                                     <!--STATUS ESTUDO SENTINELA - CABEÇALHO-->
-                                    <div class="col-auto mb-2">
+                                    <div class="col mb-2">
                                         <label for="" class="uppercase tamanho08 mb-2 d-flex justify-content-center">Status</label>
                                         <div class="row">
                                             <div class="col"></div>
@@ -334,28 +355,33 @@
                             <!--BUTTONS DE SALVAR E LIMPA CABEÇALHO ESTUDO A SENTINELA-->
                             <div class="card-footer">
                                 <div class="row d-flex justify-content-center">
-                                    <div class="col gap-1">
-                                        <button class="btn btn-sm btn-success px-2" style="font-size:0.7rem"
+                                    <div class="col">
+                                        <button class="mb-2 btn btn-sm btn-success px-2 w-100" style="font-size:0.7rem"
                                         onclick="salvarCabecalhoSentinela()">
                                             <i class="fa fa-save">&nbsp;</i>
                                             <span class="uppercase tamanho07">Salvar cabeçalho</span>
                                         </button>
 
-                                        <button class="btn btn-sm btn-primary px-2" 
+                                        <button class="mb-2 btn btn-sm btn-primary px-2 w-100" 
                                         style="font-size:0.7rem"
                                         onclick="limparCamposSentinela()">
                                             <i class="fa fa-broom">&nbsp;</i>
                                             <span class="uppercase tamanho07">limpar cabeçalho</span>
                                         </button>
-                                    </div>
 
-                                    <div class="col gap-1">
-                                        <button
-                                            id="buttonAbreModalAnotacoesSentinela" class="btn btn-sm btn-dark uppercase px-2" style="font-size:0.7rem"
+                                        <button id="buttonAbreModalAnotacoesSentinela" 
+                                        class="mb-2 btn btn-sm btn-dark uppercase px-2 w-100" style="font-size:0.7rem"
                                             onclick="confirmaDesejoCadastroAnotacao(document.getElementById('dataEstudoSentinela').value); 
                                             exibeQtdAnotacoesnoCircle()">
                                             <i class="fa fa-plus-circle"></i>
                                             Cadastrar Anotação
+                                        </button>
+
+                                        <button id="buttonVerTodasAnotacoes" 
+                                        class="mb-2 btn btn-sm btn-danger uppercase px-2 w-100" style="font-size:0.7rem"
+                                            onclick="">
+                                            <i class="fa fa-bookmark"></i>
+                                            anotações / comentários deste estudo
                                         </button>
                                     </div>
                                 </div>
@@ -382,7 +408,7 @@
                             <div class="row">
 
                                 <!--DATA ESTUDO DE A SENTINELA-->
-                                <div class="col-auto">
+                                <div class="col-6 mb-2">
                                     <label for="" class="label-format mb-2">DATA ESTUDO SENTINELA</label>
                                     <input type="date" name="" id="recuperaDataSentinela" class="form-control uppercase text-center" 
                                     style="font-size: 0.7rem;" value=""
@@ -390,14 +416,14 @@
                                 </div>
 
                                 <!--DATA DE ATUALIZAÇÃO-->
-                                <div class="col-auto">
+                                <div class="col-6 mb-2">
                                     <label for="" class="label-format mb-2">data atualização</label>
                                     <input type="date" name="" id="dataAtualizacaoAnotacaoSentinela" class="form-control uppercase text-center" 
                                     style="font-size: 0.7rem;">
                                 </div>
 
                                 <!--NÚMERO DE PARÁGRAFOS-->
-                                <div class="col-auto">
+                                <div class="col-3 mb-2">
                                     <label for="" class="label-format mb-2">Nº Parag</label>
                                     <input type="number" name="" id="paragrafoAnotacaoSentinela" 
                                     class="form-control uppercase text-center" style="font-size: 0.7rem;"
@@ -408,7 +434,7 @@
                                 </div>
 
                                 <!--TIPO DE ANOTAÇÃO-->
-                                <div class="col-auto">
+                                <div class="col">
                                     <label for="" class="label-format mb-2">Tipo Inf.</label>
                                     <select name="" id="tipoAnotacaoSentinela" class="form-select uppercase text-center" 
                                     style="font-size: 0.7rem;"
@@ -467,24 +493,43 @@
 
                         <div class="modal-footer">
                             <div class="row">
-                                <div class="col-auto">
-                                    <button class="btn btn-sm btn-warning" onclick="window.open('http://127.0.0.1:5500/HTML/leituraBiblia.html', '_blank')">
-                                        <i class="fa fa-book-bookmark"></i>
-                                    </button>                                
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-12 mb-2">
+                                            <button class="btn btn-primary btn-sm w-100">
+                                                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;
+                                                <span class="uppercase tamanho07">Todas Anotações</span>
+                                            </button>                                
+                                        </div>
                                 </div>
-                                <div class="col d-flex justify-content-end">
-                                    <button class="btn btn-sm btn-dark"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#bodyConjuntoAnotacoesSentinela"
-                                    onclick="mudaChevron('chevronDownConjutoAnotacoesSentinela');
-                                    exibeQtdAnotacoesnoCircle()"
-                                    id="btnTodasAnotacoes">
-                                        <i class="fa fa-eye"></i>
-                                        <span class="uppercase tamanho08 px-3">Todas anotações para este estudo</span>
-                                        <i class="fa fa-chevron-down" id="chevronDownConjutoAnotacoesSentinela"></i>
-                                    </button>
+
+                                <div class="row my-3">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                yrsr
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <button class="btn btn-sm btn-dark w-100"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#bodyConjuntoAnotacoesSentinela"
+                                        onclick="mudaChevron('chevronDownConjutoAnotacoesSentinela');
+                                        exibeQtdAnotacoesnoCircle()"
+                                        id="btnTodasAnotacoes">
+                                            <i class="fa fa-eye"></i>&nbsp;&nbsp;
+                                            <span class="uppercase tamanho07">Anotações por Categoria</span>
+                                            <i class="fa fa-chevron-down" id="chevronDownConjutoAnotacoesSentinela"></i>
+                                        </button>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
+                            
                         </div>
 
                         <div class="modal-body collapse" id="bodyConjuntoAnotacoesSentinela">

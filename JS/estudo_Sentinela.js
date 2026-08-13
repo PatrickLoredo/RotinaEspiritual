@@ -1,5 +1,6 @@
 let arrayEstudosSentinela = JSON.parse(localStorage.getItem('arrayEstudosSentinela')) || [];
 let codigosUtilizados = JSON.parse(localStorage.getItem('codigosUtilizados')) || [];
+let atalhosFavoritos = JSON.parse(localStorage.getItem('atalhosFavoritos')) || [];
 
 window.onload = function () {
     let elementoModal = document.getElementById('modalCadastroAnotacaoSentinela');
@@ -15,39 +16,42 @@ window.onload = function () {
 
     mostraDataAtualSentinela('dataEstudoSentinela');
     mostraDataAtualSentinela('dataAtualizacaoAnotacaoSentinela');
-    populaLivrosBiblicos();
+    //populaLivrosBiblicos();
     defineDataInicialSentinela()
     atualizaAccordionLivrosBiblicos();
+    verificaFavoritos();
 };
 
 function defineDataInicialSentinela() {
-
     const campoDataInicial = document.getElementById("dataInicialVerificaDiasReunioes");
+    const campoDataFinal = document.getElementById("dataFinalVerificaDiasReunioes");
 
-    if (!campoDataInicial) {
-        console.log("Campo de data inicial não encontrado.");
-        return;
-    }
+    const data = new Date();
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
 
-    if (!arrayEstudosSentinela || arrayEstudosSentinela.length === 0) {
-        console.log("Nenhum estudo da Sentinela cadastrado.");
-        return;
-    }
+    // Primeiro dia do mês atual
+    const primeiroDiaMesAtual = `${ano}-${mes}-01`;
 
-    let registroMaisAntigo = arrayEstudosSentinela[0];
+    // Último dia do mês atual
+    const ultimoDia = new Date(ano, data.getMonth() + 1, 0);
 
-    for (let i = 1; i < arrayEstudosSentinela.length; i++) {
+    const diaFim = String(ultimoDia.getDate()).padStart(2, '0');
 
-        if (new Date(arrayEstudosSentinela[i].data) < new Date(registroMaisAntigo.data)) {
-            registroMaisAntigo = arrayEstudosSentinela[i];
-        }
-    }
+    const ultimoDiaMesAtual = `${ano}-${mes}-${diaFim}`;
 
-    campoDataInicial.value = registroMaisAntigo.data;
-
-    console.log("Data inicial Sentinela:", registroMaisAntigo.data);
+    campoDataInicial.value = primeiroDiaMesAtual;
+    campoDataFinal.value = ultimoDiaMesAtual;
 }
 
+class Favorito {
+    constructor(tipoAtalho,apelido, Link){
+        this.tipoAtalho = tipoAtalho;
+        this.apelido = apelido;
+        this.Link = Link;
+    }
+}
+''
 class Anotacao {
     constructor(tipo, dataAtualizacao, anotacaoPessoal,numeroParagrafo) {
         this.tipo = tipo;
@@ -97,6 +101,70 @@ class EstudoSentinela {
     }}
 }
 
+/* ------------------------------[ok] ------------------------------ */
+function salvarFavoritos() {localStorage.setItem('atalhosFavoritos',JSON.stringify(atalhosFavoritos));
+}
+
+function favoritarAtalho(tipoAtalho, apelido, link) {
+    if (atalhosFavoritos.length === 0) {
+        let confirmacaoAddFavoritos = confirm(`Deseja adicionar o atalho de ${tipoAtalho} na lista de favoritos?`);
+        if (confirmacaoAddFavoritos) {
+            let novoFavorito = new Favorito(
+                tipoAtalho,
+                apelido,
+                link
+            );
+
+            atalhosFavoritos.push(novoFavorito);
+            salvarFavoritos();
+            console.log(atalhosFavoritos);
+        }
+
+    } else {
+        for (let i = 0; i < atalhosFavoritos.length; i++) {
+            if (atalhosFavoritos[i].tipoAtalho === tipoAtalho) {
+                let confirmacaoExclusaoFavoritos = confirm('Atalho já está na lista de favoritos. Deseja remover?');
+
+                if (confirmacaoExclusaoFavoritos) {
+                    atalhosFavoritos.splice(i, 1);
+                    salvarFavoritos();
+                    console.log(atalhosFavoritos);
+                }
+
+                return;
+            }
+        }
+
+        let confirmacaoAddFavoritos = confirm(`Deseja adicionar o atalho de ${tipoAtalho} na lista de favoritos?`);
+
+        if (confirmacaoAddFavoritos) {
+            let novoFavorito = new Favorito(tipoAtalho,apelido,link);
+
+            atalhosFavoritos.push(novoFavorito);
+            salvarFavoritos();
+            console.log(atalhosFavoritos);
+        }
+    }
+}
+/* ------------------------------[] ------------------------------ */
+function verificaFavoritos() {
+    const campoExibicao = document.getElementById('atalhosFavoritos');
+    campoExibicao.innerHTML = '';
+    for (let i = 0; i < atalhosFavoritos.length; i++) {
+        campoExibicao.innerHTML += `
+            <div class="col-6 mb-2">
+                <button 
+                    class="btn btn-sm btn-success w-100"
+                    onclick="window.open('${atalhosFavoritos[i].Link}', '_blank')">
+                    
+                    <span class="uppercase tamanho07">
+                        ${atalhosFavoritos[i].apelido}
+                    </span>
+                </button>
+            </div>
+        `;
+    }
+}
 /* ------------------------------[ok] ------------------------------ */
 function formatarData(data) {
     if (!data) return "";
@@ -169,7 +237,7 @@ function verificaQtdDiasSentinela() {
             let estudoEncontrado = arrayEstudosSentinela.find(element => element.data === dataFormatadaISO);
 
             let coluna = document.createElement('div');
-            coluna.classList.add('col-6');
+            coluna.classList.add('col-12');
 
             let botao = document.createElement('button');
             botao.classList.add('btn', 'btn-sm', 'w-100', 'm-1');
@@ -201,6 +269,9 @@ function verificaQtdDiasSentinela() {
                 }
             } else {
                 botao.classList.add('btn-outline-secondary');
+                botao.addEventListener('click', function() {
+                    rolarParaElemento('colunaAnotacaoTemaSentinela',100);
+                });
                 botao.innerHTML = `<i class="fa-solid fa-book me-1 uppercase"></i><span class="uppercase tamanho07"> ${dataExibicao} &nbsp;  [Pendente]</span>`;
             }
 
