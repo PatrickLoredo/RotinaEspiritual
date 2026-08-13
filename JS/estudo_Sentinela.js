@@ -102,7 +102,8 @@ class EstudoSentinela {
 }
 
 /* ------------------------------[ok] ------------------------------ */
-function salvarFavoritos() {localStorage.setItem('atalhosFavoritos',JSON.stringify(atalhosFavoritos));
+function salvarFavoritos() {
+    localStorage.setItem('atalhosFavoritos',JSON.stringify(atalhosFavoritos));
 }
 
 function favoritarAtalho(tipoAtalho, apelido, link) {
@@ -117,6 +118,7 @@ function favoritarAtalho(tipoAtalho, apelido, link) {
 
             atalhosFavoritos.push(novoFavorito);
             salvarFavoritos();
+            verificaFavoritos();
             console.log(atalhosFavoritos);
         }
 
