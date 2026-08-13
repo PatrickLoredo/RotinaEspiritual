@@ -256,11 +256,17 @@ function verificaQtdDiasSentinela() {
             if (estudoEncontrado) {
                 if (estudoEncontrado.status === 'concluido') {
                     botao.classList.add('btn-success');
+                    botao.addEventListener('click', function() {
+                        rolarParaElemento('colunaAnotacaoTemaSentinela',100);
+                    });
                     botao.innerHTML = `<i class="fa-solid fa-check-double me-1"></i>
                     <span class="uppercase tamanho07">${dataExibicao} &nbsp; [Concluído]</span>`;
                 } 
                 else if (estudoEncontrado.status === 'iniciado') { // Adicionado o 'else if' aqui
                     botao.classList.add('btn-primary');
+                    botao.addEventListener('click', function() {
+                        rolarParaElemento('colunaAnotacaoTemaSentinela',100);
+                    });
                     botao.innerHTML = `<i class="fa-solid fa-book-open me-1"></i>
                     <span class="uppercase tamanho07">${dataExibicao} &nbsp; [Iniciado]</span>`;
                 } 
